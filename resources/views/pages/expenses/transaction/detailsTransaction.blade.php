@@ -57,19 +57,21 @@
                             </span>
                         </button>
 
-                        <button type="button" data-id="{{ $detail->id }}" id="updateButton"
-                            data-modal-toggle="transactionEditModal"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
-                                </path>
-                                <path fill-rule="evenodd"
-                                    d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            Update
-                        </button>
+                        <a href="{{url('expenses/transaction/details/update').'/'. $detail->id}}">
+                            <button type="button" data-id="{{ $detail->id }}" id="updateButton"
+                               {{--  data-modal-toggle="transactionEditModal" --}}
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                Update
+                            </button>
+                        </a>
 
 
 
@@ -340,13 +342,13 @@
                     uperDiv.className = 'p-2 bg-gray-200 relative flex justify-center items-center';
                     const image = document.createElement('img');
                     image.src = e.target.result;
-                    image.className = 'w-10 h-10 object-cover mr-2 rounded-lg';
+                    image.className = 'w-12 h-12 object-cover  rounded-lg';
                     imageDiv.appendChild(uperDiv);
                     uperDiv.appendChild(image);
 
                     const cancelButton = document.createElement('button');
                     cancelButton.innerHTML =
-                        `<svg  class="w-5 h-5 fill-red-700"  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
+                        `<svg  class="w-4 h-4 fill-red-700"  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
                     cancelButton.className = 'right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg';
 
                     cancelButton.addEventListener('click', function() {

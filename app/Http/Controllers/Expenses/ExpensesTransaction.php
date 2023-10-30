@@ -95,18 +95,6 @@ class ExpensesTransaction extends Controller
     }
 
 
-    public function detailsViewTransaction($id)
-    {
-        // Retrieve data from the database using the $id
-        $detail = Expenses::find($id);
-        $employees = Employee::all();
-        $categories = ExpensesCategory::all();
-        $employee = $detail->employee;
-        $category = $detail->category;
-
-        return view('pages.expenses.transaction.detailsTransaction', ['detail' => $detail, 'employee' => $employee, 'category' => $category, 'employees' => $employees, 'categories' => $categories]);
-    }
-
 
     public function downloadImages($id)
     {
@@ -159,4 +147,53 @@ class ExpensesTransaction extends Controller
         // Return the zip file for download
         return response()->download($zipFilePath)->deleteFileAfterSend(true);
     }
+
+
+    public function detailsViewTransaction($id)
+{
+    // Retrieve data from the database using the $id
+    $detail = Expenses::find($id);
+    $employees = Employee::all();
+    $categories = ExpensesCategory::all();
+    $employee = $detail->employee;
+    $category = $detail->category;
+
+    return view('pages.expenses.transaction.detailsTransaction', [
+        'detail' => $detail,
+        'employee' => $employee,
+        'category' => $category,
+        'employees' => $employees,
+        'categories' => $categories,
+    ]);
+}
+
+public function updateViewTransaction($id)
+{
+    // Retrieve the same data again or consider refactoring this logic into a shared method
+    $detail = Expenses::find($id);
+    $employees = Employee::all();
+    $categories = ExpensesCategory::all();
+    $employee = $detail->employee;
+    $category = $detail->category;
+
+    $imgPath = $detail->images_path;
+
+    $imgArrays=  explode(',',  $imgPath);
+    $imgArrays = array_map(function($item) {
+        return trim($item, '"');
+    }, $imgArrays);
+    //dd($imgArrays);
+    //dd($getFullImgPath);
+
+
+    return view('pages.expenses.transaction.updateTransaction', [
+        'detail' => $detail,
+        'employee' => $employee,
+        'category' => $category,
+        'employees' => $employees,
+        'categories' => $categories,
+        'images' =>  $imgArrays,
+    ]);
+}
+
 }

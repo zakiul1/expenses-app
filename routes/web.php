@@ -53,7 +53,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/transaction', [ExpensesTransaction::class, 'index'])->name('expenses.transaction');
         Route::post('/transaction/store', [ExpensesTransaction::class, 'store']);
         Route::get('/transaction/details/{id}', [ExpensesTransaction::class, 'detailsViewTransaction'])->name('tnxDetails');
-        Route::get('transaction/details/images/download/{id}', [ExpensesTransaction::class, 'downloadImages']);
+        Route::get('/transaction/details/{id}', [ExpensesTransaction::class, 'detailsViewTransaction'])->name('tnxDetails');
+        Route::get('transaction/details/update/{id}', [ExpensesTransaction::class, 'updateViewTransaction']);
         Route::get('transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments']);
     });
 
