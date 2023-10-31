@@ -27,7 +27,7 @@ class ExpensesTransaction extends Controller
             $message = true;
         }
 
-        $transactions = $query->paginate(6);
+        $transactions = $query->orderBy('created_at', 'desc')->paginate(6);
 
         return view('pages.expenses.transaction.transaction', [
             'transactions' => $transactions,
@@ -54,29 +54,51 @@ class ExpensesTransaction extends Controller
             'images_path.*' => 'nullable|image|max:2048',
             'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240',
         ]);
-        //$date = $request->employees_id
-        //dd(intval($request->input('employee_id')));
 
         if ($request->hasFile('images_path')) {
             $imagePaths = [];
             foreach ($request->file('images_path') as $image) {
-                $imageName = $image->getClientOriginalName();
-                // $image->storeAs('images', $imageName); // Store images in the 'images' directory
-                $image->move(public_path('images'), $imageName);
-                $imagePaths[] =  $imageName;
+                $originalName = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $imageName = pathinfo($originalName, PATHINFO_FILENAME); // Get the filename without extension
+
+                // Generate a unique filename using a timestamp and random string
+                $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
+
+                // Check if a file with the same name exists, if it does, regenerate the name
+                while (file_exists(public_path('images/' . $uniqueName))) {
+                    $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
+                }
+
+                $image->move(public_path('images'), $uniqueName);
+                $imagePaths[] = $uniqueName;
             }
-            // dd(json_encode($imagePaths));
         }
+
+        // dd($imagePaths);
         if ($request->hasFile('documents_path')) {
             $documentPaths = [];
             foreach ($request->file('documents_path') as $document) {
-                $documentName = $document->getClientOriginalName();
-                $document->move(public_path('document'), $documentName); // Store documents in the 'documents' directory
-                $documentPaths[] =  $documentName;
+                $originalName = $document->getClientOriginalName();
+                $extension = $document->getClientOriginalExtension();
+                $documentName = pathinfo(
+                    $originalName,
+                    PATHINFO_FILENAME
+                ); // Get the filename without extension
+
+                // Generate a unique filename using a timestamp and random string
+                $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
+
+                // Check if a file with the same name exists, if it does, regenerate the name
+                while (file_exists(public_path('document/' . $uniqueName))) {
+                    $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
+                }
+
+                $document->move(public_path('document'), $uniqueName);
+                $documentPaths[] = $uniqueName;
             }
-            // Save $documentPaths to the database or associate them with your data.
         }
-        //dd(intval($request->input('category_id')));
+
 
 
         Expenses::create([
@@ -94,6 +116,18 @@ class ExpensesTransaction extends Controller
         return response()->json(['message' => 'Department created successfully!'], 201);
     }
 
+
+    public function detailsViewTransaction($id)
+    {
+        // Retrieve data from the database using the $id
+        $detail = Expenses::find($id);
+        $employees = Employee::all();
+        $categories = ExpensesCategory::all();
+        $employee = $detail->employee;
+        $category = $detail->category;
+
+        return view('pages.expenses.transaction.detailsTransaction', ['detail' => $detail, 'employee' => $employee, 'category' => $category, 'employees' => $employees, 'categories' => $categories]);
+    }
 
 
     public function downloadImages($id)
@@ -147,53 +181,32 @@ class ExpensesTransaction extends Controller
         // Return the zip file for download
         return response()->download($zipFilePath)->deleteFileAfterSend(true);
     }
+    public function updateViewTransaction($id)
+    {
+        // Retrieve the same data again or consider refactoring this logic into a shared method
+        $detail = Expenses::find($id);
+        $employees = Employee::all();
+        $categories = ExpensesCategory::all();
+        $employee = $detail->employee;
+        $category = $detail->category;
+
+        $imgPath = $detail->images_path;
+
+        $imgArrays =  explode(',',  $imgPath);
+        $imgArrays = array_map(function ($item) {
+            return trim($item, '"');
+        }, $imgArrays);
+        //dd($imgArrays);
+        //dd($getFullImgPath);
 
 
-    public function detailsViewTransaction($id)
-{
-    // Retrieve data from the database using the $id
-    $detail = Expenses::find($id);
-    $employees = Employee::all();
-    $categories = ExpensesCategory::all();
-    $employee = $detail->employee;
-    $category = $detail->category;
-
-    return view('pages.expenses.transaction.detailsTransaction', [
-        'detail' => $detail,
-        'employee' => $employee,
-        'category' => $category,
-        'employees' => $employees,
-        'categories' => $categories,
-    ]);
-}
-
-public function updateViewTransaction($id)
-{
-    // Retrieve the same data again or consider refactoring this logic into a shared method
-    $detail = Expenses::find($id);
-    $employees = Employee::all();
-    $categories = ExpensesCategory::all();
-    $employee = $detail->employee;
-    $category = $detail->category;
-
-    $imgPath = $detail->images_path;
-
-    $imgArrays=  explode(',',  $imgPath);
-    $imgArrays = array_map(function($item) {
-        return trim($item, '"');
-    }, $imgArrays);
-    //dd($imgArrays);
-    //dd($getFullImgPath);
-
-
-    return view('pages.expenses.transaction.updateTransaction', [
-        'detail' => $detail,
-        'employee' => $employee,
-        'category' => $category,
-        'employees' => $employees,
-        'categories' => $categories,
-        'images' =>  $imgArrays,
-    ]);
-}
-
+        return view('pages.expenses.transaction.updateTransaction', [
+            'detail' => $detail,
+            'employee' => $employee,
+            'category' => $category,
+            'employees' => $employees,
+            'categories' => $categories,
+            'images' =>  $imgArrays,
+        ]);
+    }
 }
