@@ -43,7 +43,9 @@
 
                     </div>
                     <!-- Modal body -->
-                    <form id="addTransactionForm" enctype="multipart/form-data">
+                    <form id="updateTransactionForm" action="{{ url('expenses/transaction/update/') . '/' . $detail->id }}"
+                        method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="grid gap-4 mb-4 sm:grid-cols-2">
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="name" value="{{ $detail->name }}"
@@ -51,20 +53,26 @@
                                     placeholder=" " required />
                                 <label for="name"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
-                                <p id="transaction_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+
+                                @error('name')
+                                    <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
                             <div>
                                 <label for="employee_id" class="sr-only">Underline select</label>
-                                <select id="employee_id" name="employee_id"
+                                <select id="employee_id" name="employee_id" required
                                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
 
                                     @foreach ($employees as $em)
-                                        <option value="" {{ $em->id == $employee->id ? 'selected' : '' }}>
+                                        <option value="{{ $em->id }}"
+                                            {{ $em->id == $employee->id ? 'selected' : '' }}>
                                             {{ $em->first_name }}</option>
                                     @endforeach
                                 </select>
-                                <p id="transaction_employee_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                <p id="transaction_employee_id_update_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
                         </div>
@@ -75,8 +83,12 @@
                                     placeholder="" required />
                                 <label for="amount"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
-                                <p id="transaction_amount_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+
+                                @error('amount')
+                                    <p id="transaction_amount_id_update_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400"> {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
 
                             <div>
@@ -84,13 +96,17 @@
                                 <select id="category_id" name="category_id"
                                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                     @foreach ($categories as $ct)
-                                        <option value="" {{ $ct->id == $category->id ? 'selected' : '' }}>
+                                        <option value="{{ $ct->id }}"
+                                            {{ $ct->id == $category->id ? 'selected' : '' }}>
                                             {{ $ct->name }}</option>
                                     @endforeach
 
                                 </select>
-                                <p id="transaction_category_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+                                @error('category_id')
+                                    <p id="transaction_category_id_update_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400"> {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
 
                             <div class="relative z-0 w-full mb-6 group">
@@ -101,8 +117,11 @@
                                 <label for="expense_date"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expenses
                                     Date</label>
-                                <p id="transaction_expense_date_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+                                @error('expense_date')
+                                    <p id="transaction_expense_date_update_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400"> {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
 
                         </div>
@@ -110,12 +129,16 @@
                             <div>
 
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="multiple_files">Upload Image </label>
-                                <input id="images_path"
+                                    for="multiple_files">Upload Images </label>
+                                <input id="images_update_path"
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     name="images_path[]" type="file" multiple accept="image/*">
-                                <p id="transaction_images_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+
+                                @error('images_path')
+                                    <p id="transaction_images_path_update_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400"> {{ $message }}
+                                    </p>
+                                @enderror
 
                                 @if ($detail->document_path == 'null')
                                 @else
@@ -143,30 +166,39 @@
                             <div>
 
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="multiple_files">Upload Image </label>
-                                <input id="images_path"
+                                    for="multiple_files">Upload Document </label>
+                                <input id="documents_update_path"
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    name="images_path[]" type="file" multiple accept="image/*">
-                                <p id="transaction_images_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+                                    name="documents_path[]" type="file" multiple
+                                    accept=".pdf, .xls, .xlsx, .doc, .docx, .txt">
+
+                                @error('documents_path')
+                                    <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
                                 @if ($detail->images_path == 'null')
                                 @else
-                                    <div class="flex gap-3 flex-wrap items-center mb-2" id="tnxDetailImgUpdate">
+                                    <div class="flex gap-3 flex-wrap items-center mb-2" id="tnxUpdateDocDiv">
 
-                                        @foreach ($images as $item)
-                                            <div data-id=""
-                                                class="p-2 bg-gray-200 relative flex justify-center items-center">
-                                                <img class="w-12 h-12 object-cover  rounded-lg"
-                                                    src="{{ asset('images/' . $item) }}" alt="">
-                                                <button class="right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg">
-                                                    <svg class="w-4 h-4 fill-red-700" viewBox="0 0 20 20"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"></path>
+                                        @foreach ($documents as $item)
+                                            <div class="flex items-center ">
+                                                <div
+                                                    class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-blue-100 dark:bg-primary-900">
+                                                    <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                                        fill="currentColor" viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                        <path clip-rule="evenodd" fill-rule="evenodd"
+                                                            d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625zM7.5 15a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 017.5 15zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H8.25z">
+                                                        </path>
+                                                        <path
+                                                            d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z">
+                                                        </path>
                                                     </svg>
-                                                </button>
+
+                                                </div>
+                                                <span>{{ $item }}</span>
                                             </div>
                                         @endforeach
 
@@ -183,6 +215,11 @@
                                 <textarea id="description" rows="3" name="description"
                                     class="block  p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Write Expenses description here">{{ $detail->description }}</textarea>
+                                @error('description')
+                                    <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
                             <div class="flex justify-end">
                                 <button type="submit"
@@ -204,4 +241,32 @@
 
 
     </div>
+
+
+    <script>
+        const imgInput = document.getElementById('images_update_path');
+        const docInput = document.getElementById('documents_update_path');
+        const docDiv = document.getElementById('tnxUpdateDocDiv');
+        const imageDiv = document.getElementById('tnxDetailImgUpdate');
+        imgInput.addEventListener('change', function() {
+
+            if (imgInput.files.length > 0) {
+                imageDiv.classList.add("hidden");
+            }
+        });
+        docInput.addEventListener('change', function() {
+
+            if (docInput.files.length > 0) {
+                docDiv.classList.add("hidden");
+            }
+        });
+        /* console.log(fileInput.files.length != 0);
+        if (fileInput.files.length !== 0) {
+            console.log(fileInput.files.length === 0);
+            imageDiv.classList.add("hidden");
+
+        } else {
+
+        } */
+    </script>
 @endsection

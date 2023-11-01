@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Expenses;
 use App\Models\ExpensesCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class ExpensesTransaction extends Controller
 {
@@ -191,11 +192,16 @@ class ExpensesTransaction extends Controller
         $category = $detail->category;
 
         $imgPath = $detail->images_path;
+        $docPath = $detail->documents_path;
 
         $imgArrays =  explode(',',  $imgPath);
+        $docArrays =  explode(',',  $docPath);
         $imgArrays = array_map(function ($item) {
             return trim($item, '"');
         }, $imgArrays);
+        $docArrays = array_map(function ($item) {
+            return trim($item, '"');
+        }, $docArrays);
         //dd($imgArrays);
         //dd($getFullImgPath);
 
@@ -207,6 +213,132 @@ class ExpensesTransaction extends Controller
             'employees' => $employees,
             'categories' => $categories,
             'images' =>  $imgArrays,
+            'documents' =>  $docArrays,
         ]);
+    }
+    public function updateDataTransaction(Request $request, $id)
+
+
+    {
+
+
+        $expense = Expenses::find($id); // Replace $expenseId with the ID of the expense you want to update
+
+        // Validate the incoming data
+        $validator = FacadesValidator::make($request->all(), [
+            'name' => 'required|string|min:2|max:155',
+            'description' => 'nullable|string',
+            'employee_id' => 'required',
+            'amount' => 'required|numeric|min:0.01|max:10000000',
+            'category_id' => 'required',
+            'expense_date' => 'required|date',
+            'images_path.*' => 'nullable|image|max:2048',
+            'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240',
+        ]);
+        if ($validator->fails()) {
+            // Validation failed, you can get the errors
+            $errors = $validator->errors();
+            return redirect('expenses/transaction/details/update' . "/" . $id)->withErrors($errors) // Pass the validation errors to the view
+                ->withInput();
+
+
+            //dd($errors);
+        }
+
+
+        if ($request->hasFile('images_path')) {
+            $imagePaths = [];
+            foreach ($request->file('images_path') as $image) {
+                $originalName = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $imageName = pathinfo($originalName, PATHINFO_FILENAME); // Get the filename without extension
+
+                // Generate a unique filename using a timestamp and random string
+                $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
+
+                // Check if a file with the same name exists, if it does, regenerate the name
+                while (file_exists(public_path('images/' . $uniqueName))) {
+                    $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
+                }
+
+                $image->move(public_path('images'), $uniqueName);
+                $imagePaths[] = $uniqueName;
+            }
+        }
+
+        if ($request->hasFile('documents_path')) {
+            $documentPaths = [];
+            foreach ($request->file('documents_path') as $document) {
+                $originalName = $document->getClientOriginalName();
+                $extension = $document->getClientOriginalExtension();
+                $documentName = pathinfo(
+                    $originalName,
+                    PATHINFO_FILENAME
+                ); // Get the filename without extension
+
+                // Generate a unique filename using a timestamp and random string
+                $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
+
+                // Check if a file with the same name exists, if it does, regenerate the name
+                while (file_exists(public_path('document/' . $uniqueName))) {
+                    $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
+                }
+
+                $document->move(public_path('document'), $uniqueName);
+                $documentPaths[] = $uniqueName;
+            }
+        }
+
+
+        if ($expense) {
+            $previousImagePaths = json_decode($expense->images_path, true) ?? "";
+            $previousDocumentPaths = json_decode($expense->documents_path, true) ?? "";
+            // dd($previousImagePaths);
+            if ($previousImagePaths != "") {
+                $previousImagePaths = explode(',', $previousImagePaths);
+                foreach ($previousImagePaths as $imagePath) {
+                    $imageFullPath = public_path('images/' . $imagePath);
+                    if (file_exists($imageFullPath)) {
+                        unlink($imageFullPath);
+                    }
+                }
+            }
+            if ($previousDocumentPaths != "") {
+                // Your code to execute when the string is empty
+                $previousDocumentPaths = explode(',', $previousDocumentPaths);
+
+                // Delete the previous documents
+                foreach ($previousDocumentPaths as $documentPath) {
+                    $documentFullPath = public_path('document/' . $documentPath);
+                    if (file_exists($documentFullPath)) {
+                        unlink($documentFullPath);
+                    }
+                }
+            }
+
+            $expense->update([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'employee_id' => intval($request->input('employee_id')),
+                'amount' => $request->input('amount'),
+                'category_id' => intval($request->input('category_id')),
+                'expense_date' => date('Y-m-d', strtotime($request->input('expense_date'))),
+                'images_path' => json_encode(isset($imagePaths) ? implode(',', $imagePaths) : null),
+                'documents_path' => json_encode(isset($documentPaths) ? implode(',', $documentPaths) : null),
+            ]);
+
+            // Any other actions you want to perform after the update
+        } else {
+        }
+        return redirect('expenses/transaction/details/' . $id) // Pass the validation errors to the view
+            ->withInput();
+    }
+
+    public function deleteTransaction($id)
+    {
+        $transaction = Expenses::findOrFail($id);
+        $transaction->delete();
+
+        return response()->json(['message' => 'Transaction deleted successfully'], 201);
     }
 }

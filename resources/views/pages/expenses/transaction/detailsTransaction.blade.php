@@ -44,7 +44,7 @@
 
                     <div class="flex pl-2 space-x-1 gap-2">
 
-                        <button
+                        <button data-id="{{ $detail->id }} " onclick="deleteTnxFunc(this)"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -57,9 +57,8 @@
                             </span>
                         </button>
 
-                        <a href="{{url('expenses/transaction/details/update').'/'. $detail->id}}">
-                            <button type="button" data-id="{{ $detail->id }}" id="updateButton"
-                               {{--  data-modal-toggle="transactionEditModal" --}}
+                        <a href="{{ url('expenses/transaction/details/update') . '/' . $detail->id }}">
+                            <button type="button" data-id="{{ $detail->id }}" id="updateButton" {{--  data-modal-toggle="transactionEditModal" --}}
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -374,6 +373,47 @@
 
                 reader.readAsDataURL(file);
             }
+        }
+
+
+
+        //delete Transaction
+
+        const deleteTnxFunc = (el) => {
+            const tnxId = el.getAttribute('data-id')
+
+            Notiflix.Confirm.show(
+                'Department Delete  Confirm',
+                'Do you want to Delete ?',
+                'Yes',
+                'No',
+                function okCb() {
+                    axios.post(`/expenses/transaction/delete/${tnxId}`)
+                        .then(response => {
+                            // Handle success
+                            if (response.status === 201) {
+                                window.location.assign("/expenses/transaction");
+                            }
+                            //console.log(response.data);
+                            // You can update your page or UI as needed
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                },
+                function cancelCb() {
+
+                }, {
+                    width: '320px',
+                    borderRadius: '8px',
+                    messageColor: '#1e1e1e',
+                    titleColor: '#DA1010',
+                    okButtonColor: '#f8f8f8',
+                    okButtonBackground: '#DA1010',
+                },
+            );
+
         }
     </script>
     </body>

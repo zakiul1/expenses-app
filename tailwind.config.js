@@ -1,14 +1,15 @@
 module.exports = {
     content: [
-      "./resources/**/*.blade.php",
-      "./resources/**/*.js",
-      "./resources/**/*.vue",
-      "./node_modules/flowbite/**/*.js"
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
     theme: {
-      extend: {},
+        darkMode: 'class',
+        extend: {},
     },
     plugins: [
         require('flowbite/plugin')
     ],
-  }
+}

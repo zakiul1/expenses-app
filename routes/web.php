@@ -53,9 +53,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/transaction', [ExpensesTransaction::class, 'index'])->name('expenses.transaction');
         Route::post('/transaction/store', [ExpensesTransaction::class, 'store']);
         Route::get('/transaction/details/{id}', [ExpensesTransaction::class, 'detailsViewTransaction'])->name('tnxDetails');
-        Route::get('/transaction/details/{id}', [ExpensesTransaction::class, 'detailsViewTransaction'])->name('tnxDetails');
-        Route::get('transaction/details/update/{id}', [ExpensesTransaction::class, 'updateViewTransaction']);
-        Route::get('transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments']);
+        Route::get('/transaction/details/update/{id}', [ExpensesTransaction::class, 'updateViewTransaction']);
+        Route::post('/transaction/update/{id}', [ExpensesTransaction::class, 'updateDataTransaction']);
+        Route::post('transaction/delete/{id}', [ExpensesTransaction::class, 'deleteTransaction']);
+        Route::get('/transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments']);
     });
 
     Route::group(['prefix' => 'employee'], function () {
@@ -68,6 +69,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/department/{id}', [DepartmentController::class, 'show']);
         Route::post('/department/update/{id}', [DepartmentController::class, 'update']);
         Route::post('/department/delete/{id}', [DepartmentController::class, 'destroy']);
+        Route::get('/details/{id}', [EmployeeController::class, 'showEmployeeDetails']);
+        Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
+        Route::get('/details/update/{id}', [EmployeeController::class, 'showEmployeeUpdateForm']);
     });
 });
 

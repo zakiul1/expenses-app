@@ -124,19 +124,22 @@
                                             class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $employee->department->name }}</td>
                                         <td class="p-2 text-right space-x-2 whitespace-nowrap">
-                                            <button data-id="{{ $employee->id }}"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
-                                                    </path>
-                                                    <path fill-rule="evenodd"
-                                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                                Details
-                                            </button>
+                                            <a href="{{ url('employee/details') . '/' . $employee->id }}">
+                                                <button data-id="{{ $employee->id }}"
+                                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                                        </path>
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    Details
+                                                </button>
+                                            </a>
+
 
                                         </td>
                                         {{--  <td class="p-2 text-right space-x-2 whitespace-nowrap">
@@ -301,21 +304,67 @@
                             </div>
                             <div class="col-span-6 sm:col-span-3">
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                {{--   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="image_path">Upload Image</label>
                                 <input name="image"
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    aria-describedby="image_path" id="image_path" accept="image/*" type="file">
+                                    aria-describedby="image_path" id="image_path" accept="image/*" type="file"> --}}
+
+
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="image_path"
+                                        class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 16 20">
+                                                <path
+                                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                                                <path
+                                                    d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                            </svg>
+                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+                                                800x400px)</p>
+                                        </div>
+                                        <input name="image" class="hidden" aria-describedby="image_path"
+                                            id="image_path" accept="image/*" type="file">
+                                    </label>
+                                </div>
+
+
+
                                 <p id="employee_image_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                {{--  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="document_path">Upload Document</label>
                                 <input name="document"
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     aria-describedby="document_path" id="document_path" accept=".pdf, .doc, .docx"
-                                    type="file">
+                                    type="file"> --}}
+
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="document_path"
+                                        class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                                                <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 1v4a1 1 0 0 1-1 1H1m14-4v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
+                                            </svg>
+                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">PDF, DOC,TXT,EXCEL (MAX.
+                                                4MB)</p>
+                                        </div>
+                                        <input name="document" class="hidden" aria-describedby="image_path"
+                                            id="document_path" accept=".pdf, .xls, .xlsx, .doc, .docx, .txt"
+                                            type="file">
+                                    </label>
+                                </div>
                                 <p id="employee_document_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                             </div>
                         </div>

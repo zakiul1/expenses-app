@@ -10,7 +10,13 @@
                         <h2 class="font-semibold  text-xl text-gray-500 dark:text-gray-400">{{ now()->format('F Y') }}
                         </h2>
                     </h3>
-                    <span class="text-4xl font-bold leading-none text-gray-900 sm:text-4xl dark:text-white">2,340 </span>
+                    <span class="text-4xl font-bold leading-none text-gray-900 sm:text-4xl dark:text-white">
+                        @if ($totalAmountCurrentMonth)
+                            {{ $totalAmountCurrentMonth }}
+                        @else
+                            0.00
+                        @endif
+                    </span>
                 </div>
             </div>
             {{--    Total Expense  --}}
