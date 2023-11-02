@@ -111,7 +111,7 @@
 
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="date" name="expense_date" id="expense_date"
-                                    value="{{ $detail->expense_date }}" value=""
+                                    value="{{ $detail->expense_date }}"
                                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     placeholder=" " required />
                                 <label for="expense_date"
@@ -140,23 +140,22 @@
                                     </p>
                                 @enderror
 
-                                @if ($detail->document_path == 'null')
+                                @if ($detail->images_path == 'null')
                                 @else
-                                    <div class="flex gap-3 flex-wrap items-center mb-2" id="tnxDetailImgUpdate">
+                                    <div class="flex gap-3 flex-wrap items-center mt-2 mb-2" id="tnxDetailImgUpdate">
 
                                         @foreach ($images as $item)
-                                            <div data-id=""
-                                                class="p-2 bg-gray-200 relative flex justify-center items-center">
-                                                <img class="w-12 h-12 object-cover  rounded-lg"
+                                            <div data-id="" class="  relative flex justify-center items-center">
+                                                <img class="w-20 h-20 object-cover  rounded-sm"
                                                     src="{{ asset('images/' . $item) }}" alt="">
-                                                <button class="right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg">
+                                                {{--     <button class="right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg">
                                                     <svg class="w-4 h-4 fill-red-700" viewBox="0 0 20 20"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                                             clip-rule="evenodd"></path>
                                                     </svg>
-                                                </button>
+                                                </button> --}}
                                             </div>
                                         @endforeach
 
@@ -178,9 +177,9 @@
                                     </p>
                                 @enderror
 
-                                @if ($detail->images_path == 'null')
+                                @if ($detail->documents_path == 'null')
                                 @else
-                                    <div class="flex gap-3 flex-wrap items-center mb-2" id="tnxUpdateDocDiv">
+                                    <div class="flex gap-3 flex-wrap  mt-2 items-center mb-2" id="tnxUpdateDocDiv">
 
                                         @foreach ($documents as $item)
                                             <div class="flex items-center ">

@@ -244,10 +244,11 @@ class ExpensesTransaction extends Controller
 
             //dd($errors);
         }
-
-
+        $imagePaths = [];
+        $documentPaths = [];
+        //dd($request->all());
         if ($request->hasFile('images_path')) {
-            $imagePaths = [];
+
             foreach ($request->file('images_path') as $image) {
                 $originalName = $image->getClientOriginalName();
                 $extension = $image->getClientOriginalExtension();
@@ -264,10 +265,12 @@ class ExpensesTransaction extends Controller
                 $image->move(public_path('images'), $uniqueName);
                 $imagePaths[] = $uniqueName;
             }
+            //dd($imagePaths);
         }
 
+        //dd($_FILES);
         if ($request->hasFile('documents_path')) {
-            $documentPaths = [];
+
             foreach ($request->file('documents_path') as $document) {
                 $originalName = $document->getClientOriginalName();
                 $extension = $document->getClientOriginalExtension();
@@ -289,7 +292,15 @@ class ExpensesTransaction extends Controller
             }
         }
 
+        if (is_array($imagePaths) && count($imagePaths) < 0) {
+            // dd($imagePaths);
+            $imagePaths = $expense->images_path;
+        }
 
+        if (is_array($documentPaths) && count($documentPaths) < 0) {
+            $documentPaths = $expense->documents_path;
+        }
+        // dd($documentPaths);
         if ($expense) {
             $previousImagePaths = json_decode($expense->images_path, true) ?? "";
             $previousDocumentPaths = json_decode($expense->documents_path, true) ?? "";
@@ -302,7 +313,9 @@ class ExpensesTransaction extends Controller
                         unlink($imageFullPath);
                     }
                 }
-            }
+            }/*  else {
+                $imagePaths = $expense->images_path;
+            } */
             if ($previousDocumentPaths != "") {
                 // Your code to execute when the string is empty
                 $previousDocumentPaths = explode(',', $previousDocumentPaths);
@@ -314,7 +327,10 @@ class ExpensesTransaction extends Controller
                         unlink($documentFullPath);
                     }
                 }
-            }
+            }/*  else {
+                $documentPaths = $expense->documents_path;
+            } */
+
 
             $expense->update([
                 'name' => $request->input('name'),

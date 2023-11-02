@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/transaction/update/{id}', [ExpensesTransaction::class, 'updateDataTransaction']);
         Route::post('transaction/delete/{id}', [ExpensesTransaction::class, 'deleteTransaction']);
         Route::get('/transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments']);
+        Route::get('/transaction/details/images/download/{id}', [ExpensesTransaction::class, 'downloadImages']);
     });
 
     Route::group(['prefix' => 'employee'], function () {

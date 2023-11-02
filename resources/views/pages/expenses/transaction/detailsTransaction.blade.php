@@ -81,97 +81,243 @@
             </div>
 
         </div>
-        {{-- Table  Start --}}
-
-        {{-- Table  Start --}}
+        {{-- Tabs  Start --}}
 
 
-        <div class="">
+        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
+                data-tabs-toggle="#default-tab-content" role="tablist">
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#info"
+                        type="button" role="tab" aria-controls="info" aria-selected="false">Info</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="description-tab" data-tabs-target="#description" type="button" role="tab"
+                        aria-controls="description" aria-selected="false">Description</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="attachment-tab" data-tabs-target="#attachment" type="button" role="tab"
+                        aria-controls="attachment" aria-selected="false">Attachment</button>
+                </li>
+            </ul>
+        </div>
+        <div id="default-tab-content">
+            <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="info" role="tabpanel"
+                aria-labelledby="info-tab">
+                {{-- INFO AREA  Start --}}
+
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto">
+                        <div class="inline-block min-w-full align-middle">
+                            <div class="overflow-hidden shadow">
+                                <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+                                    <thead class="bg-gray-100  dark:bg-gray-700">
+                                        <tr>
+
+                                            <th scope="col"
+                                                class="font-bold p-4 w-1/12 text-xs  text-left text-gray-500 uppercase dark:text-gray-400">
+                                                id
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 w-1/12 text-sm font-bold text-left text-gray-500 uppercase dark:text-gray-400">
+                                                Name
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 w-3/12 text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
+                                                Amount
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 w-3/12 text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
+                                                Expenses Date
+                                            </th>
+
+                                            <th scope="col"
+                                                class="p-4 w-2/12  text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
+                                                Expenses By
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
 
-            <div class="flex w-full items-center border-l border-r border-b border-t border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4">Name</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4"> {{ $detail->name }}</div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4">Amount</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4"> {{ $detail->amount }}</div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4"> Expense By</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4">
-                    {{ $employee->first_name . ' ' . $employee->last_name }} </div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4"> Expense Date</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4"> {{ $detail->expense_date }}</div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4">Category Name</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4"> {{ $category->name }} </div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4">Description</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300  bg-gray-100 p-4">{{ $detail->description }}</div>
-            </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4"> Images</div>
+                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4">
-                    @if ($detail->images_path == 'null')
-                        {{-- Display the image --}}
-                        <p>Image not available</p>
-                    @else
-                        {{-- Display a message when there is no image available --}}
-                        <a href="{{ url('expenses/transaction/details/images/download/' . $detail->id) }}">
-                            <button type="button"
-                                class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download Images
-                                <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path clip-rule="evenodd" fill-rule="evenodd"
-                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
-                                    </path>
-                                </svg>
-                                <span class="sr-only">Download</span>
-                            </button>
-                        </a>
-                        {{--  {{ $detail->images_path }} --}}
-                    @endif
+                                            <td
+                                                class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $detail->id }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $detail->name }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $detail->amount }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+
+                                                {{ $detail->expense_date }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+
+                                                {{ $employee->first_name . ' ' . $employee->last_name }}
+                                            </td>
+
+                                        </tr>
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                {{-- INFO AREA  End --}}
             </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4"> Download Documents</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4">
-                    @if ($detail->documents_path == 'null')
-                        {{-- Display the image --}}
-                        <p>Documents not available</p>
-                    @else
-                        {{-- Display a message when there is no image available --}}
+            <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="description" role="tabpanel"
+                aria-labelledby="description-tab">
+                {{-- Description AREA  Start --}}
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto">
+                        <div class="inline-block min-w-full align-middle">
+                            <div class="overflow-hidden shadow">
+                                <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+                                    <thead class="bg-gray-100  dark:bg-gray-700">
+                                        <tr>
 
-                        <a href="{{ url('expenses/transaction/details/documents/download/' . $detail->id) }}">
-                            <button type="button"
-                                class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download Documents
-                                <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path clip-rule="evenodd" fill-rule="evenodd"
-                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
-                                    </path>
-                                </svg>
-                                <span class="sr-only">Download</span>
-                            </button>
-                        </a>
-                        {{--  {{ $detail->documents_path }} --}}
-                    @endif
+                                            <th scope="col"
+                                                class="font-bold p-4 w-1/12 text-xs  text-left text-gray-500 uppercase dark:text-gray-400">
+                                                Description
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 w-1/12 text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
+                                                Category
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+
+
+                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+
+                                            <td
+                                                class="p-2 text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                {{ $detail->description }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $category->name }}
+                                            </td>
+
+
+                                        </tr>
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                {{-- Description AREA  End --}}
             </div>
-            <div class="flex w-full items-center border-l border-r border-b border-gray-400 bg-gray-100">
-                <div class="flex-grow w-3/12  p-4"> Last Modified</div>
-                <div class="flex-grow w-9/12 border-l border-gray-300 bg-gray-100 p-4"> {{ $category->updated_at }}</div>
-            </div>
+            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="attachment" role="tabpanel"
+                aria-labelledby="attachment-tab">
+                {{-- Attachment AREA  Start --}}
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto">
+                        <div class="inline-block min-w-full align-middle">
+                            <div class="overflow-hidden shadow">
+                                <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+                                    <thead class="bg-gray-100  dark:bg-gray-700">
+                                        <tr>
+
+                                            <th scope="col"
+                                                class="font-bold p-4 w-1/12 text-xs  text-left text-gray-500 uppercase dark:text-gray-400">
+                                                Images
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 w-1/12 text-sm font-bold text-left text-gray-500 uppercase dark:text-gray-400">
+                                                Documents
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
 
+                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+
+                                            <td
+                                                class="p-2 text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                <a
+                                                    href="{{ url('expenses/transaction/details/images/download/' . $detail->id) }}">
+                                                    <button type="button"
+                                                        class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download
+                                                        Images
+                                                        <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                            fill="currentColor" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="sr-only">Download</span>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                                <a
+                                                    href="{{ url('expenses/transaction/details/documents/download/' . $detail->id) }}">
+                                                    <button type="button"
+                                                        class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download
+                                                        Documents
+                                                        <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                            fill="currentColor" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="sr-only">Download</span>
+                                                    </button>
+                                                </a>
+                                            </td>
+
+
+                                        </tr>
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- Attachment AREA  End --}}
+            </div>
 
         </div>
+
+
+        {{-- Table  Start --}}
+
+
+
 
     </div>
 
