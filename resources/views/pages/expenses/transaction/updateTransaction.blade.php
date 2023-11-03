@@ -36,8 +36,8 @@
                 <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
                     <!-- Modal header -->
                     <div
-                        class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        class=" flex justify-between items-center pb-4 mb-6 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                        <h3 class="text-3xl font-semibold text-gray-500 dark:text-white">
                             Update Transaction Details
                         </h3>
 
@@ -229,7 +229,7 @@
                                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Update Transaction Details
+                                    Update Transaction
                                 </button>
                             </div>
                         </div>

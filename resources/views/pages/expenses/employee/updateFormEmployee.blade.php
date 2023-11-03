@@ -163,7 +163,8 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                <div id="imagePreview"
+                                                    class="flex flex-col items-center justify-center pt-5 pb-6">
                                                     <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
                                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                         fill="currentColor" viewBox="0 0 16 20">

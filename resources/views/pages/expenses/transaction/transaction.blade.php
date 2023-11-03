@@ -92,6 +92,11 @@
         {{-- Table  Start --}}
 
         {{-- Table  Start --}}
+        @if ($totalAmount)
+            <div class="py-2">
+                <h2 class="text-3xl pb-2 text-lime-600 ">Total Amount : {{ $totalAmount }}</h2>
+            </div>
+        @endif
 
 
         <div class="flex flex-col">

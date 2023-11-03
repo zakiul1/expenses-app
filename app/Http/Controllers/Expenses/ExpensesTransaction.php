@@ -23,18 +23,21 @@ class ExpensesTransaction extends Controller
 
         if ($fromDate && $toDate) {
             $qData =  $query->whereBetween('expense_date', [$fromDate, $toDate]);
+            $totalAmount = $qData->sum('amount');
             $message = ($qData->count() === 0) ? false : true;
         } else {
             $message = true;
+            $totalAmount = "";
         }
 
         $transactions = $query->orderBy('created_at', 'desc')->paginate(6);
-
+        // dd($transactions->employee->first_name);
         return view('pages.expenses.transaction.transaction', [
             'transactions' => $transactions,
             'employees' => $employees,
             'categories' => $categories,
             'message' =>  $message,
+            'totalAmount' =>  $totalAmount,
         ]);
     }
 
@@ -195,10 +198,10 @@ class ExpensesTransaction extends Controller
         $docPath = $detail->documents_path;
 
         $imgArrays =  explode(',',  $imgPath);
-        $docArrays =  explode(',',  $docPath);
         $imgArrays = array_map(function ($item) {
             return trim($item, '"');
         }, $imgArrays);
+        $docArrays =  explode(',',  $docPath);
         $docArrays = array_map(function ($item) {
             return trim($item, '"');
         }, $docArrays);
@@ -292,20 +295,31 @@ class ExpensesTransaction extends Controller
             }
         }
 
-        if (is_array($imagePaths) && count($imagePaths) < 0) {
-            // dd($imagePaths);
+
+        //dd(count($imagePaths) <= 0);
+        if (is_array($imagePaths) && count($imagePaths) <= 0) {
             $imagePaths = $expense->images_path;
+            $imagePaths = explode(',',  $imagePaths);
+            $imagePaths = array_map(function ($item) {
+                return trim($item, '"');
+            }, $imagePaths);
+            // dd($imagePaths);
         }
 
-        if (is_array($documentPaths) && count($documentPaths) < 0) {
+        if (is_array($documentPaths) && count($documentPaths) <= 0) {
             $documentPaths = $expense->documents_path;
+            $documentPaths =  explode(',',  $documentPaths);
+            $documentPaths = array_map(function ($item) {
+                return trim($item, '"');
+            }, $documentPaths);
         }
-        // dd($documentPaths);
+
         if ($expense) {
             $previousImagePaths = json_decode($expense->images_path, true) ?? "";
             $previousDocumentPaths = json_decode($expense->documents_path, true) ?? "";
             // dd($previousImagePaths);
-            if ($previousImagePaths != "") {
+            if ($previousImagePaths != "" && is_array($imagePaths) && count($imagePaths) <= 0) {
+                dd($previousImagePaths);
                 $previousImagePaths = explode(',', $previousImagePaths);
                 foreach ($previousImagePaths as $imagePath) {
                     $imageFullPath = public_path('images/' . $imagePath);
@@ -313,10 +327,9 @@ class ExpensesTransaction extends Controller
                         unlink($imageFullPath);
                     }
                 }
-            }/*  else {
-                $imagePaths = $expense->images_path;
-            } */
-            if ($previousDocumentPaths != "") {
+            }
+
+            if ($previousDocumentPaths != "" && is_array($documentPaths) && count($documentPaths) <= 0) {
                 // Your code to execute when the string is empty
                 $previousDocumentPaths = explode(',', $previousDocumentPaths);
 
@@ -327,10 +340,12 @@ class ExpensesTransaction extends Controller
                         unlink($documentFullPath);
                     }
                 }
-            }/*  else {
-                $documentPaths = $expense->documents_path;
-            } */
+            }
 
+            //  $jsonEncodedData = stripslashes(json_encode($imagePaths));
+            // dd(json_encode($imagePath));
+
+            /*  $imagePaths = array_map('stripslashes', $imagePaths); */
 
             $expense->update([
                 'name' => $request->input('name'),

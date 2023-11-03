@@ -157,4 +157,13 @@ class EmployeeController extends Controller
         return redirect('employee/details/update/' . $id) // Pass the validation errors to the view
             ->withInput();
     }
+
+    public function deleteEmploy($id)
+    {
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
+
+        return redirect('employee/list') // Pass the validation errors to the view
+            ->withInput();
+    }
 }
