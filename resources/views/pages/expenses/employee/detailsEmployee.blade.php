@@ -42,20 +42,20 @@
                     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Employee Details</h1>
 
                     <div class="flex pl-2 space-x-1 gap-2">
-                        <a href="{{ url('employee/details/delete/' . $employee->id) }}">
-                            <button data-id="{{ $employee->id }} " {{-- onclick="deleteTnxFunc(this)" --}}
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span>
-                                    Delete
-                                </span>
-                            </button>
-                        </a>
+
+                        <button data-id="{{ $employee->id }} " onclick="deleteEmployeeFunc({{ $employee->id }})"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>
+                                Delete
+                            </span>
+                        </button>
+
 
                         <a href="{{ url('employee/details/update') . '/' . $employee->id }}">
                             <button type="button" data-id="{{ $employee->id }}" id="updateButton" {{--  data-modal-toggle="transactionEditModal" --}}
@@ -179,4 +179,46 @@
         </div>
 
     </div> {{-- Main div --}}
+
+
+    {{--  <a href="{{ url('employee/details/delete/' . $employee->id) }}"> --}}
+    <script>
+        const deleteEmployeeFunc = (id) => {
+
+            Notiflix.Confirm.show(
+                'Employee Delete  Confirm',
+                'Do you want to Delete ?',
+                'Yes',
+                'No',
+                function okCb() {
+                    axios.post(`/employee/details/delete/${id}`)
+                        .then(response => {
+                            // Handle success
+                            if (response.status === 201) {
+
+
+                                window.location.assign("/employee/list");
+                            }
+                            //console.log(response.data);
+                            // You can update your page or UI as needed
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                },
+                function cancelCb() {
+
+                }, {
+                    width: '320px',
+                    borderRadius: '8px',
+                    messageColor: '#1e1e1e',
+                    titleColor: '#DA1010',
+                    okButtonColor: '#f8f8f8',
+                    okButtonBackground: '#DA1010',
+                },
+            );
+
+        }
+    </script>
 @endsection

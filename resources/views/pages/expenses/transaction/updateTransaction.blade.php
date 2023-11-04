@@ -62,7 +62,7 @@
                             </div>
                             <div>
                                 <label for="employee_id" class="sr-only">Underline select</label>
-                                <select id="employee_id" name="employee_id" required
+                                <select id="employee_id" name="employee_id"
                                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
 
                                     @foreach ($employees as $em)
@@ -71,9 +71,11 @@
                                             {{ $em->first_name }}</option>
                                     @endforeach
                                 </select>
-                                <p id="transaction_employee_id_update_error"
-                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+                                @error('employee_id')
+                                    <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid gap-4 mb-4 sm:grid-cols-3">
@@ -242,30 +244,5 @@
     </div>
 
 
-    <script>
-        const imgInput = document.getElementById('images_update_path');
-        const docInput = document.getElementById('documents_update_path');
-        const docDiv = document.getElementById('tnxUpdateDocDiv');
-        const imageDiv = document.getElementById('tnxDetailImgUpdate');
-        imgInput.addEventListener('change', function() {
-
-            if (imgInput.files.length > 0) {
-                imageDiv.classList.add("hidden");
-            }
-        });
-        docInput.addEventListener('change', function() {
-
-            if (docInput.files.length > 0) {
-                docDiv.classList.add("hidden");
-            }
-        });
-        /* console.log(fileInput.files.length != 0);
-        if (fileInput.files.length !== 0) {
-            console.log(fileInput.files.length === 0);
-            imageDiv.classList.add("hidden");
-
-        } else {
-
-        } */
-    </script>
+    <script></script>
 @endsection

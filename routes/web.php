@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/details/{id}', [EmployeeController::class, 'showEmployeeDetails']);
         Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
         Route::get('/details/update/{id}', [EmployeeController::class, 'showEmployeeUpdateForm']);
-        Route::get('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
+        Route::post('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
     });
 });
 

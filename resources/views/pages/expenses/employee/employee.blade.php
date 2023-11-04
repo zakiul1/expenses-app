@@ -205,7 +205,7 @@
                     <h3 class="text-xl font-semibold dark:text-white">
                         Add New Employee
                     </h3>
-                    <button type="button"
+                    <button type="button" onclick="closeCreateEmpModal()"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
                         data-modal-toggle="employee-create-modal">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -282,6 +282,7 @@
                                     <label for="underline_select" class="sr-only">Underline select</label>
                                     <select id="underline_select" name="department_id"
                                         class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                        <option value="" selected>Select A Department</option>
                                         @foreach ($departments as $department)
                                             <option value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach
@@ -302,71 +303,57 @@
                                     </p>
                                 </div>
                             </div>
+                            {{--     image --}}
                             <div class="col-span-6 sm:col-span-3">
 
-                                {{--   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="image_path">Upload Image</label>
-                                <input name="image"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    aria-describedby="image_path" id="image_path" accept="image/*" type="file"> --}}
+                                <div class="flex flex-col items-start justify-start w-full">
+                                    <input name="image_path" class="w-full" aria-describedby="image_path"
+                                        id="create_image_path" accept="image/*" type="file">
+                                    <div id="previewCreateImgEmployeeDiv"
+                                        class=" p-2 mt-3  hidden bg-gray-200 rounded-sm">
 
-
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="image_path"
-                                        class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 16 20">
-                                                <path
-                                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                                <path
-                                                    d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                                            </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
-                                                800x400px)</p>
+                                        <div class="flex justify-center items-center w-full">
+                                            <img class="h-20 w-20 p-1 rounded-full object-cover"
+                                                id="previewCreateImgEmployee" alt="">
                                         </div>
-                                        <input name="image" class="hidden" aria-describedby="image_path"
-                                            id="image_path" accept="image/*" type="file">
-                                    </label>
+
+
+                                    </div>
                                 </div>
-
-
 
                                 <p id="employee_image_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                             </div>
+                            {{--  Document --}}
                             <div class="col-span-6 sm:col-span-3">
 
-                                {{--  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="document_path">Upload Document</label>
-                                <input name="document"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    aria-describedby="document_path" id="document_path" accept=".pdf, .doc, .docx"
-                                    type="file"> --}}
+                                <div class="flex flex-col items-start justify-start w-full">
+                                    <input name="documents_path[]" class="w-full" aria-describedby="documents_path"
+                                        id="create_documents_path"accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        type="file" multiple>
+                                    <div id="previewCreateDocumentEmployeeDiv"
+                                        class=" p-2 mt-3  hidden bg-gray-200 rounded-sm">
 
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="document_path"
-                                        class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
-                                                <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 1v4a1 1 0 0 1-1 1H1m14-4v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
+                                        <div class="flex justify-center items-center w-full">
+
+                                            <svg class="h-20 w-20 p-1  text-lime-600 dark:text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 16 20">
+                                                <path
+                                                    d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                                <path
+                                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2Zm-2.359 10.707-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L7 12.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                             </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">PDF, DOC,TXT,EXCEL (MAX.
-                                                4MB)</p>
                                         </div>
-                                        <input name="document" class="hidden" aria-describedby="image_path"
-                                            id="document_path" accept=".pdf, .xls, .xlsx, .doc, .docx, .txt"
-                                            type="file">
-                                    </label>
+
+
+                                    </div>
                                 </div>
-                                <p id="employee_document_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+
+                                <p id="employee_documents_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
                             </div>
+
+
                         </div>
                         <div class="border-t-2 border-solid mt-6 border-gray-200">
                             <div class="flex justify-end items-end p-4">
@@ -389,14 +376,19 @@
 
     <script>
         let employeeCreateForm = document.getElementById('employeeCreateForm');
-        //console.log(employeeCreateForm);
+        /* Reset Modal */
+        const closeCreateEmpModal = () => {
+            employeeCreateForm.reset();
+        }
+        /* Reset Modal */
+
         employeeCreateForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
 
             // Append the image and document files to FormData
-            formData.append('image', document.querySelector('input[name="image"]').files[0] ?? '');
-            formData.append('document', document.querySelector('input[name="document"]').files[0] ?? '');
+            formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
+            formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? '');
             //let img = document.getElementById('image_path').files[0];
             //formData.append('image', img)
             //console.log(formData);
@@ -434,6 +426,54 @@
                         console.error('An error occurred:', error);
                     }
                 });
+        });
+
+
+        //preview script
+        const imageInput = document.getElementById('create_image_path');
+        const imagePreview = document.getElementById('previewCreateImgEmployee');
+        const imagePreviewDiv = document.getElementById('previewCreateImgEmployeeDiv');
+        imageInput.addEventListener('change', function() {
+            const selectedFile = imageInput.files[0];
+
+            if (selectedFile) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                    imagePreviewDiv.classList.remove('hidden')
+
+                };
+
+                reader.readAsDataURL(selectedFile);
+            } else {
+                imagePreview.src = '';
+                imagePreviewDiv.classList.add('hidden')
+            }
+        });
+
+        /* document view */
+
+        const docInput = document.getElementById('create_documents_path');
+        const docPreview = document.getElementById('previewCreateDocumentEmployee');
+        const docPreviewDiv = document.getElementById('previewCreateDocumentEmployeeDiv');
+        docInput.addEventListener('change', function() {
+            const selectedFile = docInput.files[0];
+
+            if (selectedFile) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+
+                    docPreviewDiv.classList.remove('hidden')
+
+                };
+
+                reader.readAsDataURL(selectedFile);
+            } else {
+
+                docPreviewDiv.classList.add('hidden')
+            }
         });
     </script>
 @endsection

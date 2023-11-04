@@ -5,7 +5,7 @@
             <nav class="flex mb-5" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
                     <li class="inline-flex items-center">
-                        <a href="{{ URL::previous() }}"
+                        <a href="{{ route('employee.list') }}"
                             class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">
                             <svg class="w-5 h-5 mr-2  text-blue-500 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -52,9 +52,11 @@
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                                             name</label>
 
-                                        <p id="employee_first_name_error"
-                                            class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('first_name')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
@@ -66,9 +68,11 @@
                                         <label for="last_name"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
                                             name</label>
-                                        <p id="employee_last_name_error"
-                                            class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('last_name')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
@@ -78,8 +82,11 @@
                                             placeholder=" " required />
                                         <label for="email"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-                                        <p id="employee_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('email')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
@@ -90,8 +97,11 @@
                                         <label for="phone"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
                                             Number</label>
-                                        <p id="employee_phone_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('phone')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
@@ -103,8 +113,11 @@
                                         <label for="date_of_birth"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date
                                             Of Birth</label>
-                                        <p id="employee_date_of_birth_error"
-                                            class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+                                        @error('date_of_birth')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
@@ -122,9 +135,11 @@
                                             @endforeach
                                         </select>
 
-                                        <p id="employee_department_error"
-                                            class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('department_id')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -136,89 +151,96 @@
                                             placeholder=" " required />
                                         <label for="address"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
-                                        <p id="employee_address_error"
-                                            class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                        </p>
+                                        @error('address')
+                                            <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
 
-                                    {{--   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                        for="image_path">Upload Image</label>
-                                    <input name="image"
-                                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        aria-describedby="image_path" id="image_path" accept="image/*" type="file"> --}}
+                                    <div class="flex flex-col w-full">
+                                        <div>
+                                            <h2 class="my-3 text-xl text-gray-500">Update Image</h2>
+                                        </div>
+                                        <label for="image_path" class="w-full overflow-hidden">
 
+                                            <input name="image" aria-describedby="image_path" id="employee_image_path"
+                                                accept="image/*" type="file">
 
-                                    <div class="flex items-center justify-center w-full">
-                                        <label for="image_path"
-                                            class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        </label>
+                                        <div
+                                            class="p-2 mt-3 flex {{ $employee->image_path ? 'justify-start items-start' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
                                             @if ($employee->image_path)
-                                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                    <div
-                                                        class=" p-2 flex justify-center items-center w-full  overflow-hidden">
-                                                        <img class="h-20 w-20 max-w-full max-h-full rounded-full object-cover"
-                                                            src="{{ asset('images/' . $employee->image_path) }}"
-                                                            alt="">
-                                                    </div>
+                                                <div class="flex justify-center items-center overflow-hidden">
+                                                    <img src="{{ asset('employee/images/' . $employee->image_path) }}"
+                                                        class="h-20 w-20 p-1 object-cover bg-white rounded-full"
+                                                        id="imagePreview" alt="">
+                                                    <span
+                                                        class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $employee->image_path }}</span>
                                                 </div>
                                             @else
-                                                <div id="imagePreview"
-                                                    class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                        fill="currentColor" viewBox="0 0 16 20">
-                                                        <path
-                                                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                                        <path
-                                                            d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                                                    </svg>
-                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                            class="font-semibold">Click to upload</span> or drag and drop
-                                                    </p>
-                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or
-                                                        GIF
-                                                        (MAX.
-                                                        800x400px)</p>
-                                                </div>
+                                                <svg class="h-20 w-20 p-1  rounded-full bg-white text-gray-800 dark:text-white"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 16 20">
+                                                    <path fill="currentColor"
+                                                        d="M11.045 7.514a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm-4.572 3.072L3.857 15.92h7.949l-1.811-3.37-1.61 2.716-1.912-4.679Z" />
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M6 1v4a1 1 0 0 1-1 1H1m14 12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2v16ZM11.045 7.514a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.857 15.92l2.616-5.333 1.912 4.68 1.61-2.717 1.81 3.37H3.858Z" />
+                                                </svg>
                                             @endif
 
-                                            <input name="image" class="hidden" aria-describedby="image_path"
-                                                id="image_path" accept="image/*" type="file">
-                                        </label>
+                                        </div>
                                     </div>
 
-
-
-                                    <p id="employee_image_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+                                    @error('image')
+                                        <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
 
 
 
-                                    <div class="flex items-center justify-center w-full">
-                                        <label for="document_path"
-                                            class="flex flex-col items-center justify-center w-full h-26 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 16 20">
-                                                    <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
-                                                        d="M6 1v4a1 1 0 0 1-1 1H1m14-4v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
-                                                </svg>
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                        class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">PDF, DOC,TXT,EXCEL
-                                                    (MAX.
-                                                    4MB)</p>
-                                            </div>
-                                            <input name="document" class="hidden" aria-describedby="image_path"
-                                                id="document_path" accept=".pdf, .xls, .xlsx, .doc, .docx, .txt"
-                                                type="file">
+                                    <div class="flex flex-col w-full">
+                                        <div>
+                                            <h2 class="my-3 text-xl text-gray-500">Update Document</h2>
+                                        </div>
+                                        <label for="document_path" class="w-full overflow-hidden">
+
+                                            <input name="document" aria-describedby="document_path" id="document_path"
+                                                accept=".pdf, .xls, .xlsx, .doc, .docx, .txt" type="file">
                                         </label>
+                                        <div
+                                            class="p-2 mt-3 flex {{ $employee->document_path ? 'justify-start items-start' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
+
+
+                                            {{--     @foreach ($vvv as $item)
+                                                <div class=" flex justify-center items-center">
+                                                    <svg class="h-20 w-20 p-1 object-cover bg-white rounded-full text-lime-600 dark:text-white"
+                                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 16 20">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M6 1v4a1 1 0 0 1-1 1H1m4 6 2 2 4-4m4-8v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
+                                                    </svg>
+                                                    <span
+                                                        class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $item }}</span>
+                                                </div>
+                                            @endforeach --}}
+
+
+                                        </div>
                                     </div>
-                                    <p id="employee_document_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                    </p>
+                                    @error('document')
+                                        <p id="employee_document_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+
                                 </div>
                             </div>
                             <div class="border-t-2 border-solid mt-6 border-gray-200">
@@ -239,4 +261,30 @@
 
 
     </div>
+
+
+
+    <script>
+        const imageInput = document.getElementById('employee_image_path');
+        const imagePreview = document.getElementById('imagePreview');
+
+
+        imageInput.addEventListener('change', function() {
+            const selectedFile = imageInput.files[0];
+
+            if (selectedFile) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+
+                };
+
+                reader.readAsDataURL(selectedFile);
+            } else {
+                imagePreview.src = '';
+
+            }
+        });
+    </script>
 @endsection

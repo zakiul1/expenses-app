@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Expenses;
 use App\Models\ExpensesCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class ExpensesTransaction extends Controller
@@ -58,9 +59,9 @@ class ExpensesTransaction extends Controller
             'images_path.*' => 'nullable|image|max:2048',
             'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240',
         ]);
-
+        $imagePaths = [];
         if ($request->hasFile('images_path')) {
-            $imagePaths = [];
+
             foreach ($request->file('images_path') as $image) {
                 $originalName = $image->getClientOriginalName();
                 $extension = $image->getClientOriginalExtension();
@@ -79,9 +80,9 @@ class ExpensesTransaction extends Controller
             }
         }
 
-        // dd($imagePaths);
+        $documentPaths = [];
         if ($request->hasFile('documents_path')) {
-            $documentPaths = [];
+
             foreach ($request->file('documents_path') as $document) {
                 $originalName = $document->getClientOriginalName();
                 $extension = $document->getClientOriginalExtension();
@@ -367,9 +368,20 @@ class ExpensesTransaction extends Controller
 
     public function deleteTransaction($id)
     {
-        $transaction = Expenses::findOrFail($id);
-        $transaction->delete();
+        // Find the employee by ID
+        $tnx = Employee::findOrFail($id);
 
-        return response()->json(['message' => 'Transaction deleted successfully'], 201);
+        // Delete associated image and document files
+        if (!empty($tnx->image_path)) {
+            File::delete(public_path('images/' . $tnx->images_path));
+        }
+        if (!empty($tnx->document_path)) {
+            File::delete(public_path('document/' . $tnx->documents_path));
+        }
+
+        // Delete the employee record
+        $tnx->delete();
+
+        return response()->json(['message' => 'Employee and associated files deleted successfully'], 201);
     }
 }

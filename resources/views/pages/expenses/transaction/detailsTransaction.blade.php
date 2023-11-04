@@ -166,7 +166,7 @@
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
 
-                                                {{ $employee->first_name . ' ' . $employee->last_name }}
+                                                {{ isset($transaction->employee->first_name, $transaction->employee->first_name) ? $transaction->employee->first_name . ' ' . $transaction->employee->last_name : '' }}
                                             </td>
 
                                         </tr>
@@ -215,7 +215,10 @@
                                             </td>
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $category->name }}
+
+                                                @isset($category->name)
+                                                    {{ $category->name }}
+                                                @endisset
                                             </td>
 
 
@@ -365,7 +368,8 @@
                                 <option value="" selected>Expenses By</option>
                                 @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}">
-                                        {{ $employee->first_name . ' ' . $employee->last_name }}</option>
+                                        {{ isset($transaction->employee->first_name, $transaction->employee->first_name) ? $transaction->employee->first_name . ' ' . $transaction->employee->last_name : '' }}
+                                    </option>
                                 @endforeach
                             </select>
                             <p id="transaction_employee_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -388,10 +392,12 @@
                             <select id="category_id" name="category_id"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                 <option value="" selected>Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">
-                                        {{ $category->name }}</option>
-                                @endforeach
+                                @isset($categories)
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                @endisset
                             </select>
                             <p id="transaction_category_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                             </p>

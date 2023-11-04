@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('phone');
             $table->string('image_path')->nullable(); // For employee images
-            $table->string('document_path')->nullable(); // For employee documents
+            $table->json('document_path')->nullable(); // For employee documents
             $table->unsignedBigInteger('department_id')->nullable(); // For department ID
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');
             $table->timestamps();

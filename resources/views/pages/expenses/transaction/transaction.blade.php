@@ -155,11 +155,12 @@
                                                 {{ $transaction->amount }}</td>
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $transaction->employee->first_name . ' ' . $transaction->employee->last_name }}
+                                                {{ isset($transaction->employee->first_name, $transaction->employee->first_name) ? $transaction->employee->first_name . ' ' . $transaction->employee->last_name : '' }}
                                             </td>
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $transaction->category->name }}</td>
+                                                {{ isset($transaction->category->name) ? $transaction->category->name : '' }}
+                                            </td>
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $transaction->expense_date }}</td>
