@@ -287,7 +287,7 @@
                                             <option value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach
                                     </select>
-                                    <p id="employee_department_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="employee_department_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                             </div>
@@ -328,7 +328,7 @@
 
                                 <div class="flex flex-col items-start justify-start w-full">
                                     <input name="documents_path[]" class="w-full" aria-describedby="documents_path"
-                                        id="create_documents_path"accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        id="create_documents_path"  accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                         type="file" multiple>
                                     <div id="previewCreateDocumentEmployeeDiv"
                                         class=" p-2 mt-3  hidden bg-gray-200 rounded-sm">
@@ -343,13 +343,14 @@
                                                 <path
                                                     d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2Zm-2.359 10.707-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L7 12.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                             </svg>
+
                                         </div>
 
 
                                     </div>
                                 </div>
 
-                                <p id="employee_documents_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                <p id="employee_create_documents_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
 
@@ -387,16 +388,18 @@
             const formData = new FormData(this);
 
             // Append the image and document files to FormData
-            formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
-            formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? '');
+          /*   formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
+            formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? ''); */
             //let img = document.getElementById('image_path').files[0];
             //formData.append('image', img)
-            //console.log(formData);
+            console.log(formData);
 
             // Send data using Axios
-            axios.post('/employee/store', formData)
-                .then(function(response) {
 
+            axios.post('/employee/store', formData)
+
+                .then(function(response) {
+                   // console.log(formData)
                     if (response.status === 201) {
                         employeeCreateForm.reset();
                         window.location.assign("/employee/list");
@@ -408,6 +411,7 @@
                         // console.log(allError);
                         for (const field in allError) {
                             const errorDiv = document.getElementById(`employee_${field}_error`);
+                            console.log("hi");
                             if (errorDiv) {
                                 // Clear any previous error message
                                 errorDiv.innerHTML = '';

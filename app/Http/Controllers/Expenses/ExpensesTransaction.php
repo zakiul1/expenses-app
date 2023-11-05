@@ -57,7 +57,7 @@ class ExpensesTransaction extends Controller
             'category_id' => 'required',
             'expense_date' => 'required|date',
             'images_path.*' => 'nullable|image|max:2048',
-            'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240',
+            /* 'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
         ]);
         $imagePaths = [];
         if ($request->hasFile('images_path')) {
@@ -237,7 +237,7 @@ class ExpensesTransaction extends Controller
             'category_id' => 'required',
             'expense_date' => 'required|date',
             'images_path.*' => 'nullable|image|max:2048',
-            'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240',
+           /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
         ]);
         if ($validator->fails()) {
             // Validation failed, you can get the errors
