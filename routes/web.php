@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Employee\DepartmentController;
 use App\Http\Controllers\Employee\EmployeeController;
@@ -36,6 +37,10 @@ Route::get('/expenses', function () {
     return redirect('/dashboard');
 });
 
+
+Route::middleware(['auth', 'admin:admin'])->group(function () {
+    Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
+});
 
 
 
