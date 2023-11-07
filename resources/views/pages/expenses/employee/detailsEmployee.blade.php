@@ -134,7 +134,8 @@
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <div class="">
                                             <img class="w-10 h-10 rounded-full object-cover"
-                                                src="{{ asset('images/' . $employee->image_path) }}" alt="">
+                                                src="{{ asset('employee/images/' . $employee->image_path) }}"
+                                                alt="">
                                         </div>
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">

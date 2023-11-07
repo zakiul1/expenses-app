@@ -34,26 +34,12 @@
                                     department</a>
                             </div>
                         </li>
-                        {{--     <li>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <a href="{{ route('employee.list') }}"
-                                    class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">
-                                    category</a>
-                            </div>
-                        </li> --}}
 
-                        {{--  Bradcums --}}
                     </ol>
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Department List</h1>
+                    <h1 class="text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">Department List</h1>
 
                     <button data-modal-target="department-create-modal" data-modal-toggle="department-create-modal"
                         class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
@@ -97,13 +83,13 @@
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
                                         <td
-                                            class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $department->id }}</td>
                                         <td
-                                            class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $department->name }}</td>
 
-                                        <td class="p-2 text-right space-x-2 whitespace-nowrap">
+                                        <td class="p-4 text-right space-x-2 whitespace-nowrap">
                                             <button onclick="updateDepartment(this)"
                                                 data-modal-target="department-update-modal"
                                                 data-modal-toggle="department-update-modal" type="button"

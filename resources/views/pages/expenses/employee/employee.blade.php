@@ -53,7 +53,7 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Employee List</h1>
+                    <h1 class="text-xl font-semibold text-gray-500 sm:text-2xl dark:text-white">Employee List</h1>
 
                     <button data-modal-target="employee-create-modal" data-modal-toggle="employee-create-modal"
                         class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
@@ -287,7 +287,8 @@
                                             <option value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach
                                     </select>
-                                    <p id="employee_department_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="employee_department_id_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                             </div>
@@ -328,7 +329,8 @@
 
                                 <div class="flex flex-col items-start justify-start w-full">
                                     <input name="documents_path[]" class="w-full" aria-describedby="documents_path"
-                                        id="create_documents_path"  accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        id="create_documents_path"
+                                        accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                         type="file" multiple>
                                     <div id="previewCreateDocumentEmployeeDiv"
                                         class=" p-2 mt-3  hidden bg-gray-200 rounded-sm">
@@ -350,7 +352,8 @@
                                     </div>
                                 </div>
 
-                                <p id="employee_create_documents_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                <p id="employee_create_documents_path_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
 
@@ -388,8 +391,8 @@
             const formData = new FormData(this);
 
             // Append the image and document files to FormData
-          /*   formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
-            formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? ''); */
+            /*   formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
+              formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? ''); */
             //let img = document.getElementById('image_path').files[0];
             //formData.append('image', img)
             console.log(formData);
@@ -399,7 +402,7 @@
             axios.post('/employee/store', formData)
 
                 .then(function(response) {
-                   // console.log(formData)
+                    // console.log(formData)
                     if (response.status === 201) {
                         employeeCreateForm.reset();
                         window.location.assign("/employee/list");

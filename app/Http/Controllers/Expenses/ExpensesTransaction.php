@@ -71,11 +71,11 @@ class ExpensesTransaction extends Controller
                 $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
 
                 // Check if a file with the same name exists, if it does, regenerate the name
-                while (file_exists(public_path('images/' . $uniqueName))) {
+                while (file_exists(public_path('expenses/transaction/images/' . $uniqueName))) {
                     $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
                 }
 
-                $image->move(public_path('images'), $uniqueName);
+                $image->move(public_path('expenses/transaction/images'), $uniqueName);
                 $imagePaths[] = $uniqueName;
             }
         }
@@ -95,11 +95,11 @@ class ExpensesTransaction extends Controller
                 $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
 
                 // Check if a file with the same name exists, if it does, regenerate the name
-                while (file_exists(public_path('document/' . $uniqueName))) {
+                while (file_exists(public_path('expenses/transaction/document/' . $uniqueName))) {
                     $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
                 }
 
-                $document->move(public_path('document'), $uniqueName);
+                $document->move(public_path('expenses/transaction/document'), $uniqueName);
                 $documentPaths[] = $uniqueName;
             }
         }
@@ -149,7 +149,7 @@ class ExpensesTransaction extends Controller
 
         // Add each image to the zip file
         foreach ($imagePaths as $imagePath) {
-            $imageFullPath = public_path("images/$imagePath");
+            $imageFullPath = public_path("expenses/transaction/images/$imagePath");
             if (file_exists($imageFullPath)) {
                 $zip->addFile($imageFullPath, $imagePath);
             }
@@ -175,7 +175,7 @@ class ExpensesTransaction extends Controller
 
         // Add each document to the zip file
         foreach ($documentPaths as $documentPath) {
-            $documentFullPath = public_path("document/$documentPath");
+            $documentFullPath = public_path("expenses/transaction/document/$documentPath");
             if (file_exists($documentFullPath)) {
                 $zip->addFile($documentFullPath, $documentPath);
             }
@@ -237,7 +237,7 @@ class ExpensesTransaction extends Controller
             'category_id' => 'required',
             'expense_date' => 'required|date',
             'images_path.*' => 'nullable|image|max:2048',
-           /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
+            /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
         ]);
         if ($validator->fails()) {
             // Validation failed, you can get the errors
@@ -262,11 +262,11 @@ class ExpensesTransaction extends Controller
                 $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
 
                 // Check if a file with the same name exists, if it does, regenerate the name
-                while (file_exists(public_path('images/' . $uniqueName))) {
+                while (file_exists(public_path('expenses/transaction/images/' . $uniqueName))) {
                     $uniqueName = $imageName . '_' . time() . '_' . uniqid() . '.' . $extension;
                 }
 
-                $image->move(public_path('images'), $uniqueName);
+                $image->move(public_path('expenses/transaction/images'), $uniqueName);
                 $imagePaths[] = $uniqueName;
             }
             //dd($imagePaths);
@@ -287,11 +287,11 @@ class ExpensesTransaction extends Controller
                 $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
 
                 // Check if a file with the same name exists, if it does, regenerate the name
-                while (file_exists(public_path('document/' . $uniqueName))) {
+                while (file_exists(public_path('expenses/transaction/document/' . $uniqueName))) {
                     $uniqueName = $documentName . '_' . time() . '_' . uniqid() . '.' . $extension;
                 }
 
-                $document->move(public_path('document'), $uniqueName);
+                $document->move(public_path('expenses/transaction/document'), $uniqueName);
                 $documentPaths[] = $uniqueName;
             }
         }
@@ -323,7 +323,7 @@ class ExpensesTransaction extends Controller
                 dd($previousImagePaths);
                 $previousImagePaths = explode(',', $previousImagePaths);
                 foreach ($previousImagePaths as $imagePath) {
-                    $imageFullPath = public_path('images/' . $imagePath);
+                    $imageFullPath = public_path('expenses/transaction/images/' . $imagePath);
                     if (file_exists($imageFullPath)) {
                         unlink($imageFullPath);
                     }
@@ -336,7 +336,7 @@ class ExpensesTransaction extends Controller
 
                 // Delete the previous documents
                 foreach ($previousDocumentPaths as $documentPath) {
-                    $documentFullPath = public_path('document/' . $documentPath);
+                    $documentFullPath = public_path('expenses/transaction/document/' . $documentPath);
                     if (file_exists($documentFullPath)) {
                         unlink($documentFullPath);
                     }
@@ -373,10 +373,10 @@ class ExpensesTransaction extends Controller
 
         // Delete associated image and document files
         if (!empty($tnx->image_path)) {
-            File::delete(public_path('images/' . $tnx->images_path));
+            File::delete(public_path('expenses/transaction/images/' . $tnx->images_path));
         }
         if (!empty($tnx->document_path)) {
-            File::delete(public_path('document/' . $tnx->documents_path));
+            File::delete(public_path('expenses/transaction/document/' . $tnx->documents_path));
         }
 
         // Delete the employee record

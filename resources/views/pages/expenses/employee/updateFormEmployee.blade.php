@@ -211,27 +211,28 @@
                                         </div>
                                         <label for="documents_path" class="w-full overflow-hidden">
 
-                                            <input name="documents_path[]" aria-describedby="documents_path" id=""
-                                                accept=".pdf, .xls, .xlsx, .doc, .docx, .txt" type="file" multiple>
+                                            <input name="documents_path[]" aria-describedby="documents_path"
+                                                id="" accept=".pdf, .xls, .xlsx, .doc, .docx, .txt"
+                                                type="file" multiple>
                                         </label>
                                         <div
-                                            class="p-2 mt-3 flex flex-col {{ $doc ? 'justify-start items-start' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
+                                            class="p-2  min-h-[95px] mt-3 flex flex-col {{ $doc ? 'justify-center items-center' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
 
 
                                             @if ($doc)
-                                            @foreach ($doc as $item)
-                                            <div class=" flex   w-full justify-center items-center">
-                                                <svg class="h-10 w-10 p-1 bg-white rounded-full text-lime-600 dark:text-white"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none" viewBox="0 0 16 20">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M6 1v4a1 1 0 0 1-1 1H1m4 6 2 2 4-4m4-8v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
-                                                </svg>
-                                                <span
-                                                    class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $item }}</span>
-                                            </div>
-                                        @endforeach
+                                                @foreach ($doc as $item)
+                                                    <div class=" flex   w-full justify-start items-center min-h-20">
+                                                        <svg class="h-10 w-10 p-1 bg-white rounded-full text-lime-600 dark:text-white"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 16 20">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M6 1v4a1 1 0 0 1-1 1H1m4 6 2 2 4-4m4-8v16a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2Z" />
+                                                        </svg>
+                                                        <span
+                                                            class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $item }}</span>
+                                                    </div>
+                                                @endforeach
                                             @endif
 
 

@@ -32,7 +32,7 @@ class EmployeeController extends Controller
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:155',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-           /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
+            /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
 
 
             'department_id' => 'required|integer',
@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         if ($request->hasFile('documents_path')) {
 
             foreach ($request->file('documents_path') as $document) {
-               // dd($document);
+                // dd($document);
                 $originalName = $document->getClientOriginalName();
                 $extension = $document->getClientOriginalExtension();
                 $documentName = pathinfo(
@@ -67,7 +67,6 @@ class EmployeeController extends Controller
 
                 $document->move(public_path('employee/documents/'), $uniqueName);
                 $documentPaths[] = $uniqueName;
-
             }
             //dd($documentPaths);
         }
@@ -108,11 +107,11 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $departments = Department::all();
         $department = $employee->department->id;
-        $doc = json_decode($employee->document_path,true);
-        $doc= explode(',',    $doc);
+        $doc = json_decode($employee->document_path, true);
+        $doc = explode(',',    $doc);
         //dd($doc);
         //dd($departments);
-        return view('pages.expenses.employee.updateFormEmployee', ['employee' => $employee, 'departments' => $departments, 'department' => $department,'doc'=> $doc]);
+        return view('pages.expenses.employee.updateFormEmployee', ['employee' => $employee, 'departments' => $departments, 'department' => $department, 'doc' => $doc]);
     }
 
     public function updateEmployee(Request $request, $id)
@@ -129,23 +128,23 @@ class EmployeeController extends Controller
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:155',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-          /*   'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
+            /*   'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
             'department_id' => 'required|integer',
         ]);
 
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-          //  dd($errors);
+            //  dd($errors);
             return redirect('employee/details/update/' . $id)
                 ->withErrors($errors)
                 ->withInput();
         }
-        $documentPaths=[];
+        $documentPaths = [];
         if ($request->hasFile('documents_path')) {
 
             foreach ($request->file('documents_path') as $document) {
-              //  dd($document);
+                //  dd($document);
                 $originalName = $document->getClientOriginalName();
                 $extension = $document->getClientOriginalExtension();
                 $documentName = pathinfo(
@@ -163,7 +162,6 @@ class EmployeeController extends Controller
 
                 $document->move(public_path('employee/documents/'), $uniqueName);
                 $documentPaths[] = $uniqueName;
-
             }
             //dd($documentPaths);
         }
@@ -176,7 +174,7 @@ class EmployeeController extends Controller
             $documentPaths = array_map(function ($item) {
                 return trim($item, '"');
             }, $documentPaths);
- //dd($documentPaths);
+            //dd($documentPaths);
         }
 
 
@@ -202,7 +200,7 @@ class EmployeeController extends Controller
                 $imageName = $previousImagePaths;
             }
             if (is_array($documentPaths) && count($documentPaths) <= 0) {
-                $documentPaths = $expense->documents_path;
+                $documentPaths = $employee->documents_path;
                 $documentPaths =  explode(',',  $documentPaths);
                 $documentPaths = array_map(function ($item) {
                     return trim($item, '"');
