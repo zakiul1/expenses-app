@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_profile_image')->nullable();
-            $table->unsignedBigInteger('role_id'); // Add this line to link to the roles table
+            $table->unsignedBigInteger('role_id')->default(2); // Add this line to link to the roles table
             $table->rememberToken();
             $table->timestamps();
             // Define a foreign key constraint to link to the roles table

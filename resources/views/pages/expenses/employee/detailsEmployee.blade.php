@@ -133,9 +133,24 @@
 
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <div class="">
-                                            <img class="w-10 h-10 rounded-full object-cover"
-                                                src="{{ asset('employee/images/' . $employee->image_path) }}"
-                                                alt="">
+
+                                            @if ($employee->image_path)
+                                                <img class="w-10 h-10 rounded-full object-cover"
+                                                    src="{{ asset('employee/images/' . $employee->image_path) }}"
+                                                    alt="">
+                                            @else
+                                                <div
+                                                    class="p-3 rounded-full bg-slate-200 h-10 w-10 flex justify-center items-center">
+                                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 14 18">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
+                                                    </svg>
+                                                </div>
+                                            @endif
+
                                         </div>
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">

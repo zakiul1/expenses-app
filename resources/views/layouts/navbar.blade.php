@@ -360,11 +360,21 @@
                 <div class="flex items-center ml-3">
                     <div>
                         <button type="button"
-                            class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            class="flex text-sm bg-gray-200 {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                             id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                            @if (Auth::user()->user_profile_image)
+                                <img class="w-8 h-8 rounded-full"
+                                    src="{{ asset('user/images') . '/' . Auth::user()->user_profile_image }}"
+                                    alt="user photo">
+                            @else
+                                <svg class="w-6 h-6 text-gray-900 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
+                                </svg>
+                            @endif
                         </button>
                     </div>
 

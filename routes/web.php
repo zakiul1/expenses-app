@@ -40,6 +40,10 @@ Route::get('/expenses', function () {
 
 Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
+    Route::post('user/store', [AdminController::class, 'store']);
+    Route::post('user/update/{id}', [AdminController::class, 'update']);
+    Route::post('user/delete/{id}', [AdminController::class, 'delete']);
+    Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
 });
 
 
