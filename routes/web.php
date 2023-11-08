@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Employee\DepartmentController;
 use App\Http\Controllers\Employee\EmployeeController;
@@ -83,6 +84,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
         Route::get('/details/update/{id}', [EmployeeController::class, 'showEmployeeUpdateForm']);
         Route::post('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
+        //attendance Route
+        Route::get('/attendance/entry', [AttendanceController::class, 'index'])->name('employee.attendance');
     });
 });
 

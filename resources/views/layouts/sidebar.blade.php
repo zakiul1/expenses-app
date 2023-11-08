@@ -143,9 +143,13 @@
                             </svg>
                         </button>
                         <ul id="dropdown-employee"
-                            class="{{ request()->routeIs(['employee.list', 'employee.department']) ? '' : 'hidden' }}
+                            class="{{ request()->routeIs(['employee.list', 'employee.department','employee.attendance']) ? '' : 'hidden' }}
 
                          py-2 space-y-2">
+                            <li>
+                                <a href="{{ route('employee.attendance') }}"
+                                    class="{{ request()->routeIs('employee.attendance') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Attendance</a>
+                            </li>
                             <li>
                                 <a href="{{ route('employee.list') }}"
                                     class="{{ request()->routeIs('employee.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Employee
