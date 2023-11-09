@@ -10,7 +10,7 @@ class ExpenseCategory extends Controller
 {
     public function index()
     {
-        $categories = ExpensesCategory::paginate(6);
+        $categories = ExpensesCategory::latest()->paginate(6);
         return view('pages.expenses.category.category', ['categories' => $categories]);
     }
     //store data

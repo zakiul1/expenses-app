@@ -10,7 +10,7 @@ class DepartmentController extends Controller
         //view Page and view Data
         public function index(){
 
-            $departments = Department::paginate(6);
+            $departments = Department::latest()->paginate(6);
 
             return view('pages.expenses.department.department', ['departments' => $departments]);
         }
@@ -29,10 +29,10 @@ class DepartmentController extends Controller
             return response()->json(['message' => 'Department created successfully!', 'department' => $department], 201);
         }
 
-        
+
         public function show($id)
             {
- 
+
                 $department = Department::findOrFail($id);
 
                 return response()->json($department);
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
                     $department->update($data);
 
                     return response()->json(['message' => 'Department Updated successfully!'], 201);
-                } 
+                }
 
 
 

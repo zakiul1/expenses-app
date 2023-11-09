@@ -40,18 +40,19 @@ Route::get('/expenses', function () {
 
 
 Route::middleware(['auth', 'admin:admin'])->group(function () {
-    Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
-    Route::post('user/store', [AdminController::class, 'store']);
-    Route::post('user/update/{id}', [AdminController::class, 'update']);
-    Route::post('user/delete/{id}', [AdminController::class, 'delete']);
-    Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
+
 });
 
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'admin:admin'])->group(function () {
 
+   Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
+    Route::post('user/store', [AdminController::class, 'store']);
+    Route::post('user/update/{id}', [AdminController::class, 'update']);
+    Route::post('user/delete/{id}', [AdminController::class, 'delete']);
+    Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
     Route::group(['prefix' => 'expenses'], function () {
         //category Route Start
         Route::get('/category', [ExpenseCategory::class, 'index'])->name('expenses.category');
@@ -86,6 +87,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
         //attendance Route
         Route::get('/attendance/entry', [AttendanceController::class, 'index'])->name('employee.attendance');
+        Route::get('/attendance/update/{id}', [AttendanceController::class, 'previewUpdateData']);
+        Route::post('/attendance/store', [AttendanceController::class, 'store']);
+        Route::post('/attendance/update/{id}', [AttendanceController::class, 'update']);
+        Route::post('/attendance/delete/{id}', [AttendanceController::class, 'destroy']);
     });
 });
 

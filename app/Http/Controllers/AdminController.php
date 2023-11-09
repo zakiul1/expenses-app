@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        $users = User::paginate(6);
+        $users = User::latest()->paginate(6);
 
 
         // return view('pages.expenses.department.department', ['users' => $users]);

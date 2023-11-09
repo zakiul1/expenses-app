@@ -13,6 +13,7 @@ class Attendance extends Model
         'employee_id',
         'check_in',
         'check_out',
+        'comment',
     ];
 
     public function employee()
@@ -25,5 +26,4 @@ class Attendance extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-4 pt-6 h-screen">
-        <div class="w-full mb-1">
+        <div class="w-full mb-1 flex gap-3">
             {{--    Total Expense  --}}
             <div
                 class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
@@ -20,6 +20,9 @@
                 </div>
             </div>
             {{--    Total Expense  --}}
+
+
+
         </div>
     </div>
 @endsection

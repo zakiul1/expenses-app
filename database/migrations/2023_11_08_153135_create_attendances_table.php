@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('check_in');
             $table->dateTime('check_out')->nullable();
+            $table->string('comment')->nullable();
             // Add other attendance-related columns as needed
             $table->timestamps();
         });
