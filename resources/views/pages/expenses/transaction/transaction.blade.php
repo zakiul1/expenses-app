@@ -40,57 +40,98 @@
 
                     </ol>
                 </nav>
-                <div class="flex justify-between  pb-4  border-b border-gray-300">
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All Transaction</h1>
-                    {{-- search form --}}
-                    <form action="{{ route('expenses.transaction') }}" method="GET">
-                        <div date-rangepicker="" class="flex items-center space-x-4">
-                            <div class="relative">
-
-                                <div class="flex items-center">
-                                    <label class="pr-2" for="">From</label>
-                                    <input name="fromDate" type="date"
-                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-1 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
-                                        placeholder="From" required>
-                                </div>
-                            </div>
-                            <div class="relative">
-                                <div class="flex items-center">
-                                    <label class="pr-2">To</label>
-                                    <input name="toDate" type="date"
-                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-1 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
-                                        placeholder="From" required>
-                                </div>
-
-                            </div>
-
-                            <button type="submit"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-700 ring-1 ring-gray-400 bg-transparent rounded-md hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                Search
-                            </button>
-
-                        </div>
-                    </form>
-                    0
-                    <button type="button" data-modal-toggle="transactionAddModal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="font-semibold"> Add User</span>
-                    </button>
-
+                 {{-- uPPER Table --}}
+        <form action="{{ route('expenses.transaction') }}" method="GET">
+            <div class="items-center justify-between lg:flex">
+                <div class="mb-4 lg:mb-0">
+                  <h3 class="mb-2 text-2xl font-semibold text-gray-600 dark:text-white">Transactions</h3>
+                  <span class="text-base font-normal text-gray-500 dark:text-gray-400">This is a list of latest transactions</span>
                 </div>
+                <div class="items-center sm:flex">
+                {{--   <div class="flex items-center">
+                    <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                      Filter by status
+                      <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown" class="z-10 w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(699px, 3260px);" data-popper-placement="bottom">
+                      <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+                        Category
+                      </h6>
+                      <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                        <li class="flex items-center">
+                          <input id="apple" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+
+                          <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                            Completed (56)
+                          </label>
+                        </li>
+
+                        <li class="flex items-center">
+                          <input id="fitbit" type="checkbox" value="" checked="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+
+                          <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                            Cancelled (56)
+                          </label>
+                        </li>
+
+                        <li class="flex items-center">
+                          <input id="dell" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+
+                          <label for="dell" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                            In progress (56)
+                          </label>
+                        </li>
+
+                        <li class="flex items-center">
+                          <input id="asus" type="checkbox" value="" checked="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+
+                          <label for="asus" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                            In review (97)
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div> --}}
+                  <div date-rangepicker="" class="flex items-center space-x-4">
+                    <div class="relative">
+                      <input name="fromDate" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input" placeholder="From">
+                    </div>
+                    <div class="relative">
+                      <input name="toDate" type="date" class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input" placeholder="To">
+                    </div>
+                  </div>
+                  {{-- Submit Button --}}
+                  <button type="submit"
+                                    class="mb-4 sm:mb-0 mr-4 ml-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Search
+                                </button>
+                  {{-- Submit Button --}}
+                  {{-- Add Button --}}
+                  <button type="button" data-modal-toggle="transactionAddModal"
+                  class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-white bg-blue-600 border border-gray-300 focus:outline-none hover:bg-blue-800 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                  <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                          clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="font-semibold"> Add User</span>
+                 </button>
+                 {{-- Add Button --}}
+                </div>
+            </div>
+             </form>
+            {{-- uPPER Table --}}
             </div>
 
         </div>

@@ -53,7 +53,8 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Categories List</h1>
+                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">Categories List</h1>
+
 
                     <button type="button" data-modal-target="category-create-modal"
                         data-modal-toggle="category-create-modal"
@@ -295,7 +296,7 @@
 
 
         //update data Department
-        let umpdateModal = document.getElementById('category-update-modal');
+       // let umpdateModal = document.getElementById('category-update-modal');
         document.getElementById('categoryUpdateForm').addEventListener('submit', function(e) {
             e.preventDefault();
             let categoryId = categoryUpdateSubmit.getAttribute("data-id");
