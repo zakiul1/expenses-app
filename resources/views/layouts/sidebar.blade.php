@@ -28,10 +28,40 @@
                     <li>
                         <a href="{{ route('home') }}"
                             class="{{ request()->routeIs('home') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base  rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
-                            <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24"
+                                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                                <g transform="translate(0 -1028.4)">
+                                    <path
+                                        d="m12 1032.4c-3.0711 0-6.1569 1.1-8.5 3.5-3.3821 3.3-3.5 8.5-3.5 12.5h24c0-4-0.118-9.2-3.5-12.5-2.343-2.4-5.429-3.5-8.5-3.5z"
+                                        fill="#1abc9c" />
+                                    <path
+                                        d="m12 1035.4c-0.552 0-1 0.4-1 1 0 0.5 0.448 1 1 1s1-0.5 1-1c0-0.6-0.448-1-1-1zm5 1c-0.552 0-1 0.4-1 1 0 0.5 0.448 1 1 1s1-0.5 1-1c0-0.6-0.448-1-1-1zm-10 0c-0.5523 0-1 0.4-1 1 0 0.5 0.4477 1 1 1s1-0.5 1-1c0-0.6-0.4477-1-1-1zm13 3.8c-0.552 0-1 0.5-1 1 0 0.6 0.448 1 1 1s1-0.4 1-1c0-0.5-0.448-1-1-1zm-16 0.2c-0.5523 0-1 0.4-1 1 0 0.5 0.4477 1 1 1s1-0.5 1-1c0-0.6-0.4477-1-1-1zm-1 5c-0.5523 0-1 0.4-1 1 0 0.5 0.4477 1 1 1s1-0.5 1-1c0-0.6-0.4477-1-1-1zm18 0c-0.552 0-1 0.4-1 1 0 0.5 0.448 1 1 1s1-0.5 1-1c0-0.6-0.448-1-1-1z"
+                                        fill="#16a085" />
+                                    <path
+                                        d="m13 11.864c0 0.477-0.448 0.864-1 0.864s-1-0.387-1-0.864 0.448-0.864 1-0.864 1 0.387 1 0.864z"
+                                        transform="matrix(1.4142 1.4142 -1.6366 1.6366 14.446 1009)" fill="#16a085" />
+                                    <path transform="matrix(.094524 .094524 -.60031 .60031 22.211 1031.9)"
+                                        fill="#c0392b" d="m12 5.9419 7.481 12.957h-14.962z" />
+                                    <path style="block-progression:tb;text-indent:0;color:#000000;text-transform:none"
+                                        d="m19.759 1037.6a0.19843 1.2602 45 0 0 -0.044 0 0.19843 1.2602 45 0 0 -0.509 0.3l-7.999 6.7h0.067l-2.1217 2.1c-0.3906 0.4-0.3906 1.1 0 1.5 0.3905 0.4 1.0237 0.4 1.4137 0l2.122-2.2 0.088 0.1 6.674-8a0.19843 1.2602 45 0 0 0.331 -0.5 0.19843 1.2602 45 0 0 -0.022 0z"
+                                        fill="#16a085" />
+                                    <path style="block-progression:tb;text-indent:0;color:#000000;text-transform:none"
+                                        d="m19.778 1036.6a0.19843 1.2602 45 0 0 -0.044 0 0.19843 1.2602 45 0 0 -0.508 0.3l-7.999 6.7 0.066 0.1-2.1214 2.1c-0.3906 0.4-0.3906 1 0 1.4 0.3905 0.4 1.0234 0.4 1.4144 0l2.121-2.1 0.088 0.1 6.674-8a0.19843 1.2602 45 0 0 0.331 -0.6 0.19843 1.2602 45 0 0 -0.022 0z"
+                                        fill="#c0392b" />
+                                    <path
+                                        d="m13 11.864c0 0.477-0.448 0.864-1 0.864s-1-0.387-1-0.864 0.448-0.864 1-0.864 1 0.387 1 0.864z"
+                                        transform="matrix(1.4142 1.4142 -1.6366 1.6366 14.446 1008)" fill="#e74c3c" />
+                                    <path d="m13 12c0 0.552-0.448 1-1 1s-1-0.448-1-1 0.448-1 1-1 1 0.448 1 1z"
+                                        transform="matrix(.70711 .70711 -.70711 .70711 12 1027.4)" fill="#ecf0f1" />
+                                    <path
+                                        d="m12 6c-0.552 0-1 0.4477-1 1s0.448 1 1 1 1-0.4477 1-1-0.448-1-1-1zm5 1c-0.552 0-1 0.4477-1 1s0.448 1 1 1 1-0.4477 1-1-0.448-1-1-1zm-10 0c-0.5523 0-1 0.4477-1 1s0.4477 1 1 1 1-0.4477 1-1-0.4477-1-1-1zm13 3.844c-0.552 0-1 0.447-1 1 0 0.552 0.448 1 1 1s1-0.448 1-1c0-0.553-0.448-1-1-1zm-16 0.156c-0.5523 0-1 0.448-1 1s0.4477 1 1 1 1-0.448 1-1-0.4477-1-1-1zm-1 5c-0.5523 0-1 0.448-1 1s0.4477 1 1 1 1-0.448 1-1-0.4477-1-1-1zm18 0c-0.552 0-1 0.448-1 1s0.448 1 1 1 1-0.448 1-1-0.448-1-1-1z"
+                                        transform="translate(0 1028.4)" fill="#ecf0f1" />
+                                    <path
+                                        d="m12 1032.4c-3.0711 0-6.1569 1.1-8.5 3.5-3.2299 3.2-3.4838 8-3.5 11.9 0.068809-3.7 0.54069-8 3.5-10.9 2.3431-2.4 5.4289-3.5 8.5-3.5 3.071 0 6.157 1.1 8.5 3.5 2.959 2.9 3.431 7.2 3.5 10.9-0.016-3.9-0.27-8.7-3.5-11.9-2.343-2.4-5.429-3.5-8.5-3.5z"
+                                        fill="#16a085" />
+                                </g>
                             </svg>
                             <span class="ml-3" sidebar-toggle-item>Dashboard</span>
                         </a>
@@ -43,19 +73,20 @@
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-expenses" data-collapse-toggle="dropdown-expenses">
-                            {{--  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true">
-                                <path
-                                    d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z">
-                                </path>
-                            </svg> --}}
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 19 21">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1.4"
-                                    d="M11.6 16.733c.234.268.548.456.895.534a1.4 1.4 0 0 0 1.75-.762c.172-.615-.445-1.287-1.242-1.481-.796-.194-1.41-.862-1.241-1.481a1.4 1.4 0 0 1 1.75-.763c.343.078.654.261.888.525m-1.358 4.017v.617m0-5.94v.726M1 10l5-4 4 1 7-6m0 0h-3.207M17 1v3.207M5 19v-6m-4 6v-4m17 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z" />
+
+                            <svg height="24px" width="24px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" xml:space="preserve">
+                                <path style="fill:#00D2FF;"
+                                    d="M432.274,135.587L256,282.483L90.528,123.63c-39.615,41.234-64.045,97.154-64.045,158.852  C26.483,409.241,129.241,512,256,512s229.517-102.759,229.517-229.517C485.517,226.584,465.489,175.394,432.274,135.587z" />
+                                <path style="fill:#9BE6D2;"
+                                    d="M90.475,123.58L256,282.483V52.966C190.936,52.966,132.242,80.084,90.475,123.58z" />
+                                <path style="fill:#C3E678;"
+                                    d="M456.815,82.622l0.012-0.046C414.726,32.12,351.392,0,280.541,0v229.517L456.815,82.622z" />
+                                <path style="fill:#18BDF6;"
+                                    d="M308.966,476.69c-126.759,0-229.517-102.759-229.517-229.517c0-39.125,9.815-75.948,27.079-108.184  L90.528,123.63c-39.615,41.234-64.045,97.154-64.045,158.852C26.483,409.241,129.241,512,256,512  c58.449,0,111.763-21.884,152.285-57.86C378.229,468.59,344.544,476.69,308.966,476.69z" />
+                                <path style="fill:#78D2BE;"
+                                    d="M156.452,75.713c-24.787,11.972-47.119,28.228-65.976,47.866l16.051,15.41  C119.356,115.032,136.318,93.635,156.452,75.713z" />
                             </svg>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Expenses</span>
                             <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -69,10 +100,13 @@
                             class="{{ request()->routeIs(['expenses.category', 'expenses.transaction', 'tnxDetails']) ? '' : 'hidden' }}
 
                             py-2 space-y-2">
-                            <li>
+                            <li class="">
+
                                 <a href="{{ route('expenses.transaction') }}"
                                     class="{{ request()->routeIs('expenses.transaction') || request()->routeIs('tnxDetails') ? 'text-green-500' : 'text-gray-900' }}
-                                    flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Transaction</a>
+                                    flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+
+                                    Transaction</a>
                             </li>
                             <li>
                                 <a href="{{ route('expenses.category') }}"
@@ -87,19 +121,23 @@
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-income">
-                            {{--    <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true">
-                                <path
-                                    d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z">
-                                </path>
-                            </svg> --}}
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 11 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1.4"
-                                    d="M1.75 15.363a4.954 4.954 0 0 0 2.638 1.574c2.345.572 4.653-.434 5.155-2.247.502-1.813-1.313-3.79-3.657-4.364-2.344-.574-4.16-2.551-3.658-4.364.502-1.813 2.81-2.818 5.155-2.246A4.97 4.97 0 0 1 10 5.264M6 17.097v1.82m0-17.5v2.138" />
+
+                            <svg height="24px" width="24px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 508 508" xml:space="preserve">
+                                <circle style="fill:#324A5E;" cx="254" cy="254" r="254" />
+                                <path style="fill:#2B3B4E;"
+                                    d="M45.6,399.2C91.6,464.8,167.6,508,254,508s162.4-43.2,208.4-108.8H45.6z" />
+                                <g>
+                                    <rect x="340.4" y="134.4" style="fill:#FFFFFF;" width="48" height="227.6" />
+                                    <rect x="266.8" y="186.8" style="fill:#FFFFFF;" width="48" height="175.2" />
+                                    <rect x="193.2" y="228.8" style="fill:#FFFFFF;" width="48" height="133.2" />
+                                    <rect x="119.6" y="262.8" style="fill:#FFFFFF;" width="48" height="99.2" />
+                                </g>
+                                <path style="fill:#E6E9EE;"
+                                    d="M107.2,362h293.6c4.4,0,7.6,3.6,7.6,7.6v22c0,4.4-3.6,7.6-7.6,7.6H107.2c-4.4,0-7.6-3.6-7.6-7.6v-22  C99.6,365.2,102.8,362,107.2,362z" />
+                                <polygon style="fill:#FF7058;"
+                                    points="273.2,82.8 264.4,66.8 358.8,66.8 307.6,142.8 298.8,127.2 99.6,214.4 " />
                             </svg>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Income</span>
                             <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -127,12 +165,19 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-employee">
 
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1.4"
-                                    d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
+                            <svg height="24px" width="24px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" xml:space="preserve">
+                                <path style="fill:#DC85A6;"
+                                    d="M256,0c-57.989,0-105.165,47.178-105.165,105.165c0,57.989,47.176,105.165,105.165,105.165  s105.165-47.176,105.165-105.165C361.165,47.178,313.989,0,256,0z" />
+                                <path style="fill:#D6E5F6;"
+                                    d="M256,260.609c-106.273,0-192.733,86.462-192.733,192.733c0,13.885,11.256,25.139,25.139,25.139  h335.188c13.883,0,25.139-11.254,25.139-25.139C448.733,347.071,362.273,260.609,256,260.609z" />
+                                <path style="fill:#A4C6EC;"
+                                    d="M256,260.609v217.872h167.594c13.883,0,25.139-11.254,25.139-25.139  C448.733,347.071,362.273,260.609,256,260.609z" />
+                                <path style="fill:#1D3366;"
+                                    d="M256,260.609c-13.883,0-25.139,11.257-25.139,25.139v201.113C230.861,500.746,242.117,512,256,512  s25.139-11.254,25.139-25.139V285.748C281.139,271.866,269.883,260.609,256,260.609z" />
+                                <path style="fill:#CE5C82;"
+                                    d="M256,0v210.331c57.989,0,105.165-47.176,105.165-105.165C361.165,47.178,313.989,0,256,0z" />
                             </svg>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Employee</span>
                             <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -143,7 +188,7 @@
                             </svg>
                         </button>
                         <ul id="dropdown-employee"
-                            class="{{ request()->routeIs(['employee.list', 'employee.department','employee.attendance']) ? '' : 'hidden' }}
+                            class="{{ request()->routeIs(['employee.list', 'employee.department', 'employee.attendance']) ? '' : 'hidden' }}
 
                          py-2 space-y-2">
                             <li>
@@ -170,12 +215,18 @@
                                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                                     aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
 
-                                    <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1.4"
-                                            d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
+                                    {{--  --}}
+                                    <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z"
+                                            fill="#4A5699" />
+                                        <path
+                                            d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z"
+                                            fill="#C45FA0" />
+                                        <path
+                                            d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z"
+                                            fill="#E5594F" />
                                     </svg>
                                     <span class="flex-1 ml-3 text-left whitespace-nowrap"
                                         sidebar-toggle-item>Users</span>

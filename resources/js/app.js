@@ -3,9 +3,10 @@ import "flowbite";
 import axios from "axios";
 import Alpine from "alpinejs";
 import Notiflix from 'notiflix';
-import { Modal } from 'flowbite';
+import ApexCharts from 'apexcharts'
 window.Alpine = Alpine;
 window.axios = axios;
+window.ApexCharts = ApexCharts;
 
 window.Notiflix = Notiflix;
 

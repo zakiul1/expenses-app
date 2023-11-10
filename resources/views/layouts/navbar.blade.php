@@ -18,11 +18,14 @@
                     </svg>
                 </button>
                 <a href="{{ route('home') }}" class="flex ml-2 md:mr-24">
-                    <img src="{{ asset('assets/logo.png') }}" class="w-10 mr-1" alt="FlowBite Logo">
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">App
+                    <div class="w-10 h-10 bg-gray-200 rounded-full  dark:bg-gray-500 dark:rounded-full mr-2">
+                        <img src="{{ asset('assets/logo.png') }}" class="w-10  p-1 object-cover" alt="App Logo">
+                    </div>
+                    <span
+                        class="self-center text-sky-700 text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">App
                         Store</span>
                 </a>
-                <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
+                {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
                     <label for="topbar-search" class="sr-only">Search</label>
                     <div class="relative mt-1 lg:w-96">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -37,7 +40,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Search">
                     </div>
-                </form>
+                </form> --}}
             </div>
             <div class="flex items-center">
                 <div class="hidden mr-3 -mb-1 sm:block">
@@ -59,14 +62,27 @@
                     class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z">
-                        </path>
+                    <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" id="notification-circle"
+                        data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path id="secondary" d="M15,18H9a3,3,0,0,0,3,3h0A3,3,0,0,0,15,18Z"
+                                style="fill: none; stroke: #2ca9bc; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </path>
+                            <path id="primary"
+                                d="M18,9v4l1.38,1.38A2.12,2.12,0,0,1,17.88,18H6.12a2.12,2.12,0,0,1-1.5-3.62L6,13V9a6,6,0,0,1,6-6,6,6,0,0,1,2.88.73"
+                                style="fill: none; stroke: #49b662; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </path>
+                            <path id="secondary-2" data-name="secondary"
+                                d="M14,6a3,3,0,0,0,3,3h0a3,3,0,0,0,3-3h0a3,3,0,0,0-3-3h0a3,3,0,0,0-3,3Z"
+                                style="fill: none; stroke: #2ca9bc; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </path>
+                        </g>
                     </svg>
                 </button>
 
-                <div class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
+                <div class=" z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
                     id="notification-dropdown"
                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1138px, 677px);"
                     data-popper-placement="bottom">
@@ -222,14 +238,37 @@
                     class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                        </path>
+                    <svg width="20px" height="20px" viewBox="0 0 117.00 117.00" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"
+                        transform="rotate(0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
+                            stroke="#CCCCCC" stroke-width="0.702"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title></title>
+                            <desc></desc>
+                            <defs></defs>
+                            <g fill="none" fill-rule="evenodd" id="Page-1" stroke-width="0.00117">
+                                <g fill-rule="nonzero" id="layout">
+                                    <path
+                                        d="M4.5,52.9 L48.8,52.9 C51.1,52.9 52.9,51.1 52.9,48.8 L52.9,4.5 C52.9,2.2 51.1,0.4 48.8,0.4 L4.5,0.4 C2.2,0.4 0.4,2.2 0.4,4.5 L0.4,48.8 C0.4,51 2.3,52.9 4.5,52.9 Z M8.6,8.6 L44.7,8.6 L44.7,44.7 L8.6,44.7 L8.6,8.6 Z"
+                                        fill="#8000ff" id="Shape"></path>
+                                    <path
+                                        d="M116.6,4.5 C116.6,2.2 114.8,0.4 112.5,0.4 L68.2,0.4 C65.9,0.4 64.1,2.2 64.1,4.5 L64.1,48.8 C64.1,51.1 65.9,52.9 68.2,52.9 L112.5,52.9 C114.8,52.9 116.6,51.1 116.6,48.8 L116.6,4.5 Z M108.4,44.7 L72.3,44.7 L72.3,8.6 L108.4,8.6 L108.4,44.7 Z"
+                                        fill="#17AB13" id="Shape"></path>
+                                    <path
+                                        d="M4.5,116.6 L48.8,116.6 C51.1,116.6 52.9,114.8 52.9,112.5 L52.9,68.2 C52.9,65.9 51.1,64.1 48.8,64.1 L4.5,64.1 C2.2,64.1 0.4,65.9 0.4,68.2 L0.4,112.5 C0.4,114.7 2.3,116.6 4.5,116.6 Z M8.6,72.3 L44.7,72.3 L44.7,108.4 L8.6,108.4 L8.6,72.3 Z"
+                                        fill="#17AB13" id="Shape"></path>
+                                    <path
+                                        d="M112.5,64.1 L68.2,64.1 C65.9,64.1 64.1,65.9 64.1,68.2 L64.1,112.5 C64.1,114.8 65.9,116.6 68.2,116.6 L112.5,116.6 C114.8,116.6 116.6,114.8 116.6,112.5 L116.6,68.2 C116.6,66 114.7,64.1 112.5,64.1 Z M108.4,108.4 L72.3,108.4 L72.3,72.3 L108.4,72.3 L108.4,108.4 Z"
+                                        fill="#8000ff" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
                     </svg>
                 </button>
 
-                <div class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+                <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
                     id="apps-dropdown"
                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1178px, 677px);"
                     data-popper-placement="bottom">
@@ -336,9 +375,37 @@
                 </div>
                 <button id="theme-toggle" type="button"
                     class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    {{--    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg> --}}
+                    <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
+                        viewBox="-22.5 0 301 301" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+                        <defs>
+                            <linearGradient x1="2.17771739%" y1="34.7938955%" x2="92.7221942%" y2="91.3419405%"
+                                id="linearGradient-1">
+                                <stop stop-color="#41A7EF" offset="0%">
+
+                                </stop>
+                                <stop stop-color="#813DDE" offset="54.2186236%">
+
+                                </stop>
+                                <stop stop-color="#8F2EE2" offset="74.4988788%">
+
+                                </stop>
+                                <stop stop-color="#A11CE6" offset="100%">
+
+                                </stop>
+                            </linearGradient>
+                        </defs>
+                        <g>
+                            <path
+                                d="M124.183681,101.699 C124.183681,66.515 136.256681,34.152 156.486681,8.525 C159.197681,5.092 156.787681,0.069 152.412681,0.012 C151.775681,0.004 151.136681,0 150.497681,0 C67.6206813,0 0.390681343,66.99 0.00168134279,149.775 C-0.386318657,232.369 66.4286813,300.195 149.019681,300.988 C189.884681,301.381 227.036681,285.484 254.376681,259.395 C257.519681,256.396 255.841681,251.082 251.548681,250.42 C179.413681,239.291 124.183681,176.949 124.183681,101.699"
+                                fill="url(#linearGradient-1)">
+
+                            </path>
+                        </g>
                     </svg>
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -360,7 +427,7 @@
                 <div class="flex items-center ml-3">
                     <div>
                         <button type="button"
-                            class="flex text-sm bg-gray-200 {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            class="flex text-sm {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                             id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                             <span class="sr-only">Open user menu</span>
                             @if (Auth::user()->user_profile_image)
@@ -368,11 +435,17 @@
                                     src="{{ asset('user/images') . '/' . Auth::user()->user_profile_image }}"
                                     alt="user photo">
                             @else
-                                <svg class="w-6 h-6 text-gray-900 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
+                                <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon"
+                                    version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z"
+                                        fill="#4A5699" />
+                                    <path
+                                        d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z"
+                                        fill="#C45FA0" />
+                                    <path
+                                        d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z"
+                                        fill="#E5594F" />
                                 </svg>
                             @endif
                         </button>

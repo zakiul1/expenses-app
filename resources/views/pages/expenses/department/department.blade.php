@@ -41,9 +41,21 @@
                 <div class="flex justify-between pb-4  border-b border-gray-300">
                     <h1 class="text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">Department List</h1>
 
-                    <button data-modal-target="department-create-modal" data-modal-toggle="department-create-modal"
+                    {{--       <button data-modal-target="department-create-modal" data-modal-toggle="department-create-modal"
                         class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
                         Add
+                    </button> --}}
+                    <button type="button" data-modal-target="department-create-modal"
+                        data-modal-toggle="department-create-modal" data-modal-toggle="attendance-entry-modal"
+                        data-modal-toggle="category-create-modal"
+                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold"> Add User</span>
                     </button>
 
                 </div>
@@ -94,7 +106,7 @@
                                                 data-modal-target="department-update-modal"
                                                 data-modal-toggle="department-update-modal" type="button"
                                                 data-id="{{ $department->id }}"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -104,7 +116,7 @@
                                                         d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                         clip-rule="evenodd"></path>
                                                 </svg>
-                                                Edit user
+                                                Edit
                                             </button>
                                             <button type="button" data-id="{{ $department->id }}"
                                                 onclick="departmentDeleteFunc(this)" id="departmentDeleteBtn"
@@ -118,7 +130,7 @@
                                                         d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                                                         clip-rule="evenodd"></path>
                                                 </svg>
-                                                Delete user
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -172,7 +184,7 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            class="w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                             Department</button>
 
                     </form>

@@ -9,7 +9,10 @@ module.exports = {
         darkMode: 'class',
         extend: {},
     },
-    plugins: [
-        require('flowbite/plugin')
-    ],
+   plugins: [
+  require('flowbite/plugin')({
+      charts: true,
+  }),
+  // ... other plugins
+]
 }

@@ -55,9 +55,21 @@
                 <div class="flex justify-between pb-4  border-b border-gray-300">
                     <h1 class="text-xl font-semibold text-gray-500 sm:text-2xl dark:text-white">Employee List</h1>
 
-                    <button data-modal-target="employee-create-modal" data-modal-toggle="employee-create-modal"
+                    {{--   <button data-modal-target="employee-create-modal" data-modal-toggle="employee-create-modal"
                         class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
                         Add
+                    </button> --}}
+                    <button type="button" data-modal-target="employee-create-modal"
+                        data-modal-toggle="employee-create-modal" data-modal-toggle="attendance-entry-modal"
+                        data-modal-toggle="category-create-modal"
+                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold"> Add User</span>
                     </button>
 
                 </div>
@@ -362,7 +374,7 @@
                         <div class="border-t-2 border-solid mt-6 border-gray-200">
                             <div class="flex justify-end items-end p-4">
                                 <button type="submit"
-                                    class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit</button>
+                                    class="text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800  rounded-lg text-sm px-7 py-2.5 text-center mr-2 mb-2">Submit</button>
                             </div>
                         </div>
                     </form>
