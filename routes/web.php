@@ -95,6 +95,10 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::group(['prefix' => 'tt-manage'], function () {
         // route invoices
         Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.list');
+        Route::get('/invoice/{id}', [InvoiceController::class, 'getBankData']);
+        Route::post('/invoice/store', [InvoiceController::class, 'store']);
+        Route::post('/invoice/update/{id}', [InvoiceController::class, 'update']);
+        Route::post('/invoice/delete/{id}', [InvoiceController::class, 'destroy']);
         // route bank
         Route::get('/banks', [BankController::class, 'index'])->name('banks.list');
         Route::get('/bank/{id}', [BankController::class, 'getBankData']);
@@ -103,8 +107,16 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/bank/delete/{id}', [BankController::class, 'destroy']);
         // route factory
         Route::get('/factories', [FactoryController::class, 'index'])->name('factories.list');
+        Route::get('/factory/{id}', [FactoryController::class, 'getFactoryData']);
+        Route::post('/factory/store', [FactoryController::class, 'store']);
+        Route::post('/factory/update/{id}', [FactoryController::class, 'update']);
+        Route::post('/factory/delete/{id}', [FactoryController::class, 'destroy']);
         // route buyers
         Route::get('/buyers', [BuyerController::class, 'index'])->name('buyers.list');
+        Route::get('/buyer/{id}', [BuyerController::class, 'getBayerData']);
+        Route::post('/buyer/store', [BuyerController::class, 'store']);
+        Route::post('/buyer/update/{id}', [BuyerController::class, 'update']);
+        Route::post('/buyer/delete/{id}', [BuyerController::class, 'destroy']);
     });
     /* TT Manage Route */
 });
