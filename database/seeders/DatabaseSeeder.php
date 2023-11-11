@@ -24,5 +24,12 @@ class DatabaseSeeder extends Seeder
             'password' => '12345678',
             'role_id' => 1,
         ]);
+
+
+        $this->call([
+            DepartmentSeeder::class,
+            ExpensesCategorySeeder::class,
+
+        ]);
     }
 }

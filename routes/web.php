@@ -8,6 +8,10 @@ use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Expenses\ExpenseCategory;
 use App\Http\Controllers\Expenses\ExpensesTransaction;
+use App\Http\Controllers\TtManage\BankController;
+use App\Http\Controllers\TtManage\BuyerController;
+use App\Http\Controllers\TtManage\FactoryController;
+use App\Http\Controllers\TtManage\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,14 +45,7 @@ Route::get('/expenses', function () {
 
 Route::middleware(['auth', 'admin:admin'])->group(function () {
 
-});
-
-
-
-
-Route::middleware(['auth', 'admin:admin'])->group(function () {
-
-   Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
+    Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
     Route::post('user/store', [AdminController::class, 'store']);
     Route::post('user/update/{id}', [AdminController::class, 'update']);
     Route::post('user/delete/{id}', [AdminController::class, 'delete']);
@@ -92,6 +89,24 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/attendance/update/{id}', [AttendanceController::class, 'update']);
         Route::post('/attendance/delete/{id}', [AttendanceController::class, 'destroy']);
     });
+
+    /* TT Manage Route */
+
+    Route::group(['prefix' => 'tt-manage'], function () {
+        // route invoices
+        Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.list');
+        // route bank
+        Route::get('/banks', [BankController::class, 'index'])->name('banks.list');
+        Route::get('/bank/{id}', [BankController::class, 'getBankData']);
+        Route::post('/bank/store', [BankController::class, 'store']);
+        Route::post('/bank/update/{id}', [BankController::class, 'update']);
+        Route::post('/bank/delete/{id}', [BankController::class, 'destroy']);
+        // route factory
+        Route::get('/factories', [FactoryController::class, 'index'])->name('factories.list');
+        // route buyers
+        Route::get('/buyers', [BuyerController::class, 'index'])->name('buyers.list');
+    });
+    /* TT Manage Route */
 });
 
 
