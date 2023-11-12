@@ -13,11 +13,11 @@ return new class extends Migration {
 
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->enum('type_of_transaction', ['receive', 'pay'])->comment('receive: 1, pay: 2');
+            $table->integer('type_of_transaction')->comment('1 Means Recive, 2 Means Pay');
             $table->float('value', 12, 2);
             $table->unsignedBigInteger('invoice_id');
             $table->unsignedBigInteger('user_id'); // Add this line
-            $table->dateTime('transaction_date')->nullable();
+            $table->date('transaction_date')->nullable();
             $table->timestamps();
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

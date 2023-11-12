@@ -554,7 +554,6 @@
 
             const formData = new FormData(updateBuyerForm);
             let id = submitUpdateBuyer.getAttribute('data-id');
-            // console.log(formData);
             axios.post(`/tt-manage/buyer/update/${id}`, formData)
 
                 .then(function(response) {

@@ -58,29 +58,12 @@
                     </svg>
                 </button>
 
-                <button type="button" data-dropdown-toggle="notification-dropdown"
+    {{--             <button type="button" data-dropdown-toggle="notification-dropdown"
                     class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
-                    <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" id="notification-circle"
-                        data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path id="secondary" d="M15,18H9a3,3,0,0,0,3,3h0A3,3,0,0,0,15,18Z"
-                                style="fill: none; stroke: #2ca9bc; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </path>
-                            <path id="primary"
-                                d="M18,9v4l1.38,1.38A2.12,2.12,0,0,1,17.88,18H6.12a2.12,2.12,0,0,1-1.5-3.62L6,13V9a6,6,0,0,1,6-6,6,6,0,0,1,2.88.73"
-                                style="fill: none; stroke: #49b662; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </path>
-                            <path id="secondary-2" data-name="secondary"
-                                d="M14,6a3,3,0,0,0,3,3h0a3,3,0,0,0,3-3h0a3,3,0,0,0-3-3h0a3,3,0,0,0-3,3Z"
-                                style="fill: none; stroke: #2ca9bc; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </path>
-                        </g>
-                    </svg>
-                </button>
+                    <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff" stroke-width="1.8960000000000001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_159)"> <rect width="24" height="24" fill="white"></rect> <path d="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19" stroke="#cc4975" stroke-linejoin="round"></path> <path d="M12 5V3" stroke="#cc4975" stroke-linecap="round" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_15_159"> <rect width="24" height="24" fill="white"></rect> </clipPath> </defs> </g></svg>
+                </button> --}}
 
                 <div class=" z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
                     id="notification-dropdown"
@@ -238,34 +221,7 @@
                     class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
-                    <svg width="20px" height="20px" viewBox="0 0 117.00 117.00" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"
-                        transform="rotate(0)">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                            stroke="#CCCCCC" stroke-width="0.702"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <title></title>
-                            <desc></desc>
-                            <defs></defs>
-                            <g fill="none" fill-rule="evenodd" id="Page-1" stroke-width="0.00117">
-                                <g fill-rule="nonzero" id="layout">
-                                    <path
-                                        d="M4.5,52.9 L48.8,52.9 C51.1,52.9 52.9,51.1 52.9,48.8 L52.9,4.5 C52.9,2.2 51.1,0.4 48.8,0.4 L4.5,0.4 C2.2,0.4 0.4,2.2 0.4,4.5 L0.4,48.8 C0.4,51 2.3,52.9 4.5,52.9 Z M8.6,8.6 L44.7,8.6 L44.7,44.7 L8.6,44.7 L8.6,8.6 Z"
-                                        fill="#8000ff" id="Shape"></path>
-                                    <path
-                                        d="M116.6,4.5 C116.6,2.2 114.8,0.4 112.5,0.4 L68.2,0.4 C65.9,0.4 64.1,2.2 64.1,4.5 L64.1,48.8 C64.1,51.1 65.9,52.9 68.2,52.9 L112.5,52.9 C114.8,52.9 116.6,51.1 116.6,48.8 L116.6,4.5 Z M108.4,44.7 L72.3,44.7 L72.3,8.6 L108.4,8.6 L108.4,44.7 Z"
-                                        fill="#17AB13" id="Shape"></path>
-                                    <path
-                                        d="M4.5,116.6 L48.8,116.6 C51.1,116.6 52.9,114.8 52.9,112.5 L52.9,68.2 C52.9,65.9 51.1,64.1 48.8,64.1 L4.5,64.1 C2.2,64.1 0.4,65.9 0.4,68.2 L0.4,112.5 C0.4,114.7 2.3,116.6 4.5,116.6 Z M8.6,72.3 L44.7,72.3 L44.7,108.4 L8.6,108.4 L8.6,72.3 Z"
-                                        fill="#17AB13" id="Shape"></path>
-                                    <path
-                                        d="M112.5,64.1 L68.2,64.1 C65.9,64.1 64.1,65.9 64.1,68.2 L64.1,112.5 C64.1,114.8 65.9,116.6 68.2,116.6 L112.5,116.6 C114.8,116.6 116.6,114.8 116.6,112.5 L116.6,68.2 C116.6,66 114.7,64.1 112.5,64.1 Z M108.4,108.4 L72.3,108.4 L72.3,72.3 L108.4,72.3 L108.4,108.4 Z"
-                                        fill="#8000ff" id="Shape"></path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
+                    <svg width="20px" height="20px" viewBox="0 0 117 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <desc></desc> <defs></defs> <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"> <g fill-rule="nonzero" id="layout"> <path d="M4.5,52.9 L48.8,52.9 C51.1,52.9 52.9,51.1 52.9,48.8 L52.9,4.5 C52.9,2.2 51.1,0.4 48.8,0.4 L4.5,0.4 C2.2,0.4 0.4,2.2 0.4,4.5 L0.4,48.8 C0.4,51 2.3,52.9 4.5,52.9 Z M8.6,8.6 L44.7,8.6 L44.7,44.7 L8.6,44.7 L8.6,8.6 Z" fill="#ce5c82" id="Shape"></path> <path d="M116.6,4.5 C116.6,2.2 114.8,0.4 112.5,0.4 L68.2,0.4 C65.9,0.4 64.1,2.2 64.1,4.5 L64.1,48.8 C64.1,51.1 65.9,52.9 68.2,52.9 L112.5,52.9 C114.8,52.9 116.6,51.1 116.6,48.8 L116.6,4.5 Z M108.4,44.7 L72.3,44.7 L72.3,8.6 L108.4,8.6 L108.4,44.7 Z" fill="#a4c6ec" id="Shape"></path> <path d="M4.5,116.6 L48.8,116.6 C51.1,116.6 52.9,114.8 52.9,112.5 L52.9,68.2 C52.9,65.9 51.1,64.1 48.8,64.1 L4.5,64.1 C2.2,64.1 0.4,65.9 0.4,68.2 L0.4,112.5 C0.4,114.7 2.3,116.6 4.5,116.6 Z M8.6,72.3 L44.7,72.3 L44.7,108.4 L8.6,108.4 L8.6,72.3 Z" fill="#a4c6ec" id="Shape"></path> <path d="M112.5,64.1 L68.2,64.1 C65.9,64.1 64.1,65.9 64.1,68.2 L64.1,112.5 C64.1,114.8 65.9,116.6 68.2,116.6 L112.5,116.6 C114.8,116.6 116.6,114.8 116.6,112.5 L116.6,68.2 C116.6,66 114.7,64.1 112.5,64.1 Z M108.4,108.4 L72.3,108.4 L72.3,72.3 L108.4,72.3 L108.4,108.4 Z" fill="#ce5c82" id="Shape"></path> </g> </g> </g></svg>
                 </button>
 
                 <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
@@ -379,7 +335,7 @@
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg> --}}
-                    <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
+                   {{--  <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
                         viewBox="-22.5 0 301 301" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
                         <defs>
@@ -406,7 +362,8 @@
 
                             </path>
                         </g>
-                    </svg>
+                    </svg> --}}
+                    <svg  id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet" fill="#000000" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path class="fill-[#a4c6ec]" d="M503.851 210.204C492.563 120.657 434.38 44.485 355.192 7.235c-11.279-5.306-22.337 7.572-15.47 17.982c18.48 28.029 30.919 60.278 35.273 94.838c18.733 148.659-106.281 273.673-254.94 254.94c-34.56-4.354-66.81-16.793-94.839-35.273c-10.41-6.866-23.287 4.191-17.982 15.478c37.25 79.182 113.422 137.364 202.969 148.651c171.226 21.579 315.226-122.414 293.648-293.647"></path></g></svg>
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -424,7 +381,7 @@
                         style="position: absolute; left: 0px; transform: translate(69px);"></div>
                 </div>
 
-                <div class="flex items-center ml-3">
+                <div class="flex items-center ">
                     <div>
                         <button type="button"
                             class="flex text-sm {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -435,18 +392,7 @@
                                     src="{{ asset('user/images') . '/' . Auth::user()->user_profile_image }}"
                                     alt="user photo">
                             @else
-                                <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon"
-                                    version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z"
-                                        fill="#4A5699" />
-                                    <path
-                                        d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z"
-                                        fill="#C45FA0" />
-                                    <path
-                                        d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z"
-                                        fill="#E5594F" />
-                                </svg>
+                            <svg height="22px" width="22px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z" fill="#dc85a6"></path><path d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z" fill="#ce5c82"></path><path d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z" fill="#a4c6ec"></path></g></svg>
                             @endif
                         </button>
                     </div>

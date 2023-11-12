@@ -12,6 +12,7 @@ use App\Http\Controllers\TtManage\BankController;
 use App\Http\Controllers\TtManage\BuyerController;
 use App\Http\Controllers\TtManage\FactoryController;
 use App\Http\Controllers\TtManage\InvoiceController;
+use App\Http\Controllers\TtManage\TtManageTransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -99,6 +100,12 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/invoice/store', [InvoiceController::class, 'store']);
         Route::post('/invoice/update/{id}', [InvoiceController::class, 'update']);
         Route::post('/invoice/delete/{id}', [InvoiceController::class, 'destroy']);
+        Route::get('/invoice/detail/{id}', [TtManageTransactionController::class, 'getInvoiceDetails'])->name('invoice.details');
+        Route::post('/invoice/transaction/update/{id}', [TtManageTransactionController::class, 'update']);
+        // route invoices Transaction
+        Route::post('/invoice/transaction/store', [TtManageTransactionController::class, 'store']);
+        Route::get('/invoice/transaction/{id}', [TtManageTransactionController::class, 'getTransactionData']);
+        
         // route bank
         Route::get('/banks', [BankController::class, 'index'])->name('banks.list');
         Route::get('/bank/{id}', [BankController::class, 'getBankData']);
