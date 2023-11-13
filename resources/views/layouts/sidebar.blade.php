@@ -281,7 +281,7 @@
                             </svg>
                         </button>
                         <ul id="dropdown-tt-manae"
-                            class="{{ request()->routeIs(['invoices.list', 'factories.list', 'banks.list', 'buyers.list']) ? '' : 'hidden' }}
+                            class="{{ request()->routeIs(['invoices.list', 'factories.list', 'banks.list', 'buyers.list','companies.list']) ? '' : 'hidden' }}
 
                          py-2 space-y-2">
                             <li>
@@ -303,8 +303,8 @@
                                     class="{{ request()->routeIs('buyers.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
                             </li>
                             <li>
-                                <a href="{{ route('buyers.list') }}"
-                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
+                                <a href="{{ route('companies.list') }}"
+                                    class="{{ request()->routeIs('companies.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
                             </li>
                         </ul>
                     </li>

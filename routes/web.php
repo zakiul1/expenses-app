@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Employee\DepartmentController;
 use App\Http\Controllers\Employee\EmployeeController;
@@ -124,6 +125,13 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/buyer/store', [BuyerController::class, 'store']);
         Route::post('/buyer/update/{id}', [BuyerController::class, 'update']);
         Route::post('/buyer/delete/{id}', [BuyerController::class, 'destroy']);
+
+        // route company
+        Route::get('/companies', [CompanyController::class, 'index'])->name('companies.list');
+        Route::get('/company/{id}', [CompanyController::class, 'getCompanyData']);
+        Route::post('/company/store', [CompanyController::class, 'store']);
+        Route::post('/company/update/{id}', [CompanyController::class, 'update']);
+        Route::post('/company/delete/{id}', [CompanyController::class, 'destroy']);
     });
     /* TT Manage Route */
 });
