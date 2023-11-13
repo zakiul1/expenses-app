@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('swift_code')->nullable();
             $table->string('email')->nullable()->unique()->index();
             $table->string('phone_no')->nullable();
-            $table->tinyInteger('bank_type')->comment('1: Buyer Bank, 2: Factory Bank');
+            $table->tinyInteger('bank_type')->comment('1: Buyer Bank, 2: Factory Bank, 3:Company');
             $table->timestamps();
         });
 

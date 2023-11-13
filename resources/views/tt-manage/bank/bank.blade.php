@@ -303,6 +303,7 @@
                                         <option selected>Choose a Type</option>
                                         <option value="1">Buyer</option>
                                         <option value="2">Factory</option>
+                                        <option value="3">Company</option>
 
                                     </select>
                                     <p id="create_bank_bank_type_error"
@@ -324,7 +325,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitCreatebank"
-                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Add Bank</button>
                     </div>
                     </form>
@@ -426,6 +427,7 @@
                                         <option selected>Choose a Type</option>
                                         <option value="1">Buyer</option>
                                         <option value="2">Factory</option>
+                                        <option value="3">Company</option>
 
                                     </select>
                                     <p id="update_bank_bank_type_error"

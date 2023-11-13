@@ -286,7 +286,8 @@
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('invoices.list') }}"
-                                    class="{{ request()->routeIs('invoices.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Invoice</a>
+                                    class="{{ request()->routeIs('invoices.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
+                                    Order</a>
                             </li>
                             <li>
                                 <a href="{{ route('factories.list') }}"
@@ -300,6 +301,10 @@
                             <li>
                                 <a href="{{ route('buyers.list') }}"
                                     class="{{ request()->routeIs('buyers.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('buyers.list') }}"
+                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
                             </li>
                         </ul>
                     </li>

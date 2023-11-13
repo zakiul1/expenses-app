@@ -22,7 +22,7 @@ class BankController extends Controller
             'swift_code' => 'nullable|string|max:20',
             'email' => 'nullable|email|unique:banks,email|max:255',
             'phone_no' => 'nullable|string|max:20',
-            'bank_type' => 'required|integer|in:1,2',
+            'bank_type' => 'required|integer',
         ];
 
         // Custom validation error messages
@@ -61,7 +61,7 @@ class BankController extends Controller
             'email' => 'nullable|email|unique:banks,email,' . $id,
             // Exclude the current record from unique check
             'phone_no' => 'nullable|string|max:20',
-            'bank_type' => 'required|integer|in:1,2',
+            'bank_type' => 'required|integer',
         ];
 
         $messages = [
