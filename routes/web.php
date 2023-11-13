@@ -97,7 +97,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::group(['prefix' => 'tt-manage'], function () {
         // route invoices
         Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.list');
-        Route::get('/invoice/{id}', [InvoiceController::class, 'getBankData']);
+        Route::get('/invoice/{id}', [InvoiceController::class, 'getInvoiceData']);
         Route::post('/invoice/store', [InvoiceController::class, 'store']);
         Route::post('/invoice/update/{id}', [InvoiceController::class, 'update']);
         Route::post('/invoice/delete/{id}', [InvoiceController::class, 'destroy']);

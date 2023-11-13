@@ -64,7 +64,7 @@
                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="font-semibold"> Add Invoice</span>
+                        <span class="font-semibold"> Add TT Order</span>
                     </button>
 
                 </div>
@@ -94,6 +94,10 @@
                                         Invoice Value
                                     </th>
 
+                                    <th scope="col"
+                                        class="p-4   text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        Company
+                                    </th>
                                     <th scope="col"
                                         class="p-4   text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                         Buyer
@@ -141,6 +145,10 @@
                                             <td
                                                 class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $invoice->invoice_value }}
+                                            </td>
+                                            <td
+                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                {{ $invoice->company->name }}
                                             </td>
                                             <td
                                                 class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
@@ -195,8 +203,8 @@
                                                         </svg>
                                                         Details
                                                     </button></a>
-                                                <button {{-- onclick="updateFactory({{ $invoice->id }})" --}} data-modal-target="updateFactoryModal"
-                                                    data-modal-toggle="updateFactoryModal" type="button"
+                                                <button onclick="updateInvoice({{ $invoice->id }})" data-modal-target="updateInvoiceModal"
+                                                    data-modal-toggle="updateInvoiceModal" type="button"
                                                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +217,7 @@
                                                     </svg>
                                                     Edit
                                                 </button>
-                                                <button type="button" {{-- onclick="deleteFactoryFunc({{ $invoice->id }})" --}} id="categoryDeleteBtn"
+                                                <button type="button" onclick="deleteFactoryFunc({{ $invoice->id }})" id="invoiceDeleteBtn"
                                                     class="inline-flex
                                                 items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600
                                                 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300
@@ -258,7 +266,7 @@
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
-                            Add New Invoice
+                            Add New TT Order
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
@@ -297,6 +305,25 @@
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
+                                {{-- Select Company --}}
+                                <div class="col-span-6 sm:col-span-3">
+
+                                    <label for="createInvoiceCompany"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
+                                        Company</label>
+                                    <select id="createInvoiceCompany" name="company_id"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected>Select Company</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}"> {{ $company->name }} </option>
+                                        @endforeach
+
+                                    </select>
+
+                                    <p id="create_invoice_company_id_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
                                 {{-- Select Buyer  --}}
                                 <div class="col-span-6 sm:col-span-3">
 
@@ -319,10 +346,10 @@
                                 {{-- Invoice factory_id --}}
                                 <div class="col-span-6 sm:col-span-3">
 
-                                    <label for="createInvoiceBuyerId"
+                                    <label for="createInvoiceFactoryId"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Factory</label>
-                                    <select id="createInvoiceBuyerId" name="factory_id"
+                                    <select id="createInvoiceFactoryId" name="factory_id"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected>Select Factory</option>
                                         @foreach ($factories as $factory)
@@ -366,14 +393,7 @@
                                 <input type="hidden" id="createInvoiceUserId" value="{{ auth()->user()->id }}"
                                     name="user_id">
 
-                                <!-- <div class="col-span-6">
-                                                    <label for="createInvoiceAddInfo"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Info</label>
-                                                    <textarea id="createInvoiceAddInfo" rows="2" name="additional_info"
-                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                                                    <p id="create_Invoice_additional_info_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                                    </p>
-                                                </div> -->
+                             
                             </div>
 
                     </div>
@@ -381,7 +401,7 @@
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitCreateInvoice"
                             class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                            type="submit">Add Invoice</button>
+                            type="submit">Add TT Order</button>
                     </div>
                     </form>
                 </div>
@@ -390,11 +410,159 @@
         <!--Invoice  Create modal End-->
 
 
-        <!-- Factory Update modal  Start-->
+        <!-- Invoice Update modal  Start-->
 
+        <div class="fixed  left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full flex hidden"
+        id="updateInvoiceModal" aria-modal="true" role="dialog">
+        <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
+                    <h3 class="text-xl font-semibold dark:text-white">
+                        Update TT Order
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                        data-modal-toggle="updateInvoiceModal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <form id="updateInvoiceForm">
+                        <div class="grid grid-cols-6 gap-6">
+                            {{-- Invoice  Number --}}
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="updateInvoiceNumber"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Invoice
+                                    Number</label>
+                                <input type="text" name="invoice_no" id="updateInvoiceNumber"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    required>
+                                <p id="update_invoice_no_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- invoice_value  --}}
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="updateInvoiceValue"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Invoice
+                                    Value</label>
+                                <input type="number" name="invoice_value" id="updateInvoiceValue"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <p id="update_invoice_value_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- Select Company --}}
+                            <div class="col-span-6 sm:col-span-3">
+        
+                                <label for="updateInvoiceCompany"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
+                                    Company</label>
+                                <select id="updateInvoiceCompany" name="company_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Select Company</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}"> {{ $company->name }} </option>
+                                    @endforeach
+        
+                                </select>
+        
+                                <p id="update_invoice_company_id_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- Select Buyer  --}}
+                            <div class="col-span-6 sm:col-span-3">
+        
+                                <label for="updateInvoiceBuyerId"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
+                                    Buyer</label>
+                                <select id="updateInvoiceBuyerId" name="buyer_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Select Buyer</option>
+                                    @foreach ($buyers as $buyer)
+                                        <option value="{{ $buyer->id }}"> {{ $buyer->name }} </option>
+                                    @endforeach
+        
+                                </select>
+        
+                                <p id="update_invoice_buyer_id_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- Invoice factory_id --}}
+                            <div class="col-span-6 sm:col-span-3">
+        
+                                <label for="updateInvoiceFactoryId"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
+                                    Factory</label>
+                                <select id="updateInvoiceFactoryId" name="factory_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Select Factory</option>
+                                    @foreach ($factories as $factory)
+                                        <option value="{{ $factory->id }}"> {{ $factory->name }} </option>
+                                    @endforeach
+                                </select>
+        
+                                <p id="update_invoice_factory_id_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- Factory Value  --}}
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="updateInvoiceFactoryValue"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Factory
+                                    Value</label>
+                                <input type="number" name="factory_value" id="updateInvoiceFactoryValue"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <p id="update_invoice_factory_value_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            {{-- Invoice  Bank bank_id --}}
+                            <div class="col-span-6 sm:col-span-3">
+        
+                                <label for="updateInvoiceBankId"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
+                                    Bank</label>
+                                <select id="updateInvoiceBankId" name="bank_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Select Bank</option>
+                                    @foreach ($banks as $bank)
+                                        <option value="{{ $bank->id }}"> {{ $bank->name }} </option>
+                                    @endforeach
+                                </select>
+        
+                                <p id="update_invoice_bank_id_error"
+                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                </p>
+                            </div>
+                            <input type="hidden" id="updateInvoiceUserId" value="{{ auth()->user()->id }}"
+                                name="user_id">
+        
+                         
+                        </div>
+        
+                </div>
+                <!-- Modal footer -->
+                <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+                    <button id="submitUpdateInvoice"
+                        class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        type="submit">Update TT Order</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
 
-
-        <!-- Factory Update modal  End-->
+        <!-- Invoice Update modal  End-->
 
 
 
@@ -454,59 +622,71 @@
 
         //Get Data for Set Value Invoice
 
-        /*         const updateFactoryName = document.getElementById('updateFactoryName');
-                const updateFactoryEmail = document.getElementById('updateFactoryEmail');
-                const updateFactoryPhone = document.getElementById('updateFactoryPhone');
-                const updateFactoryAddress = document.getElementById('updateFactoryAddress');
-                const updateFactoryAddInfo = document.getElementById('updateFactoryAddInfo');
-                const updateFactoryModal = document.getElementById('updateFactoryModal');
-                const updateFactoryForm = document.getElementById('updateFactoryForm');
-                const submitUpdateFactory = document.getElementById('submitUpdateFactory'); */
-        /*   const updateFactory = (id) => {
+                const updateInvoiceNumber = document.getElementById('updateInvoiceNumber');
+                const updateInvoiceValue = document.getElementById('updateInvoiceValue');
+                const updateInvoiceCompany = document.getElementById('updateInvoiceCompany');
+                const updateInvoiceBuyerId = document.getElementById('updateInvoiceBuyerId');
+                const updateInvoiceFactoryId = document.getElementById('updateInvoiceFactoryId');
+                const updateInvoiceFactoryValue = document.getElementById('updateInvoiceFactoryValue');
+                const updateInvoiceBankId = document.getElementById('updateInvoiceBankId');
 
-                    axios.get(`/tt-manage/factory/${id}`)
+               
+                const updateInvoiceModal = document.getElementById('updateInvoiceModal');
+                const updateInvoiceForm = document.getElementById('updateInvoiceForm');
+                const submitUpdateInvoice = document.getElementById('submitUpdateInvoice');
+                const updateInvoice = (id) => {
+                    Notiflix.Loading.dots();
+                    axios.get(`/tt-manage/invoice/${id}`)
                         .then(function(response) {
                             if (response.data) {
-                                updateFactoryName.value = response.data.name
-                                updateFactoryAddress.value = response.data.address
-                                updateFactoryPhone.value = response.data.phone_number
-                                updateFactoryEmail.value = response.data.email
-                                updateFactoryAddInfo.value = response.data.additional_info
-                                submitUpdateFactory.setAttribute('data-id', response.data.id);
+                                updateInvoiceNumber.value = response.data.invoice_no
+                                updateInvoiceValue.value = response.data.invoice_value
+                                updateInvoiceCompany.value = response.data.company_id
+                                updateInvoiceBuyerId.value = response.data.buyer_id
+                                updateInvoiceFactoryId.value = response.data.factory_id
+                                updateInvoiceFactoryValue.value = response.data.factory_value
+                                updateInvoiceBankId.value = response.data.bank_id
+                             
+                                submitUpdateInvoice.setAttribute('data-id', response.data.id);
+                                Notiflix.Loading.remove();
 
                             }
 
                         })
                         .catch(function(error) {
                             console.log(error);
+                            Notiflix.Loading.remove();
                         });
                 }
-         */
-        /* Update Bank */
+      
+        /* Update Invoice */
 
-        /*   updateFactoryForm.addEventListener('submit', (event) => {
+         updateInvoiceForm.addEventListener('submit', (event) => {
               event.preventDefault();
 
-              const formData = new FormData(updateFactoryForm);
-              let id = submitUpdateFactory.getAttribute('data-id');
+              const formData = new FormData(updateInvoiceForm);
+              let id = submitUpdateInvoice.getAttribute('data-id');
               // console.log(formData);
-              axios.post(`/tt-manage/factory/update/${id}`, formData)
+              Notiflix.Loading.dots();
+              axios.post(`/tt-manage/invoice/update/${id}`, formData)
 
                   .then(function(response) {
                       // console.log(formData)
                       if (response.status === 201) {
-                          updateFactoryForm.reset();
-                          updateFactoryModal.classList.add('hidden')
+                          updateInvoiceForm.reset();
+                          updateInvoiceModal.classList.add('hidden')
                          // updateBuyerForm.reset();
                           window.location.reload();
+                          Notiflix.Loading.remove();
                       }
                   })
                   .catch(function(error) {
+                    Notiflix.Loading.remove();
                       if (error.response && error.response.status === 422) {
                           let allError = error.response.data.errors
-                          // console.log(allError);
+                           console.log(allError);
                           for (const field in allError) {
-                              const errorDiv = document.getElementById(`update_factory_${field}_error`);
+                              const errorDiv = document.getElementById(`update_invoice_${field}_error`);
                               //console.log("hi");
                               if (errorDiv) {
                                   // Clear any previous error message
@@ -526,22 +706,22 @@
                           console.error('An error occurred:', error);
                       }
                   });
-          }); */
-        // Update Buyer
+          });
+        // Update Invoice
 
 
 
-        //Delete  data Bank
-        /*  const deleteFactoryFunc = (id) => {
+        //Delete  data invoice
+       const deleteFactoryFunc = (id) => {
 
 
              Notiflix.Confirm.show(
-                 'Department Delete  Confirm',
+                 'Invoice Delete  Confirm',
                  'Do you want to Delete ?',
                  'Yes',
                  'No',
                  function okCb() {
-                     axios.post(`/tt-manage/factory/delete/${id}`)
+                     axios.post(`/tt-manage/invoice/delete/${id}`)
                          .then(response => {
                              // Handle success
                              if (response.status === 201) {
@@ -570,7 +750,8 @@
              );
 
 
-         } */
-        /* delete Bank */
+         } 
+
+        /* delete Invoice */
     </script>
 @endsection

@@ -495,8 +495,6 @@
                         .then(response => {
                             // Handle success
                             if (response.status === 201) {
-
-
                                 window.location.reload();
                             }
                             //console.log(response.data);

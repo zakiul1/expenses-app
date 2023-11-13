@@ -15,7 +15,8 @@ class Invoice extends Model
         'factory_id',
         'bank_id',
         'user_id',
-        'factory_value'
+        'factory_value',
+        'company_id'
     ];
 
     public function buyer()
@@ -36,5 +37,9 @@ class Invoice extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

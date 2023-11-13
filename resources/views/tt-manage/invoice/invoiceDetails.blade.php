@@ -418,6 +418,22 @@
 
                             <p id="create_transaction_type_of_transaction_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                         </div>
+                        {{--  select Type Of Bank --}}
+                        <div>
+
+                                <label for="createTransactionBank" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Bank </label>
+                                <select id="createTransactionBank" name="bank_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Choose Bank</option>
+                                @foreach ( $banks as $bank)
+                                    <option value="{{ $bank->id }}">{{ $bank->name }}</option>
+                                @endforeach
+                               {{--  <option value="1">Receive</option>
+                                <option value="2">Pay</option> --}}
+
+                                </select>
+
+                            <p id="create_transaction_bank_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+                        </div>
                         {{--  Date --}}
                         <div>
                             <label for="createTransactionDate"
@@ -429,6 +445,7 @@
                         </div>
                         <input type="hidden" value="{{ $totalInvoiceId }}" name="invoice_id">
                         <input type="hidden" value="{{ auth()->id() }}" name="user_id">
+                        <input type="hidden" value="{{ $companyId  }}" name="company_id">
 
                         <button type="submit"
                             class="w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add

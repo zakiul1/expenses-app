@@ -5,6 +5,7 @@ namespace App\Http\Controllers\TtManage;
 use App\Http\Controllers\Controller;
 use App\Models\Bank;
 use App\Models\Buyer;
+use App\Models\Company;
 use App\Models\Factory;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
@@ -15,12 +16,25 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::orderBy("created_at","desc")->paginate(10);
 
-        $banks = Bank::where('bank_type', 1)->get();
+        $banks = Bank::all();
         $factories = Factory::all();
         $buyers = Buyer::all();
+        $companies = Company::all();
 
 
-        return view("tt-manage.invoice.invoice",["invoices"=> $invoices ,"banks"=> $banks,"factories"=> $factories,"buyers"=> $buyers]);
+        return view("tt-manage.invoice.invoice",[
+            "invoices"=> $invoices ,
+            "banks"=> $banks,
+            "factories"=> $factories,
+            "buyers"=> $buyers,
+            "companies"=> $companies,
+        ]);
+    }
+
+    public function getInvoiceData($id){
+        $invoice = Invoice::findOrFail($id);
+       // dd( $invoice);
+        return response()->json( $invoice );
     }
     public function store(Request $request)
 {
@@ -32,7 +46,8 @@ class InvoiceController extends Controller
         'factory_id' => 'required|exists:factories,id',
         'bank_id' => 'required|exists:banks,id',
         'user_id' => 'required|exists:users,id',
-        'factory_value' => 'nullable|numeric|min:0',
+        'company_id' => 'required|exists:companies,id',
+        'factory_value' => 'nullable|numeric|between:0,9999999999.99',
     ]);
 
     // Create a new invoice using the validated data
@@ -53,7 +68,8 @@ public function update(Request $request, $id)
         'buyer_id' => 'required|exists:buyers,id',
         'factory_id' => 'required|exists:factories,id',
         'bank_id' => 'required|exists:banks,id',
-        'factory_value' => 'nullable|numeric|min:0',
+        'company_id' => 'required|exists:companies,id',
+        'factory_value' => 'nullable|numeric|between:0,9999999999.99',
     ]);
 
     // Find the invoice by ID

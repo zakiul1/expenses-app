@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TtManage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bank;
 use App\Models\Invoice;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -10,8 +11,11 @@ use Illuminate\Http\Request;
 class TtManageTransactionController extends Controller
 {
     public function getInvoiceDetails($id){
+        $banks=Bank::all();
 
         $invoiceDetails= Invoice::findOrFail($id);
+        $companyId= $invoiceDetails->company->id;
+       // dd( $companyId);
         $transactions = Transaction::where('invoice_id', $id)->get();
         $receiveValueFromBuyer =$transactions->where('type_of_transaction', 1)->sum('value');
         $payValueToFactory =$transactions->where('type_of_transaction', 2)->sum('value');
@@ -32,6 +36,8 @@ class TtManageTransactionController extends Controller
         'receiveValueFromBuyer'=>$receiveValueFromBuyer,
         'payValueToFactory'=>$payValueToFactory,
         'currentTotalBalance'=> $currentTotalBalance,
+        'companyId'=> $companyId,
+        'banks'=> $banks,
         ]);
      }
 
@@ -39,11 +45,13 @@ class TtManageTransactionController extends Controller
      {
          // Validate the incoming request data
          $validatedData = $request->validate([
-            'type_of_transaction' => 'required|integer|in:1,2',
+             'type_of_transaction' => 'required|integer|in:1,2',
              'value' => 'required|numeric',
              'invoice_id' => 'required|exists:invoices,id',
              'user_id' => 'required|exists:users,id',
              'transaction_date' => 'required|date',
+             'company_id' => 'required',
+             'bank_id' => 'required',
          ]);
 
          // Create a new transaction using the validated data

@@ -14,6 +14,8 @@ class Transaction extends Model
         'invoice_id',
         'user_id',
         'transaction_date',
+        'company_id',
+        'bank_id',
     ];
     public function invoice()
     {
@@ -23,5 +25,13 @@ class Transaction extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
     }
 }
