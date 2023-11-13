@@ -81,8 +81,10 @@ class TtManageTransactionController extends Controller
              'invoice_id' => 'required|exists:invoices,id',
              'user_id' => 'required|exists:users,id',
              'transaction_date' => 'nullable|date',
+             'bank_id' => 'required',
          ]);
  
+        // dd($request->all());
          // Find the transaction by ID
          $transaction = Transaction::findOrFail($id);
  
@@ -92,6 +94,14 @@ class TtManageTransactionController extends Controller
          // You can do any additional actions here if needed
  
          // Return a response, you can customize this based on your needs
-         return response()->json(['message' => 'Transaction updated successfully', 'transaction' => $transaction], 200);
+         return response()->json(['message' => 'Transaction updated successfully', 'transaction' => $transaction], 201);
      }
+
+
+     public function destroy($id){
+        $data=Transaction::findOrFail($id);
+        $data->delete();
+        return response()->json(['message'=>'Transaction Deleted SuccessFully'],201);
+     }
+
 }

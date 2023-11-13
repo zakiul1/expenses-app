@@ -18,7 +18,11 @@ return new class extends Migration {
             $table->unsignedBigInteger('invoice_id');
             $table->unsignedBigInteger('user_id'); // Add this line
             $table->date('transaction_date')->nullable();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('bank_id');
             $table->timestamps();
+            $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

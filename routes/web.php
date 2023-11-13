@@ -102,10 +102,12 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/invoice/update/{id}', [InvoiceController::class, 'update']);
         Route::post('/invoice/delete/{id}', [InvoiceController::class, 'destroy']);
         Route::get('/invoice/detail/{id}', [TtManageTransactionController::class, 'getInvoiceDetails'])->name('invoice.details');
-        Route::post('/invoice/transaction/update/{id}', [TtManageTransactionController::class, 'update']);
+       
         // route invoices Transaction
+        Route::post('/invoice/transaction/update/{id}', [TtManageTransactionController::class, 'update']);
         Route::post('/invoice/transaction/store', [TtManageTransactionController::class, 'store']);
         Route::get('/invoice/transaction/{id}', [TtManageTransactionController::class, 'getTransactionData']);
+        Route::post('/invoice/transaction/delete/{id}', [TtManageTransactionController::class, 'destroy']);
         
         // route bank
         Route::get('/banks', [BankController::class, 'index'])->name('banks.list');

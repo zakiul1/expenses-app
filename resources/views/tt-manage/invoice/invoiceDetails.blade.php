@@ -462,7 +462,7 @@
 
         <!-- Factory Update modal  Start-->
 
-        <div id="updateTransactionModal" tabindex="-1" aria-hidden="true"
+    <div id="updateTransactionModal" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-md max-h-full">
               <!-- Modal content -->
@@ -497,6 +497,20 @@
                                   <option selected>Choose Type</option>
                                   <option value="1">Receive</option>
                                   <option value="2">Pay</option>
+        
+                                  </select>
+        
+                              <p id="update_transaction_type_of_transaction_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+                          </div>
+                           {{--  select Bank --}}
+                          <div>
+        
+                                  <label for="updateTransactionBank" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Bank </label>
+                                  <select id="updateTransactionBank" name="bank_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                  <option selected>Choose Bank</option>
+                                    @foreach ($banks as $bank)
+                                         <option value="{{ $bank->id }}">{{ $bank->name }}</option>
+                                    @endforeach
         
                                   </select>
         
@@ -581,8 +595,9 @@
         const updateTransactionValue = document.getElementById('updateTransactionValue');
         const updateTransactionDate = document.getElementById('updateTransactionDate');
         const updateTransactionType = document.getElementById('updateTransactionType');
+        const updateTransactionBank = document.getElementById('updateTransactionBank');
       
-        const updateTransactionModal = document.getElementById('updateTransactionModal');
+        const updateTransactionModal= document.getElementById('updateTransactionModal');
         const updateTransactionForm = document.getElementById('updateTransactionForm');
         const submitUpdateTransaction = document.getElementById('submitUpdateTransaction');
         const updateTransaction = (id) => {
@@ -592,19 +607,26 @@
                     if (response.data) {
                         updateTransactionValue.value = response.data.value
                         updateTransactionDate.value = response.data.transaction_date
-                    
+                        // updateTransactionBank.value=response.data.bank_id
                          submitUpdateTransaction.setAttribute('data-id', response.data.id); 
-
-                      //set Id Value Func
-                      const typeOftransaction = response.data.type_of_transaction;
-                      console.log(updateTransactionDate);
-                        for (let i = 0; i < updateTransactionType.options.length; i++) {
-                            if (updateTransactionType.options[i].value === typeOftransaction.toString()) {
-                                updateTransactionType.options[i].selected = true;
-                                break; // Exit the loop once a match is found
+                        
+                                        // Define a function to set the selected option by value
+                        function setSelectedOption(selectElement, targetValue) {
+                            for (let i = 0; i < selectElement.options.length; i++) {
+                                if (selectElement.options[i].value === targetValue.toString()) {
+                                    selectElement.options[i].selected = true;
+                                    break; // Exit the loop once a match is found
+                                }
                             }
                         }
-                        //set Id Value Func
+
+                        // Usage
+                        const typeOfTransaction = response.data.type_of_transaction;
+                        const bankID = response.data.bank_id;
+
+                        setSelectedOption(updateTransactionType, typeOfTransaction);
+                        setSelectedOption(updateTransactionBank, bankID);
+
                      
                     }
 
@@ -628,8 +650,8 @@
 
                 .then(function(response) {
                     // console.log(formData)
-                    if (response.status === 200) {
-                        updateTransactionForm.reset();
+                    if (response.status === 201) {
+                        
                         window.location.reload();
                     }
                 })
@@ -659,5 +681,48 @@
                 });
         });
         /* Update Transaction End */
+
+
+        
+        //Delete  data invoice Transaction
+       const deleteTransaction = (id) => {
+
+
+Notiflix.Confirm.show(
+    'Invoice Delete  Confirm',
+    'Do you want to Delete ?',
+    'Yes',
+    'No',
+    function okCb() {
+        axios.post(`/tt-manage/invoice/transaction/delete/${id}`)
+            .then(response => {
+                // Handle success
+                if (response.status === 201) {
+
+
+                    window.location.reload();
+                }
+                //console.log(response.data);
+                // You can update your page or UI as needed
+            })
+            .catch(error => {
+                // Handle error
+                console.error(error);
+            });
+    },
+    function cancelCb() {
+
+    }, {
+        width: '320px',
+        borderRadius: '8px',
+        messageColor: '#1e1e1e',
+        titleColor: '#DA1010',
+        okButtonColor: '#f8f8f8',
+        okButtonBackground: '#DA1010',
+    },
+);
+
+
+} 
 </script>
 @endsection
