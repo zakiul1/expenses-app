@@ -92,7 +92,7 @@
                                         id
                                     </th>
                                     <th scope="col"
-                                        class="p-4 w-6/12 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4 w-6/12 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Name
                                     </th>
 
@@ -111,10 +111,10 @@
                                             class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $category->id }}</td>
                                         <td
-                                            class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="p-2 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $category->name }}</td>
 
-                                        <td class="p-2 text-right space-x-2 whitespace-nowrap">
+                                        <td class="p-2 text-center space-x-2 whitespace-nowrap">
                                             <button onclick="updateCategory(this)" data-modal-target="category-update-modal"
                                                 data-modal-toggle="category-update-modal" type="button"
                                                 data-id="{{ $category->id }}"
@@ -296,7 +296,7 @@
 
 
         //update data Department
-       // let umpdateModal = document.getElementById('category-update-modal');
+        // let umpdateModal = document.getElementById('category-update-modal');
         document.getElementById('categoryUpdateForm').addEventListener('submit', function(e) {
             e.preventDefault();
             let categoryId = categoryUpdateSubmit.getAttribute("data-id");

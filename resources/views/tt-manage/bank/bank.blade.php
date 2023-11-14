@@ -89,12 +89,12 @@
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="p-4  text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Email
                                     </th>
 
                                     <th scope="col"
-                                        class="p-4   text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Address
                                     </th>
                                     <th scope="col"
@@ -134,7 +134,7 @@
                                                 {{ $bank->email }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $bank->address }}
                                             </td>
                                             <td

@@ -23,7 +23,7 @@ class ExpensesTransaction extends Controller
         $query = Expenses::with('employee', 'category');
 
         if ($fromDate && $toDate) {
-            $qData =  $query->whereBetween('expense_date', [$fromDate, $toDate]);
+            $qData = $query->whereBetween('expense_date', [$fromDate, $toDate]);
             $totalAmount = $qData->sum('amount');
             $message = ($qData->count() === 0) ? false : true;
         } else {
@@ -32,13 +32,14 @@ class ExpensesTransaction extends Controller
         }
 
         $transactions = $query->orderBy('created_at', 'desc')->paginate(6);
-        // dd($transactions->employee->first_name);
+
+        //dd($transactions->employee->first_name);
         return view('pages.expenses.transaction.transaction', [
             'transactions' => $transactions,
             'employees' => $employees,
             'categories' => $categories,
-            'message' =>  $message,
-            'totalAmount' =>  $totalAmount,
+            'message' => $message,
+            'totalAmount' => $totalAmount,
         ]);
     }
 
@@ -110,7 +111,7 @@ class ExpensesTransaction extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'employee_id' => intval($request->input('employee_id')),
-            'amount' =>  $request->input('amount'),
+            'amount' => $request->input('amount'),
             'category_id' => intval($request->input('category_id')),
             'expense_date' => date($request->input('expense_date')),
             'images_path' => json_encode(isset($imagePaths) ? implode(',', $imagePaths) : null),
@@ -198,11 +199,11 @@ class ExpensesTransaction extends Controller
         $imgPath = $detail->images_path;
         $docPath = $detail->documents_path;
 
-        $imgArrays =  explode(',',  $imgPath);
+        $imgArrays = explode(',', $imgPath);
         $imgArrays = array_map(function ($item) {
             return trim($item, '"');
         }, $imgArrays);
-        $docArrays =  explode(',',  $docPath);
+        $docArrays = explode(',', $docPath);
         $docArrays = array_map(function ($item) {
             return trim($item, '"');
         }, $docArrays);
@@ -216,13 +217,11 @@ class ExpensesTransaction extends Controller
             'category' => $category,
             'employees' => $employees,
             'categories' => $categories,
-            'images' =>  $imgArrays,
-            'documents' =>  $docArrays,
+            'images' => $imgArrays,
+            'documents' => $docArrays,
         ]);
     }
     public function updateDataTransaction(Request $request, $id)
-
-
     {
 
 
@@ -300,7 +299,7 @@ class ExpensesTransaction extends Controller
         //dd(count($imagePaths) <= 0);
         if (is_array($imagePaths) && count($imagePaths) <= 0) {
             $imagePaths = $expense->images_path;
-            $imagePaths = explode(',',  $imagePaths);
+            $imagePaths = explode(',', $imagePaths);
             $imagePaths = array_map(function ($item) {
                 return trim($item, '"');
             }, $imagePaths);
@@ -309,76 +308,69 @@ class ExpensesTransaction extends Controller
 
         if (is_array($documentPaths) && count($documentPaths) <= 0) {
             $documentPaths = $expense->documents_path;
-            $documentPaths =  explode(',',  $documentPaths);
+            $documentPaths = explode(',', $documentPaths);
             $documentPaths = array_map(function ($item) {
                 return trim($item, '"');
             }, $documentPaths);
         }
 
-        if ($expense) {
-            $previousImagePaths = json_decode($expense->images_path, true) ?? "";
-            $previousDocumentPaths = json_decode($expense->documents_path, true) ?? "";
-            // dd($previousImagePaths);
-            if ($previousImagePaths != "" && is_array($imagePaths) && count($imagePaths) <= 0) {
-                dd($previousImagePaths);
-                $previousImagePaths = explode(',', $previousImagePaths);
-                foreach ($previousImagePaths as $imagePath) {
-                    $imageFullPath = public_path('expenses/transaction/images/' . $imagePath);
-                    if (file_exists($imageFullPath)) {
-                        unlink($imageFullPath);
-                    }
-                }
-            }
+        //dd($imagePaths);
 
-            if ($previousDocumentPaths != "" && is_array($documentPaths) && count($documentPaths) <= 0) {
-                // Your code to execute when the string is empty
-                $previousDocumentPaths = explode(',', $previousDocumentPaths);
 
-                // Delete the previous documents
-                foreach ($previousDocumentPaths as $documentPath) {
-                    $documentFullPath = public_path('expenses/transaction/document/' . $documentPath);
-                    if (file_exists($documentFullPath)) {
-                        unlink($documentFullPath);
-                    }
-                }
-            }
 
-            //  $jsonEncodedData = stripslashes(json_encode($imagePaths));
-            // dd(json_encode($imagePath));
 
-            /*  $imagePaths = array_map('stripslashes', $imagePaths); */
+        $expense->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'employee_id' => intval($request->input('employee_id')),
+            'amount' => $request->input('amount'),
+            'category_id' => intval($request->input('category_id')),
+            'expense_date' => date('Y-m-d', strtotime($request->input('expense_date'))),
+            'images_path' => json_encode(isset($imagePaths) ? implode(',', $imagePaths) : null),
+            'documents_path' => json_encode(isset($documentPaths) ? implode(',', $documentPaths) : null),
+        ]);
 
-            $expense->update([
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'employee_id' => intval($request->input('employee_id')),
-                'amount' => $request->input('amount'),
-                'category_id' => intval($request->input('category_id')),
-                'expense_date' => date('Y-m-d', strtotime($request->input('expense_date'))),
-                'images_path' => json_encode(isset($imagePaths) ? implode(',', $imagePaths) : null),
-                'documents_path' => json_encode(isset($documentPaths) ? implode(',', $documentPaths) : null),
-            ]);
+        // Any other actions you want to perform after the update
 
-            // Any other actions you want to perform after the update
-        } else {
-        }
-        return redirect('expenses/transaction/details/' . $id) // Pass the validation errors to the view
-            ->withInput();
+
+        return redirect()->route('expenses.transaction');
+
     }
 
     public function deleteTransaction($id)
     {
         // Find the employee by ID
-        $tnx = Employee::findOrFail($id);
-
+        $tnx = Expenses::findOrFail($id);
+        // dd($tnx->images_path);
         // Delete associated image and document files
-        if (!empty($tnx->image_path)) {
-            File::delete(public_path('expenses/transaction/images/' . $tnx->images_path));
-        }
-        if (!empty($tnx->document_path)) {
-            File::delete(public_path('expenses/transaction/document/' . $tnx->documents_path));
+        $images = json_decode($tnx->images_path);
+        $doc = json_decode($tnx->documents_path);
+
+        if (!empty($images)) {
+            $imagePaths = explode(',', $images);
+
+            foreach ($imagePaths as $path) {
+                $fullPath = public_path('expenses/transaction/images/' . $path);
+                //dd($fullPath);
+                if (File::exists($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
         }
 
+
+        if (!empty($doc)) {
+            $documentPaths = explode(',', $doc);
+
+            foreach ($documentPaths as $path) {
+                $fullDocumentPath = public_path('expenses/transaction/document/' . $path);
+                if (File::exists($fullDocumentPath)) {
+                    File::delete($fullDocumentPath);
+                }
+            }
+        }
+
+        // dd("hi");
         // Delete the employee record
         $tnx->delete();
 

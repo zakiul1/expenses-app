@@ -89,12 +89,12 @@
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="p-4  text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Email
                                     </th>
 
                                     <th scope="col"
-                                        class="p-4   text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Phone Number
                                     </th>
                                     <th scope="col"
@@ -129,7 +129,7 @@
                                                 {{ $factory->email }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-center font-medium text-gray-900 whitespace-normal dark:text-white">
                                                 {{ $factory->phone_number }}
                                             </td>
                                             <td
@@ -200,7 +200,7 @@
         <!-- Factory Create modal Start-->
 
         <div class="fixed  left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full flex hidden"
-        id="addFactoryModal" aria-modal="true" role="dialog">
+            id="addFactoryModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
@@ -241,7 +241,8 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <input type="email" name="email" id="createfactoryEmail"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <p id="create_factory_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="create_factory_email_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                                 {{-- Phone No --}}
@@ -269,10 +270,12 @@
 
                                 <div class="col-span-6">
                                     <label for="createfactoryAddInfo"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Info</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional
+                                        Info</label>
                                     <textarea id="createfactoryAddInfo" rows="2" name="additional_info"
                                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                                    <p id="create_factory_additional_info_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="create_factory_additional_info_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                             </div>
@@ -294,7 +297,7 @@
         <!-- Factory Update modal  Start-->
 
         <div class="fixed  left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full flex hidden"
-        id="updateFactoryModal" aria-modal="true" role="dialog">
+            id="updateFactoryModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
@@ -335,7 +338,8 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <input type="email" name="email" id="updateFactoryEmail"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <p id="update_factory_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="update_factory_email_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                                 {{-- Phone No --}}
@@ -363,10 +367,12 @@
 
                                 <div class="col-span-6">
                                     <label for="updateFactoryAddInfo"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Info</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional
+                                        Info</label>
                                     <textarea id="updateFactoryAddInfo" rows="2" name="additional_info"
                                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                                    <p id="update_factory_additional_info_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="update_factory_additional_info_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
                             </div>
@@ -486,7 +492,7 @@
                     if (response.status === 201) {
                         updateFactoryForm.reset();
                         updateFactoryModal.classList.add('hidden')
-                       // updateBuyerForm.reset();
+                        // updateBuyerForm.reset();
                         window.location.reload();
                     }
                 })

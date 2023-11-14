@@ -85,16 +85,16 @@
                                 <tr>
 
                                     <th scope="col"
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="p-4  text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Country
                                     </th>
 
                                     <th scope="col"
-                                        class="p-4   text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Address
                                     </th>
                                     <th scope="col"
@@ -136,7 +136,7 @@
                                                 {{ $buyer->country }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $buyer->address }}
                                             </td>
                                             <td
@@ -153,7 +153,7 @@
                                             </td>
                                             <td
                                                 class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $buyer->additional_info  }}
+                                                {{ $buyer->additional_info }}
                                             </td>
 
 
@@ -216,149 +216,151 @@
         <!-- Buyer Create modal Start-->
 
         <div class="fixed  left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full flex hidden"
-        id="addBuyerModal" aria-modal="true" role="dialog">
-        <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
-                    <h3 class="text-xl font-semibold dark:text-white">
-                        Add New buyer
-                    </h3>
-                    <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
-                        data-modal-toggle="addBuyerModal">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <form id="createBuyerForm">
-                        <div class="grid grid-cols-6 gap-6">
-                            {{-- name --}}
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="create-buyer-name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Buyer
-                                    Name</label>
-                                <input type="text" name="name" id="create-buyer-name"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    required>
-                                <p id="create_buyer_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                            {{-- buyer Country name --}}
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="createBuyreCountryName"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Country Name
-                                </label>
-                                <input type="text" name="country" id="createBuyreCountryName"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    required>
-                                <p id="create_buyer_country_error"
-                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                            {{-- Email Account --}}
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="createBuyerEmail"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" name="email" id="createBuyerEmail"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <p id="create_buyer_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                            {{-- Phone No --}}
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="createBuyerPhone"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                                    Number</label>
-                                <input type="text" name="phone_number" id="createBuyerPhone"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <p id="create_buyer_phone_number_error"
-                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                            {{-- Address --}}
-                            <div class="col-span-6 sm:col-span-3">
-                                <label for="createBuyerAddress"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Address</label>
-                                <input type="text" name="address" id="createBuyerAddress"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <p id="create_buyer_address_error"
-                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                            {{-- company_name --}}
-                            <div class="col-span-6 sm:col-span-3">
+            id="addBuyerModal" aria-modal="true" role="dialog">
+            <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
+                        <h3 class="text-xl font-semibold dark:text-white">
+                            Add New buyer
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                            data-modal-toggle="addBuyerModal">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <form id="createBuyerForm">
+                            <div class="grid grid-cols-6 gap-6">
+                                {{-- name --}}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="create-buyer-name"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Buyer
+                                        Name</label>
+                                    <input type="text" name="name" id="create-buyer-name"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        required>
+                                    <p id="create_buyer_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+                                {{-- buyer Country name --}}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="createBuyreCountryName"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Country Name
+                                    </label>
+                                    <input type="text" name="country" id="createBuyreCountryName"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        required>
+                                    <p id="create_buyer_country_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+                                {{-- Email Account --}}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="createBuyerEmail"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                    <input type="email" name="email" id="createBuyerEmail"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <p id="create_buyer_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+                                {{-- Phone No --}}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="createBuyerPhone"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                                        Number</label>
+                                    <input type="text" name="phone_number" id="createBuyerPhone"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <p id="create_buyer_phone_number_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+                                {{-- Address --}}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="createBuyerAddress"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Address</label>
+                                    <input type="text" name="address" id="createBuyerAddress"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <p id="create_buyer_address_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+                                {{-- company_name --}}
+                                <div class="col-span-6 sm:col-span-3">
 
-                                <label for="createBuyerCompany"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
-                                    Name</label>
+                                    <label for="createBuyerCompany"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
+                                        Name</label>
                                     <input type="text" name="company_name" id="createBuyerCompany"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <p id="create_buyer_company_name_error"
-                                    class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <p id="create_buyer_company_name_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
+
+                                <div class="col-span-6">
+                                    <label for="createBuyerAddInfo"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional
+                                        Info</label>
+                                    <textarea id="createBuyerAddInfo" rows="2" name="additional_info"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
+                                    <p id="create_buyer_additional_info_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
+                                </div>
                             </div>
 
-                            <div class="col-span-6">
-                                <label for="createBuyerAddInfo"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Info</label>
-                                <textarea id="createBuyerAddInfo" rows="2" name="additional_info"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                                <p id="create_buyer_additional_info_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                                </p>
-                            </div>
-                        </div>
-
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+                        <button id="submitCreatebuyer"
+                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            type="submit">Add Buyer</button>
+                    </div>
+                    </form>
                 </div>
-                <!-- Modal footer -->
-                <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                    <button id="submitCreatebuyer"
-                        class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                        type="submit">Add Buyer</button>
-                </div>
-                </form>
             </div>
         </div>
-    </div>
         <!--Buyer  Create modal End-->
 
 
         <!-- Buyer Update modal  Start-->
 
         <div class="fixed  left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full flex hidden"
-        id="updateBuyerModal" aria-modal="true" role="dialog">
-        <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
-                    <h3 class="text-xl font-semibold dark:text-white">
-                        Update Buyer
-                    </h3>
-                    <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
-                        data-modal-toggle="updateBuyerModal">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <form id="updateBuyerForm">
-                        <div class="grid grid-cols-6 gap-6">
+            id="updateBuyerModal" aria-modal="true" role="dialog">
+            <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
+                        <h3 class="text-xl font-semibold dark:text-white">
+                            Update Buyer
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                            data-modal-toggle="updateBuyerModal">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <form id="updateBuyerForm">
+                            <div class="grid grid-cols-6 gap-6">
                                 {{-- name --}}
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="updateBuyerName"
@@ -420,7 +422,7 @@
                                     <label for="updateBuyerCompany"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
                                         Name</label>
-                                        <input type="text" name="company_name" id="updateBuyerCompany"
+                                    <input type="text" name="company_name" id="updateBuyerCompany"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_buyer_company_name_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -429,25 +431,27 @@
 
                                 <div class="col-span-6">
                                     <label for="updateBuyerAddInfo"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Info</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional
+                                        Info</label>
                                     <textarea id="updateBuyerAddInfo" rows="2" name="additional_info"
                                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                                    <p id="update_buyer_additional_info_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    <p id="update_buyer_additional_info_error"
+                                        class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
-                        </div>
+                            </div>
 
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+                        <button id="submitUpdateBuyer"
+                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            type="submit">Update Buyer</button>
+                    </div>
+                    </form>
                 </div>
-                <!-- Modal footer -->
-                <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                    <button id="submitUpdateBuyer"
-                        class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                        type="submit">Update Buyer</button>
-                </div>
-            </form>
             </div>
         </div>
-    </div>
 
         <!-- Buyer Update modal  End-->
 
@@ -561,7 +565,7 @@
                     if (response.status === 201) {
                         updateBuyerForm.reset();
                         updateBuyerModal.classList.add('hidden')
-                       // updateBuyerForm.reset();
+                        // updateBuyerForm.reset();
                         window.location.reload();
                     }
                 })

@@ -149,7 +149,9 @@
                                         @foreach ($images as $item)
                                             <div data-id="" class="  relative flex justify-center items-center">
                                                 <img class="w-20 h-20 object-cover  rounded-sm"
-                                                    src="{{ asset('images/' . $item) }}" alt="">
+                                                    src="{{ asset('/expenses/transaction/images/' . $item) }}"
+                                                    alt="">
+
                                                 {{--     <button class="right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg">
                                                     <svg class="w-4 h-4 fill-red-700" viewBox="0 0 20 20"
                                                         xmlns="http://www.w3.org/2000/svg">

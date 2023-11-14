@@ -60,14 +60,16 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/category/update/{id}', [ExpenseCategory::class, 'update']);
         Route::post('/category/delete/{id}', [ExpenseCategory::class, 'destroy']);
         //transaction Route Start
-        Route::get('/transaction', [ExpensesTransaction::class, 'index'])->name('expenses.transaction');
+
+        Route::get('/transactions', [ExpensesTransaction::class, 'index'])->name('expenses.transaction');
+
         Route::post('/transaction/store', [ExpensesTransaction::class, 'store']);
         Route::get('/transaction/details/{id}', [ExpensesTransaction::class, 'detailsViewTransaction'])->name('tnxDetails');
-        Route::get('/transaction/details/update/{id}', [ExpensesTransaction::class, 'updateViewTransaction']);
+        Route::get('/transaction/details/update/{id}', [ExpensesTransaction::class, 'updateViewTransaction'])->name('expenses.transaction.update');
         Route::post('/transaction/update/{id}', [ExpensesTransaction::class, 'updateDataTransaction']);
         Route::post('transaction/delete/{id}', [ExpensesTransaction::class, 'deleteTransaction']);
-        Route::get('/transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments']);
-        Route::get('/transaction/details/images/download/{id}', [ExpensesTransaction::class, 'downloadImages']);
+        Route::get('/transaction/details/documents/download/{id}', [ExpensesTransaction::class, 'downloadDocuments'])->name('transaction.document.download');
+        Route::get('/transaction/details/images/download/{id}', [ExpensesTransaction::class, 'downloadImages'])->name('transaction.images.download');
     });
 
     Route::group(['prefix' => 'employee'], function () {
@@ -102,13 +104,13 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/invoice/update/{id}', [InvoiceController::class, 'update']);
         Route::post('/invoice/delete/{id}', [InvoiceController::class, 'destroy']);
         Route::get('/invoice/detail/{id}', [TtManageTransactionController::class, 'getInvoiceDetails'])->name('invoice.details');
-       
+
         // route invoices Transaction
         Route::post('/invoice/transaction/update/{id}', [TtManageTransactionController::class, 'update']);
         Route::post('/invoice/transaction/store', [TtManageTransactionController::class, 'store']);
         Route::get('/invoice/transaction/{id}', [TtManageTransactionController::class, 'getTransactionData']);
         Route::post('/invoice/transaction/delete/{id}', [TtManageTransactionController::class, 'destroy']);
-        
+
         // route bank
         Route::get('/banks', [BankController::class, 'index'])->name('banks.list');
         Route::get('/bank/{id}', [BankController::class, 'getBankData']);

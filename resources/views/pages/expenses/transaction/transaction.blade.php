@@ -19,23 +19,23 @@
                                 Home
                             </a>
                         </li>
-                        <?php $segments = ''; ?>
-                        @foreach (Request::segments() as $segment)
-                            <?php $segments .= '/' . $segment; ?>
 
-                            <li>
-                                <div class="flex items-center">
-                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <a href="{{ $segments }}"
-                                        class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">{{ $segment }}</a>
-                                </div>
-                            </li>
-                        @endforeach
+
+
+
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="{{ route('expenses.transaction') }}"
+                                    class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">transactions</a>
+                            </div>
+                        </li>
+
 
 
                     </ol>
@@ -178,12 +178,20 @@
                                         Expenses By
                                     </th>
                                     <th scope="col"
+                                        class="p-4 w-2/12  text-sm font-bold text-left text-gray-500 uppercase dark:text-gray-400">
+                                        Description
+                                    </th>
+                                    <th scope="col"
                                         class="p-4 w-3/12  text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
                                         Purpose
                                     </th>
                                     <th scope="col"
                                         class="p-4 w-3/12  text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
                                         Date
+                                    </th>
+                                    <th scope="col"
+                                        class="p-4 w-3/12  text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
+                                        Documents
                                     </th>
                                     <th scope="col"
                                         class="p-4 w-3/12  text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
@@ -211,15 +219,68 @@
                                                 {{ isset($transaction->employee->first_name, $transaction->employee->first_name) ? $transaction->employee->first_name . ' ' . $transaction->employee->last_name : '' }}
                                             </td>
                                             <td
+                                                class="p-4 text-base font-medium text-left text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $transaction->description }}
+                                            </td>
+                                            <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ isset($transaction->category->name) ? $transaction->category->name : '' }}
                                             </td>
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $transaction->expense_date }}</td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                                <div class="flex gap-1">
+                                                    @php
+                                                        $imagePath = json_decode($transaction->images_path, true);
+
+                                                    @endphp
+                                                    @if (!empty($imagePath))
+                                                        <a
+                                                            href="{{ route('transaction.images.download', ['id' => $transaction->id]) }}">
+                                                            <button type="button"
+                                                                class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">
+                                                                Images
+                                                                <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                                    fill="currentColor" viewBox="0 0 24 24"
+                                                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                    <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                                    </path>
+                                                                </svg>
+                                                                <span class="sr-only">Download</span>
+                                                            </button>
+                                                        </a>
+                                                    @endif
+                                                    @php
+                                                        $documentPath = json_decode($transaction->documents_path, true);
+
+                                                    @endphp
+
+                                                    @if (!empty($documentPath))
+                                                        <a
+                                                            href="{{ route('transaction.document.download', ['id' => $transaction->id]) }}">
+                                                            <button type="button"
+                                                                class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">
+                                                                Documents
+                                                                <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                                    fill="currentColor" viewBox="0 0 24 24"
+                                                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                    <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                                    </path>
+                                                                </svg>
+                                                                <span class="sr-only">Download</span>
+                                                            </button>
+                                                        </a>
+                                                    @endif
+
+                                                </div>
+                                            </td>
 
                                             <td class="p-2 text-right space-x-2 whitespace-nowrap">
-                                                <a href=" {{ url('expenses/transaction/details/' . $transaction->id) }} ">
+                                                {{--   <a href=" {{ url('expenses/transaction/details/' . $transaction->id) }} ">
                                                     <button data-id="{{ $transaction->id }} " onclick="redirectFunc(this)"
                                                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
@@ -233,7 +294,41 @@
                                                         </svg>
                                                         Details
                                                     </button>
+                                                </a> --}}
+                                                <a
+                                                    href="{{ route('expenses.transaction.update', ['id' => $transaction->id]) }}">
+                                                    <button {{-- onclick="updateBank({{ $transaction->id }})" --}} {{--   data-modal-target="update-bank-modal"
+                                                    data-modal-toggle="update-bank-modal" --}} type="button"
+                                                        data-id="{{-- {{ $category->id }} --}}"
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                                            </path>
+                                                            <path fill-rule="evenodd"
+                                                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        Edit
+                                                    </button>
                                                 </a>
+
+                                                <button type="button"
+                                                    onclick="deleteExpensesTnxFunc({{ $transaction->id }})"
+                                                    id="categoryDeleteBtn"
+                                                    class="inline-flex
+                                                items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600
+                                                rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300
+                                                dark:focus:ring-red-900">
+                                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    Delete
+                                                </button>
 
                                             </td>
                                         </tr>
@@ -432,7 +527,7 @@
 
                 if (response.status === 201) {
                     addTransactionForm.reset();
-                    window.location.assign("/expenses/transaction/");
+                    window.location.reload();
                 }
             } catch (error) {
 
@@ -465,12 +560,40 @@
 
 
 
-        // redirect to details page
-        /*   document.getElementById("redirectButton").addEventListener("click", function() {
-          // Redirect to the second page
-          window.location.href = "secondPage.html"; */
-        const redirectFunc = (el) => {
-            //window.location.href = "/expenses/transaction/details";
+
+        const deleteExpensesTnxFunc = (id) => {
+
+            Notiflix.Confirm.show(
+                'Department Delete  Confirm',
+                'Do you want to Delete ?',
+                'Yes',
+                'No',
+                function okCb() {
+                    axios.post(`/expenses/transaction/delete/${id}`)
+                        .then(response => {
+                            // Handle success
+                            if (response.status === 201) {
+                                window.location.reload();
+                            }
+
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                },
+                function cancelCb() {
+
+                }, {
+                    width: '320px',
+                    borderRadius: '8px',
+                    messageColor: '#1e1e1e',
+                    titleColor: '#DA1010',
+                    okButtonColor: '#f8f8f8',
+                    okButtonBackground: '#DA1010',
+                },
+            );
+
         }
     </script>
 @endsection
