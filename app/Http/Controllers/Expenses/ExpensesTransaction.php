@@ -247,7 +247,10 @@ class ExpensesTransaction extends Controller
 
             //dd($errors);
         }
+
         $imagePaths = [];
+        $checkImgPaths = [];
+        $checkDocPaths = [];
         $documentPaths = [];
         //dd($request->all());
         if ($request->hasFile('images_path')) {
@@ -267,6 +270,7 @@ class ExpensesTransaction extends Controller
 
                 $image->move(public_path('expenses/transaction/images'), $uniqueName);
                 $imagePaths[] = $uniqueName;
+                $checkImgPaths[] = $uniqueName;
             }
             //dd($imagePaths);
         }
@@ -292,11 +296,12 @@ class ExpensesTransaction extends Controller
 
                 $document->move(public_path('expenses/transaction/document'), $uniqueName);
                 $documentPaths[] = $uniqueName;
+                $checkDocPaths[] = $uniqueName;
             }
         }
 
 
-        //dd(count($imagePaths) <= 0);
+        //dd(!empty($checkImgPaths));
         if (is_array($imagePaths) && count($imagePaths) <= 0) {
             $imagePaths = $expense->images_path;
             $imagePaths = explode(',', $imagePaths);
@@ -314,6 +319,55 @@ class ExpensesTransaction extends Controller
             }, $documentPaths);
         }
 
+
+        //delete previous images
+        //dd($imagePaths);
+        if (is_array($imagePaths) && count($imagePaths) > 0 && !empty($checkImgPaths)) {
+            $oldImages = json_decode($expense->images_path, true);
+            $oldImages = explode(',', $oldImages);
+
+            function arraysMatch($oldImages, $checkImgPaths)
+            {
+                return array_values($oldImages) === array_values($checkImgPaths);
+            }
+
+            $result = arraysMatch($oldImages, $checkImgPaths);
+            // dd($result);
+            if ($result == false) {
+
+                // Delete old images
+                foreach ($oldImages as $oldImage) {
+                    $imagePath = public_path('expenses/transaction/images/' . $oldImage);
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                } # code...
+            }
+        }
+        //delete previous Documents
+
+        if (is_array($documentPaths) && count($documentPaths) > 0 && !empty($checkDocPaths)) {
+            $oldDocuments = json_decode($expense->documents_path, true);
+            $oldDocuments = explode(',', $oldDocuments);
+
+            function arraysMatch($oldDocuments, $checkDocPaths)
+            {
+                //dd($oldDocuments);
+                return array_values($oldDocuments) === array_values($checkDocPaths);
+            }
+
+            $result = arraysMatch($oldDocuments, $checkDocPaths);
+            //dd($result);
+            // Delete old documents
+            if ($result == false) {
+                foreach ($oldDocuments as $oldDocument) {
+                    $documentPath = public_path('expenses/transaction/document/' . $oldDocument);
+                    if (file_exists($documentPath)) {
+                        unlink($documentPath);
+                    }
+                }
+            }
+        }
         //dd($imagePaths);
 
 

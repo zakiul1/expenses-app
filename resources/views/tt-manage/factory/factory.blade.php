@@ -106,11 +106,13 @@
                                         Additional Info
                                     </th>
 
+                                    @if (auth()->user()->role->name === 'admin')
+                                        <th scope="col"
+                                            class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                            Action
+                                        </th>
+                                    @endif
 
-                                    <th scope="col"
-                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
-                                        Action
-                                    </th>
 
                                 </tr>
                             </thead>
@@ -140,8 +142,8 @@
                                                 class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $factory->additional_info }}
                                             </td>
-
-                                            <td class="p-4 text-right space-x-2 whitespace-nowrap">
+                                            @if (auth()->user()->role->name === 'admin')
+                                                td class="p-4 text-right space-x-2 whitespace-nowrap">
                                                 <button onclick="updateFactory({{ $factory->id }})"
                                                     data-modal-target="updateFactoryModal"
                                                     data-modal-toggle="updateFactoryModal" type="button"
@@ -171,8 +173,9 @@
                                                     </svg>
                                                     Delete
                                                 </button>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            @endif
+                                            < </tr>
                                     @endforeach
                                 @endif
 

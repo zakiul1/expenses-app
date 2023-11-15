@@ -16,7 +16,7 @@ class InvoiceController extends Controller
     public function index()
     {
 
-        $invoices = Invoice::orderBy("created_at", "desc")->paginate(10);
+        $invoices = Invoice::orderBy("created_at", "desc")->paginate(6);
         $banks = Bank::all();
         $factories = Factory::all();
         $buyers = Buyer::all();

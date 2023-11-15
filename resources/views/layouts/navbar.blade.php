@@ -25,22 +25,7 @@
                         class="self-center text-sky-700 text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">App
                         Store</span>
                 </a>
-                {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
-                    <label for="topbar-search" class="sr-only">Search</label>
-                    <div class="relative mt-1 lg:w-96">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <input type="text" name="email" id="topbar-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Search">
-                    </div>
-                </form> --}}
+
             </div>
             <div class="flex items-center">
                 <div class="hidden mr-3 -mb-1 sm:block">
@@ -58,7 +43,7 @@
                     </svg>
                 </button>
 
-    {{--             <button type="button" data-dropdown-toggle="notification-dropdown"
+                {{--             <button type="button" data-dropdown-toggle="notification-dropdown"
                     class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
@@ -221,7 +206,32 @@
                     class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">View notifications</span>
 
-                    <svg width="20px" height="20px" viewBox="0 0 117 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <desc></desc> <defs></defs> <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"> <g fill-rule="nonzero" id="layout"> <path d="M4.5,52.9 L48.8,52.9 C51.1,52.9 52.9,51.1 52.9,48.8 L52.9,4.5 C52.9,2.2 51.1,0.4 48.8,0.4 L4.5,0.4 C2.2,0.4 0.4,2.2 0.4,4.5 L0.4,48.8 C0.4,51 2.3,52.9 4.5,52.9 Z M8.6,8.6 L44.7,8.6 L44.7,44.7 L8.6,44.7 L8.6,8.6 Z" fill="#ce5c82" id="Shape"></path> <path d="M116.6,4.5 C116.6,2.2 114.8,0.4 112.5,0.4 L68.2,0.4 C65.9,0.4 64.1,2.2 64.1,4.5 L64.1,48.8 C64.1,51.1 65.9,52.9 68.2,52.9 L112.5,52.9 C114.8,52.9 116.6,51.1 116.6,48.8 L116.6,4.5 Z M108.4,44.7 L72.3,44.7 L72.3,8.6 L108.4,8.6 L108.4,44.7 Z" fill="#a4c6ec" id="Shape"></path> <path d="M4.5,116.6 L48.8,116.6 C51.1,116.6 52.9,114.8 52.9,112.5 L52.9,68.2 C52.9,65.9 51.1,64.1 48.8,64.1 L4.5,64.1 C2.2,64.1 0.4,65.9 0.4,68.2 L0.4,112.5 C0.4,114.7 2.3,116.6 4.5,116.6 Z M8.6,72.3 L44.7,72.3 L44.7,108.4 L8.6,108.4 L8.6,72.3 Z" fill="#a4c6ec" id="Shape"></path> <path d="M112.5,64.1 L68.2,64.1 C65.9,64.1 64.1,65.9 64.1,68.2 L64.1,112.5 C64.1,114.8 65.9,116.6 68.2,116.6 L112.5,116.6 C114.8,116.6 116.6,114.8 116.6,112.5 L116.6,68.2 C116.6,66 114.7,64.1 112.5,64.1 Z M108.4,108.4 L72.3,108.4 L72.3,72.3 L108.4,72.3 L108.4,108.4 Z" fill="#ce5c82" id="Shape"></path> </g> </g> </g></svg>
+                    <svg width="20px" height="20px" viewBox="0 0 117 117" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title></title>
+                            <desc></desc>
+                            <defs></defs>
+                            <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                                <g fill-rule="nonzero" id="layout">
+                                    <path
+                                        d="M4.5,52.9 L48.8,52.9 C51.1,52.9 52.9,51.1 52.9,48.8 L52.9,4.5 C52.9,2.2 51.1,0.4 48.8,0.4 L4.5,0.4 C2.2,0.4 0.4,2.2 0.4,4.5 L0.4,48.8 C0.4,51 2.3,52.9 4.5,52.9 Z M8.6,8.6 L44.7,8.6 L44.7,44.7 L8.6,44.7 L8.6,8.6 Z"
+                                        fill="#ce5c82" id="Shape"></path>
+                                    <path
+                                        d="M116.6,4.5 C116.6,2.2 114.8,0.4 112.5,0.4 L68.2,0.4 C65.9,0.4 64.1,2.2 64.1,4.5 L64.1,48.8 C64.1,51.1 65.9,52.9 68.2,52.9 L112.5,52.9 C114.8,52.9 116.6,51.1 116.6,48.8 L116.6,4.5 Z M108.4,44.7 L72.3,44.7 L72.3,8.6 L108.4,8.6 L108.4,44.7 Z"
+                                        fill="#a4c6ec" id="Shape"></path>
+                                    <path
+                                        d="M4.5,116.6 L48.8,116.6 C51.1,116.6 52.9,114.8 52.9,112.5 L52.9,68.2 C52.9,65.9 51.1,64.1 48.8,64.1 L4.5,64.1 C2.2,64.1 0.4,65.9 0.4,68.2 L0.4,112.5 C0.4,114.7 2.3,116.6 4.5,116.6 Z M8.6,72.3 L44.7,72.3 L44.7,108.4 L8.6,108.4 L8.6,72.3 Z"
+                                        fill="#a4c6ec" id="Shape"></path>
+                                    <path
+                                        d="M112.5,64.1 L68.2,64.1 C65.9,64.1 64.1,65.9 64.1,68.2 L64.1,112.5 C64.1,114.8 65.9,116.6 68.2,116.6 L112.5,116.6 C114.8,116.6 116.6,114.8 116.6,112.5 L116.6,68.2 C116.6,66 114.7,64.1 112.5,64.1 Z M108.4,108.4 L72.3,108.4 L72.3,72.3 L108.4,72.3 L108.4,108.4 Z"
+                                        fill="#ce5c82" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                 </button>
 
                 <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
@@ -335,7 +345,7 @@
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg> --}}
-                   {{--  <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
+                    {{--  <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
                         viewBox="-22.5 0 301 301" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
                         <defs>
@@ -363,7 +373,19 @@
                             </path>
                         </g>
                     </svg> --}}
-                    <svg  id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet" fill="#000000" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path class="fill-[#a4c6ec]" d="M503.851 210.204C492.563 120.657 434.38 44.485 355.192 7.235c-11.279-5.306-22.337 7.572-15.47 17.982c18.48 28.029 30.919 60.278 35.273 94.838c18.733 148.659-106.281 273.673-254.94 254.94c-34.56-4.354-66.81-16.793-94.839-35.273c-10.41-6.866-23.287 4.191-17.982 15.478c37.25 79.182 113.422 137.364 202.969 148.651c171.226 21.579 315.226-122.414 293.648-293.647"></path></g></svg>
+                    <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
+                        viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                        class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"
+                        transform="matrix(-1, 0, 0, 1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path class="fill-[#a4c6ec]"
+                                d="M503.851 210.204C492.563 120.657 434.38 44.485 355.192 7.235c-11.279-5.306-22.337 7.572-15.47 17.982c18.48 28.029 30.919 60.278 35.273 94.838c18.733 148.659-106.281 273.673-254.94 254.94c-34.56-4.354-66.81-16.793-94.839-35.273c-10.41-6.866-23.287 4.191-17.982 15.478c37.25 79.182 113.422 137.364 202.969 148.651c171.226 21.579 315.226-122.414 293.648-293.647">
+                            </path>
+                        </g>
+                    </svg>
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -384,15 +406,30 @@
                 <div class="flex items-center ">
                     <div>
                         <button type="button"
-                            class="flex text-sm {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            class="flex text-sm {{ Auth::user()->user_profile_image ? '' : 'p-2' }} rounded-full  focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                             id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                             <span class="sr-only">Open user menu</span>
                             @if (Auth::user()->user_profile_image)
-                                <img class="w-8 h-8 rounded-full"
+                                <img class="w-8 h-8 rounded-full "
                                     src="{{ asset('user/images') . '/' . Auth::user()->user_profile_image }}"
                                     alt="user photo">
                             @else
-                            <svg height="22px" width="22px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z" fill="#dc85a6"></path><path d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z" fill="#ce5c82"></path><path d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z" fill="#a4c6ec"></path></g></svg>
+                                <svg height="22px" width="22px" viewBox="0 0 1024 1024" class="icon"
+                                    version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z"
+                                            fill="#dc85a6"></path>
+                                        <path
+                                            d="M294.918 325.158c1.283-109.272 89.051-197.047 198.325-198.33 109.292-1.283 197.068 90.983 198.33 198.33 0.812 68.919 107.759 68.998 106.948 0C796.555 157.567 660.839 21.842 493.243 19.88c-167.604-1.963-303.341 140.65-305.272 305.278-0.811 68.998 106.139 68.919 106.947 0z"
+                                            fill="#ce5c82"></path>
+                                        <path
+                                            d="M222.324 959.994c0.65-74.688 29.145-144.534 80.868-197.979 53.219-54.995 126.117-84.134 201.904-84.794 74.199-0.646 145.202 29.791 197.979 80.867 54.995 53.219 84.13 126.119 84.79 201.905 0.603 68.932 107.549 68.99 106.947 0-1.857-213.527-176.184-387.865-389.716-389.721-213.551-1.854-387.885 178.986-389.721 389.721-0.601 68.991 106.349 68.933 106.949 0.001z"
+                                            fill="#a4c6ec"></path>
+                                    </g>
+                                </svg>
                             @endif
                         </button>
                     </div>

@@ -28,8 +28,8 @@ class EmployeeController extends Controller
             'first_name' => 'required|string|max:155',
             'last_name' => 'required|string|max:155',
             'email' => 'required|email|unique:employees',
-            'date_of_birth' => 'required|date',
-            'address' => 'required|string|max:255',
+            'join_date' => 'nullable|date',
+            'address' => 'nullable|string|max:255',
             'phone' => 'required|string|max:155',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             /*  'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
@@ -68,7 +68,6 @@ class EmployeeController extends Controller
                 $document->move(public_path('employee/documents/'), $uniqueName);
                 $documentPaths[] = $uniqueName;
             }
-            //dd($documentPaths);
         }
 
 
@@ -79,7 +78,7 @@ class EmployeeController extends Controller
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
-            'date_of_birth' => $request->input('date_of_birth'),
+            'join_date' => $request->input('join_date'),
             'address' => $request->input('address'),
             'phone' => $request->input('phone'),
             'image_path' => $imageName,
@@ -102,13 +101,12 @@ class EmployeeController extends Controller
     }
 
     public function showEmployeeUpdateForm($id)
-
     {
         $employee = Employee::findOrFail($id);
         $departments = Department::all();
         $department = $employee->department->id;
         $doc = json_decode($employee->document_path, true);
-        $doc = explode(',',    $doc);
+        $doc = explode(',', $doc);
         //dd($doc);
         //dd($departments);
         return view('pages.expenses.employee.updateFormEmployee', ['employee' => $employee, 'departments' => $departments, 'department' => $department, 'doc' => $doc]);
@@ -118,21 +116,21 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
 
-        // dd($employee->documents_path);
+        //dd($request->all());
         // Validate the incoming data
         $validator = FacadesValidator::make($request->all(), [
             'first_name' => 'required|string|max:155',
             'last_name' => 'required|string|max:155',
             'email' => 'required|email',
-            'date_of_birth' => 'required|date',
-            'address' => 'required|string|max:255',
+            'join_date' => 'nullable|date',
+            'address' => 'nullable|string|max:255',
             'phone' => 'required|string|max:155',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             /*   'documents_path.*' => 'nullable|file|mimes:pdf,doc,docx,txt,xls,xlsx|max:10240', */
             'department_id' => 'required|integer',
         ]);
 
-
+        /*   Error Validation Check */
         if ($validator->fails()) {
             $errors = $validator->errors();
             //  dd($errors);
@@ -140,7 +138,16 @@ class EmployeeController extends Controller
                 ->withErrors($errors)
                 ->withInput();
         }
+
+        /*   Error Validation Check */
+
+
+
+        /*   Documet Upload Function   */
+
+
         $documentPaths = [];
+        $checkDocumentPaths = [];
         if ($request->hasFile('documents_path')) {
 
             foreach ($request->file('documents_path') as $document) {
@@ -162,27 +169,30 @@ class EmployeeController extends Controller
 
                 $document->move(public_path('employee/documents/'), $uniqueName);
                 $documentPaths[] = $uniqueName;
+                $checkDocumentPaths[] = $uniqueName;
             }
-            //dd($documentPaths);
+
         }
 
 
-
+        //dd($employee->document_path);
         if (is_array($documentPaths) && count($documentPaths) <= 0) {
-            $documentPaths = $employee->documents_path;
-            $documentPaths =  explode(',',  $documentPaths);
+
+            $documentPaths = $employee->document_path;
+            // dd($documentPaths);
+            $documentPaths = explode(',', $documentPaths);
             $documentPaths = array_map(function ($item) {
                 return trim($item, '"');
             }, $documentPaths);
             //dd($documentPaths);
         }
 
-
+        // dd($documentPaths);
 
         if ($employee) {
             // Store the previous image and document paths
             $previousImagePaths = $employee->image_path;
-            $previousDocumentPaths = $employee->documents_path;
+            $previousDocumentPaths = $employee->document_path;
 
             if ($request->hasFile('image')) {
                 // Delete the previous image file
@@ -199,33 +209,57 @@ class EmployeeController extends Controller
             } else {
                 $imageName = $previousImagePaths;
             }
-            if (is_array($documentPaths) && count($documentPaths) <= 0) {
-                $documentPaths = $employee->documents_path;
-                $documentPaths =  explode(',',  $documentPaths);
+            // dd($documentPaths);
+            //dd(count($documentPaths) <= 0);
+
+            if (is_array($documentPaths) && count($documentPaths) < 0) {
+                $documentPaths = $employee->document_path;
+                dd($documentPaths);
+                $documentPaths = explode(',', $documentPaths);
                 $documentPaths = array_map(function ($item) {
                     return trim($item, '"');
                 }, $documentPaths);
             }
 
-            if ($previousDocumentPaths != "" && is_array($documentPaths) && count($documentPaths) <= 0) {
-                // Your code to execute when the string is empty
-                $previousDocumentPaths = explode(',', $previousDocumentPaths);
 
-                // Delete the previous documents
-                foreach ($previousDocumentPaths as $documentPath) {
-                    $documentFullPath = public_path('employee/documents/' . $documentPath);
-                    if (file_exists($documentFullPath)) {
-                        unlink($documentFullPath);
+            // dd($checkDocumentPaths);
+            //dd($documentPaths);
+
+            //check empty or not
+            if ($previousDocumentPaths != "" && is_array($documentPaths) && count($documentPaths) > 0) {
+                $previousDocumentPaths = json_decode($previousDocumentPaths); // Your code to execute when the string is empty
+                $previousDocumentPaths = explode(',', $previousDocumentPaths);
+                function arraysMatch($documentPaths, $previousDocumentPaths)
+                {
+                    return array_values($documentPaths) === array_values($previousDocumentPaths);
+                }
+
+                $result = arraysMatch($documentPaths, $previousDocumentPaths);
+                //dd($previousDocumentPaths);
+                if (!empty($checkDocumentPaths) && $result == false) {
+                    foreach ($previousDocumentPaths as $documentPath) {
+                        $documentFullPath = public_path('employee/documents/' . $documentPath);
+
+
+                        // dd($result);
+                        if (file_exists($documentFullPath)) {
+
+                            unlink($documentFullPath);
+
+                        }
                     }
                 }
+
             }
 
             // Update the employee record
+
             $employee->update([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'email' => $request->input('email'),
-                'date_of_birth' => $request->input('date_of_birth'),
+                'join_date' => $request->input('join_date'),
+
                 'address' => $request->input('address'),
                 'phone' => $request->input('phone'),
                 'image_path' => $imageName,
@@ -233,7 +267,7 @@ class EmployeeController extends Controller
                 'department_id' => $request->input('department_id'),
             ]);
 
-            return redirect('employee/details/update/' . $id);
+            return redirect('employee/list');
         }
 
         return redirect()->back();
@@ -262,4 +296,33 @@ class EmployeeController extends Controller
 
         return response()->json(['message' => 'Employee and associated files deleted successfully'], 201);
     }
+
+
+    public function downloadDocuments($id)
+    {
+        $expense = Employee::findOrFail($id);
+        $documentStringPaths = json_decode($expense->document_path, true);
+        $documentPaths = explode(',', $documentStringPaths);
+
+        // Create a zip file to store the documents
+        $zip = new \ZipArchive();
+        $zipFileName = "expense_documents_$id.zip";
+        $zipFilePath = storage_path("app/public/$zipFileName");
+        $zip->open($zipFilePath, \ZipArchive::CREATE);
+
+        // Add each document to the zip file
+        foreach ($documentPaths as $documentPath) {
+            $documentFullPath = public_path("employee/documents/$documentPath");
+            if (file_exists($documentFullPath)) {
+                $zip->addFile($documentFullPath, $documentPath);
+            }
+        }
+
+        $zip->close();
+
+        // Return the zip file for download
+        return response()->download($zipFilePath)->deleteFileAfterSend(true);
+
+    }
+
 }

@@ -88,44 +88,77 @@
                             <thead class="bg-gray-100 dark:bg-gray-700">
                                 <tr>
 
+
                                     <th scope="col"
-                                        class="p-4 w-1/12 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        id
-                                    </th>
-                                    <th scope="col"
-                                        class="p-4 w-3/12 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                         Name
                                     </th>
 
                                     <th scope="col"
-                                        class="p-4 w-2/12  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Phone
                                     </th>
                                     <th scope="col"
-                                        class="p-4 w-3/12  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Email
                                     </th>
                                     <th scope="col"
-                                        class="p-4 w-3/12  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Department Name
                                     </th>
                                     <th scope="col"
-                                        class="p-4 w-3/12  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
-                                        Action
+                                        class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        Address
                                     </th>
+                                    <th scope="col"
+                                        class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                        Join Date
+                                    </th>
+                                    @if (auth()->user()->role->name === 'admin')
+                                        <th scope="col"
+                                            class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                            Documents
+                                        </th>
+
+                                        <th scope="col"
+                                            class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                            Action
+                                        </th>
+                                    @endif
+
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <td class="flex items-center p-4 mr-12 space-x-2 whitespace-nowrap">
+                                            <img class="w-10 h-10 rounded-full"
+                                                src="{{ asset('employee/images') . '/' . $employee->image_path }}"
+                                                alt="Neil Sims avatar">
+                                            <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                                <div class="text-base font-semibold text-gray-900 dark:text-white">
+                                                    {{ $employee->first_name . ' ' . $employee->last_name }}
+                                                </div>
 
-                                        <td
-                                            class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $employee->id }}</td>
-                                        <td
-                                            class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $employee->first_name . ' ' . $employee->last_name }}</td>
+                                            </div>
+                                        </td>
+
+                                        {{--   <td
+                                            class="p-4 mr-2 flex  text-base font-medium text-left text-gray-900 whitespace-nowrap dark:text-white">
+
+
+                                            @if ($employee->image_path)
+                                                <img class="w-10 h-10 rounded-full object-cover"
+                                                    src="{{ asset('employee/images') . '/' . $employee->image_path }}"
+                                                    alt="Employee Profile">
+                                            @endif
+                                            <div class="flex justify-start items-center ">
+
+
+                                                <span> {{ $employee->first_name . ' ' . $employee->last_name }}</span>
+                                            </div>
+                                        </td> --}}
                                         <td
                                             class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $employee->phone }}</td>
@@ -135,57 +168,75 @@
                                         <td
                                             class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $employee->department->name }}</td>
-                                        <td class="p-2 text-right space-x-2 whitespace-nowrap">
-                                            <a href="{{ url('employee/details') . '/' . $employee->id }}">
-                                                <button data-id="{{ $employee->id }}"
-                                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                        <td
+                                            class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $employee->address }}</td>
+                                        <td
+                                            class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $employee->join_date }}</td>
+                                        @if (auth()->user()->role->name === 'admin')
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+
+                                                @if ($employee->document_path)
+                                                    <a
+                                                        href="{{ route('employee.download.documents', ['id' => $employee->id]) }}">
+
+                                                        <button type="button"
+                                                            class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download
+
+                                                            <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                                fill="currentColor" viewBox="0 0 24 24"
+                                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                    d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                                </path>
+                                                            </svg>
+                                                            <span class="sr-only">Download</span>
+                                                        </button>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        @endif
+
+                                        @if (auth()->user()->role->name === 'admin')
+                                            <td class="p-2 text-right space-x-2 whitespace-nowrap">
+
+
+                                                <a href="{{ url('employee/details/update') . '/' . $employee->id }}">
+                                                    <button type="button" data-id="{{ $employee->id }}" id="updateButton"
+                                                        {{--  data-modal-toggle="transactionEditModal" --}}
+                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                                            </path>
+                                                            <path fill-rule="evenodd"
+                                                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        Update
+                                                    </button>
+                                                </a>
+
+                                                <button data-id="{{ $employee->id }} "
+                                                    onclick="deleteEmployeeFunc({{ $employee->id }})"
+                                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
                                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
-                                                        </path>
                                                         <path fill-rule="evenodd"
-                                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                                                             clip-rule="evenodd"></path>
                                                     </svg>
-                                                    Details
+                                                    <span>
+                                                        Delete
+                                                    </span>
                                                 </button>
-                                            </a>
+                                            </td>
+                                        @endif
 
 
-                                        </td>
-                                        {{--  <td class="p-2 text-right space-x-2 whitespace-nowrap">
-                                            <button onclick="updateDepartment(this)"
-                                                data-modal-target="department-update-modal"
-                                                data-modal-toggle="department-update-modal" type="button"
-                                                data-id="{{ $employee->id }}"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
-                                                    </path>
-                                                    <path fill-rule="evenodd"
-                                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                                Edit user
-                                            </button>
-                                            <button type="button" data-id="{{ $employee->id }}"
-                                                onclick="departmentDeleteFunc(this)" id="departmentDeleteBtn"
-                                                class="inline-flex
-                                                items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600
-                                                rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300
-                                                dark:focus:ring-red-900">
-                                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                                Delete user
-                                            </button>
-                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -278,14 +329,14 @@
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
-                                    <input type="date" name="date_of_birth" id="date_of_birth"
+                                    <input type="date" name="join_date" id="join_date"
                                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " />
-                                    <label for="date_of_birth"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date
-                                        Of Birth</label>
-                                    <p id="employee_date_of_birth_error"
-                                        class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
+                                    <label for="join_date"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        Join Date</label>
+                                    <p id="employee_join_date_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
@@ -309,7 +360,7 @@
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="text" name="address" id="address"
                                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                        placeholder=" " required />
+                                        placeholder=" " />
                                     <label for="address"
                                         class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
                                     <p id="employee_address_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -391,7 +442,7 @@
 
 
     <script>
-        let employeeCreateForm = document.getElementById('employeeCreateForm');
+        const employeeCreateForm = document.getElementById('employeeCreateForm');
         /* Reset Modal */
         const closeCreateEmpModal = () => {
             employeeCreateForm.reset();
@@ -400,33 +451,26 @@
 
         employeeCreateForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const formData = new FormData(this);
-
-            // Append the image and document files to FormData
-            /*   formData.append('image', document.querySelector('input[name="image_path"]').files[0] ?? '');
-              formData.append('document', document.querySelector('input[name="documents_path[]"]').files[0] ?? ''); */
-            //let img = document.getElementById('image_path').files[0];
-            //formData.append('image', img)
-            console.log(formData);
-
-            // Send data using Axios
-
+            const formData = new FormData(employeeCreateForm);
+            Notiflix.Loading.dots({
+                svgColor: "#fff"
+            });
             axios.post('/employee/store', formData)
 
                 .then(function(response) {
-                    // console.log(formData)
                     if (response.status === 201) {
                         employeeCreateForm.reset();
-                        window.location.assign("/employee/list");
+                        window.location.reload();
+                        Notiflix.Loading.remove()
                     }
                 })
                 .catch(function(error) {
+                    Notiflix.Loading.remove()
                     if (error.response && error.response.status === 422) {
                         let allError = error.response.data.errors
                         // console.log(allError);
                         for (const field in allError) {
                             const errorDiv = document.getElementById(`employee_${field}_error`);
-                            console.log("hi");
                             if (errorDiv) {
                                 // Clear any previous error message
                                 errorDiv.innerHTML = '';
@@ -494,5 +538,47 @@
                 docPreviewDiv.classList.add('hidden')
             }
         });
+
+
+        /*  delete Employee */
+
+
+        const deleteEmployeeFunc = (id) => {
+
+            Notiflix.Confirm.show(
+                'Employee Delete  Confirm',
+                'Do you want to Delete ?',
+                'Yes',
+                'No',
+                function okCb() {
+                    axios.post(`/employee/details/delete/${id}`)
+                        .then(response => {
+                            // Handle success
+                            if (response.status === 201) {
+
+
+                                window.location.assign("/employee/list");
+                            }
+                            //console.log(response.data);
+                            // You can update your page or UI as needed
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                },
+                function cancelCb() {
+
+                }, {
+                    width: '320px',
+                    borderRadius: '8px',
+                    messageColor: '#1e1e1e',
+                    titleColor: '#DA1010',
+                    okButtonColor: '#f8f8f8',
+                    okButtonBackground: '#DA1010',
+                },
+            );
+
+        }
     </script>
 @endsection

@@ -127,7 +127,7 @@
                     {{-- Expenses End --}}
 
                     {{-- Income Start --}}
-                    <li>
+                    {{--  <li>
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-income">
@@ -167,7 +167,7 @@
                                     class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Exemple</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     {{-- Income End --}}
                     {{-- Employee Start --}}
                     <li>
@@ -281,12 +281,12 @@
                             </svg>
                         </button>
                         <ul id="dropdown-tt-manae"
-                            class="{{ request()->routeIs(['invoices.list', 'factories.list','invoice.details', 'banks.list', 'buyers.list','companies.list']) ? '' : 'hidden' }}
+                            class="{{ request()->routeIs(['invoices.list', 'factories.list', 'invoice.details', 'banks.list', 'buyers.list', 'companies.list']) ? '' : 'hidden' }}
 
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('invoices.list') }}"
-                                    class="{{ request()->routeIs(['invoices.list','invoice.details']) ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
+                                    class="{{ request()->routeIs(['invoices.list', 'invoice.details']) ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
                                     Order</a>
                             </li>
                             <li>

@@ -24,11 +24,11 @@ class TtManageTransactionController extends Controller
     public function getInvoiceDetails($id)
     {
         $banks = Bank::all();
-
         $invoiceDetails = Invoice::findOrFail($id);
         $companyId = $invoiceDetails->company->id;
         // dd( $companyId);
-        $transactions = Transaction::where('invoice_id', $id)->get();
+        $transactions = Transaction::where('invoice_id', $id)->paginate(6);
+
         $receiveValueFromBuyer = $transactions->where('type_of_transaction', 1)->sum('value');
         $payValueToFactory = $transactions->where('type_of_transaction', 2)->sum('value');
         $currentTotalBalance = $receiveValueFromBuyer - $payValueToFactory;

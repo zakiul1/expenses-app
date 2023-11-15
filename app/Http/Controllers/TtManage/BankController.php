@@ -10,7 +10,7 @@ class BankController extends Controller
 {
     public function index()
     {
-        $banks = Bank::latest()->paginate(5);
+        $banks = Bank::latest()->paginate(6);
         return view("tt-manage.bank.bank", ['banks' => $banks]);
     }
     public function store(Request $request)

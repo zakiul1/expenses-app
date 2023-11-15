@@ -41,12 +41,8 @@
                 <div class="flex justify-between pb-4  border-b border-gray-300">
                     <h1 class="text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">Department List</h1>
 
-                    {{--       <button data-modal-target="department-create-modal" data-modal-toggle="department-create-modal"
-                        class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
-                        Add
-                    </button> --}}
-                    <button type="button" data-modal-target="department-create-modal"
-                        data-modal-toggle="department-create-modal" data-modal-toggle="attendance-entry-modal"
+                    <button type="button" data-modal-target="createDepartmentModal"
+                        data-modal-toggle="createDepartmentModal" data-modal-toggle="attendance-entry-modal"
                         data-modal-toggle="category-create-modal"
                         class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
@@ -79,7 +75,7 @@
                                         id
                                     </th>
                                     <th scope="col"
-                                        class="p-4 w-6/12 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                        class="p-4 w-6/12 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                         Name
                                     </th>
 
@@ -98,10 +94,10 @@
                                             class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $department->id }}</td>
                                         <td
-                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="p-4 text-center text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $department->name }}</td>
 
-                                        <td class="p-4 text-right space-x-2 whitespace-nowrap">
+                                        <td class="p-4 text-center space-x-2 whitespace-nowrap">
                                             <button onclick="updateDepartment(this)"
                                                 data-modal-target="department-update-modal"
                                                 data-modal-toggle="department-update-modal" type="button"
@@ -156,14 +152,14 @@
 
 
     <!-- Department Create modal -->
-    <div id="department-create-modal" tabindex="-1" aria-hidden="true"
+    <div id="createDepartmentModal" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-md max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button type="button"
                     class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="department-create-modal">
+                    data-modal-hide="createDepartmentModal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -184,7 +180,7 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                             Department</button>
 
                     </form>
@@ -239,100 +235,111 @@
 
 
     <script>
-        // Department Data send
-
+        //Store Data Script Department 
         const departmentForm = document.getElementById('departmentForm');
         const departmentError = document.getElementById('department_name_error_');
 
-        departmentForm.addEventListener('submit', async (e) => {
+        const handleFormSubmit = async (e) => {
             e.preventDefault();
 
             try {
                 const formData = new FormData(departmentForm);
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
+                });
                 const response = await axios.post('/employee/department/store', formData);
 
                 if (response.status === 201) {
+                    Notiflix.Loading.remove();
                     departmentForm.reset();
-                    window.location.assign("/employee/department");
+                    window.location.reload();
                 }
             } catch (error) {
+                console.log(error);
                 departmentError.innerText = error.response.data.message;
+                Notiflix.Loading.remove();
             }
-        });
+        };
+
+        departmentForm.addEventListener('submit', handleFormSubmit);
 
 
 
-        //Edit Department Get Data
+
+        //Department Data Get Script for Set Value
+
         const departmentNameUpdate = document.getElementById('departmentNameUpdate');
         const departmentUpdateSubmit = document.getElementById('departmentUpdateSubmit');
-        const updateDepartment = (el) => {
-            const id = el.getAttribute("data-id")
+
+        const updateDepartment = el => {
+            const id = el.getAttribute("data-id");
+            Notiflix.Loading.dots({
+                svgColor: "#fff"
+            });
             axios.get(`/employee/department/${id}`)
-                .then(function(response) {
-                    if (response.data) {
-                        departmentNameUpdate.value = response.data.name
-                        departmentUpdateSubmit.setAttribute("data-id", response.data.id);
+                .then(({
+                    data
+                }) => {
+                    Notiflix.Loading.remove();
+                    if (data) {
+                        const {
+                            name,
+                            id
+                        } = data;
+                        departmentNameUpdate.value = name;
+                        departmentUpdateSubmit.setAttribute("data-id", id);
                     }
-                    //console.log(response.data);
                 })
-                .catch(function(error) {
+                .catch((error) => {
                     console.log(error);
+                    Notiflix.Loading.remove();
                 });
-        }
+        };
 
 
 
-        //update data Department
+
+        //update data Script Department
         document.getElementById('departmentUpdateForm').addEventListener('submit', function(e) {
             const departmentId = departmentUpdateSubmit.getAttribute("data-id");
             e.preventDefault();
             const updatedData = {
-                name: departmentNameUpdate.value,
+                name: departmentNameUpdate.value
             };
 
             axios.post(`/employee/department/update/${departmentId}`, updatedData)
-                .then(response => {
-                    console.log(response.data);
-                    window.location.assign("/employee/department");
+                .then(({
+                    data
+                }) => {
+                    console.log(data);
+                    window.location.reload();
                 })
-                .catch(error => {
-                    console.error(error);
-                });
+                .catch(console.error);
         });
+
 
 
 
 
         //Delete  data Department
-        const departmentDeleteFunc = (el) => {
-            let id = el.getAttribute("data-id")
-            // console.log(id);
+        const departmentDeleteFunc = el => {
+            let id = el.getAttribute("data-id");
 
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Department Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
-                function okCb() {
+                () => {
                     axios.post(`/employee/department/delete/${id}`)
                         .then(response => {
-                            // Handle success
                             if (response.status === 201) {
-
-
                                 window.location.assign("/employee/department");
                             }
-                            //console.log(response.data);
-                            // You can update your page or UI as needed
                         })
-                        .catch(error => {
-                            // Handle error
-                            console.error(error);
-                        });
+                        .catch(console.error);
                 },
-                function cancelCb() {
-
-                }, {
+                () => {}, {
                     width: '320px',
                     borderRadius: '8px',
                     messageColor: '#1e1e1e',
@@ -341,8 +348,6 @@
                     okButtonBackground: '#DA1010',
                 },
             );
-
-
-        }
+        };
     </script>
 @endsection

@@ -25,8 +25,8 @@
 
 
         {{-- Form Start --}}
-        <div class=" w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0max-h-full">
-            <div class="relative w-full h-full  px-4 md:h-auto">
+        <div class=" w-full  overflow-x-hidden overflow-y-auto md:inset-0max-h-full">
+            <div class="relative w-full h-full   md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
@@ -106,14 +106,14 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
                                     <div class="relative z-0 w-full mb-1 group">
-                                        <input type="date" value="{{ $employee->date_of_birth }}" name="date_of_birth"
-                                            id="date_of_birth"
+                                        <input type="date" value="{{ $employee->join_date }}" name="join_date"
+                                            id="join_date"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                             placeholder=" " />
-                                        <label for="date_of_birth"
-                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date
-                                            Of Birth</label>
-                                        @error('date_of_birth')
+                                        <label for="join_date"
+                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                            Join Date</label>
+                                        @error('join_date')
                                             <p id="" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                                 {{ $message }}
                                             </p>
@@ -148,7 +148,7 @@
                                         <input type="text" value="{{ $employee->address }}" name="address"
                                             id="address"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                            placeholder=" " required />
+                                            placeholder=" " />
                                         <label for="address"
                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
                                         @error('address')
@@ -181,15 +181,7 @@
                                                         class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $employee->image_path }}</span>
                                                 </div>
                                             @else
-                                                <svg class="h-20 w-20 p-1  rounded-full bg-white text-gray-800 dark:text-white"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 16 20">
-                                                    <path fill="currentColor"
-                                                        d="M11.045 7.514a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm-4.572 3.072L3.857 15.92h7.949l-1.811-3.37-1.61 2.716-1.912-4.679Z" />
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M6 1v4a1 1 0 0 1-1 1H1m14 12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2v16ZM11.045 7.514a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.857 15.92l2.616-5.333 1.912 4.68 1.61-2.717 1.81 3.37H3.858Z" />
-                                                </svg>
+                                                <h2>Image Not Found</h2>
                                             @endif
 
                                         </div>
@@ -233,6 +225,8 @@
                                                             class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $item }}</span>
                                                     </div>
                                                 @endforeach
+                                            @else
+                                                <h2>File Not Found</h2>
                                             @endif
 
 

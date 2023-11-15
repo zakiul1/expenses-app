@@ -44,14 +44,17 @@ Route::get('/expenses', function () {
     return redirect('/dashboard');
 });
 
-
 Route::middleware(['auth', 'admin:admin'])->group(function () {
-
     Route::get('user/list', [AdminController::class, 'index'])->name('user.list');
     Route::post('user/store', [AdminController::class, 'store']);
     Route::post('user/update/{id}', [AdminController::class, 'update']);
     Route::post('user/delete/{id}', [AdminController::class, 'delete']);
     Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
+});
+
+Route::middleware(['auth'])->group(function () {
+
+
     Route::group(['prefix' => 'expenses'], function () {
         //category Route Start
         Route::get('/category', [ExpenseCategory::class, 'index'])->name('expenses.category');
@@ -86,6 +89,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
         Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
         Route::get('/details/update/{id}', [EmployeeController::class, 'showEmployeeUpdateForm']);
         Route::post('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
+        Route::get('/download/documents/{id}', [EmployeeController::class, 'downloadDocuments'])->name('employee.download.documents');
         //attendance Route
         Route::get('/attendance/entry', [AttendanceController::class, 'index'])->name('employee.attendance');
         Route::get('/attendance/update/{id}', [AttendanceController::class, 'previewUpdateData']);

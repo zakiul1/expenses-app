@@ -10,16 +10,16 @@ class Employee extends Model
     use HasFactory;
 
     protected $table = 'employees';
-    protected $fillable = ['first_name', 'last_name', 'email', 'date_of_birth', 'address', 'phone', 'image_path', 'document_path', 'department_id'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'join_date', 'address', 'phone', 'image_path', 'document_path', 'department_id'];
 
     // Define the "belongs to" relationship with the Department model
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
-            public function attendances()
+    public function attendances()
     {
-    return $this->hasMany(Attendance::class);
+        return $this->hasMany(Attendance::class);
     }
 
 

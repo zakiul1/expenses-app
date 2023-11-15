@@ -10,10 +10,11 @@ class FactoryController extends Controller
 {
     public function index()
     {
-        $factories = Factory::latest()->paginate(5);
+        $factories = Factory::latest()->paginate(6);
         return view("tt-manage.factory.factory", ['factories' => $factories]);
     }
-    public function getFactoryData($id){
+    public function getFactoryData($id)
+    {
         $factory = Factory::findOrFail($id);
         return response()->json($factory);
 
@@ -30,7 +31,7 @@ class FactoryController extends Controller
         ]);
 
         // Create a new factory using the validated data
-       Factory::create($validatedData);
+        Factory::create($validatedData);
 
         // You can add any additional logic here, such as redirecting or returning a response
 

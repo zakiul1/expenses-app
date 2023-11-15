@@ -7,8 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Expenses App') }}</title>
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="160x160" type="image/x-icon">
 
-    <!-- Fonts -->
+
+    <!-- Fonts  android-chrome-512x512.png-->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
