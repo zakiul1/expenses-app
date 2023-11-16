@@ -48,46 +48,50 @@
                             <h3 class="mb-2 text-2xl font-semibold text-gray-600 dark:text-white">Transactions</h3>
 
                         </div>
-                        <div class="items-center sm:flex">
+                        <div class="items-center mb-2 md:mb-0 flex sm:flex">
 
-                            <div date-rangepicker="" class="flex items-center space-x-4">
+                            <div date-rangepicker="" class="flex items-center space-x-2 md:space-x-4">
                                 <div class="relative">
                                     <input name="fromDate" type="date"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm  rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
                                         placeholder="From">
                                 </div>
                                 <div class="relative">
                                     <input name="toDate" type="date"
-                                        class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
+                                        class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
                                         placeholder="To">
                                 </div>
                             </div>
                             {{-- Submit Button --}}
-                            <button type="submit"
-                                class="mb-4 sm:mb-0 mr-4 ml-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                            <div class="">
+                                <button type="submit"
+                                    class="  sm:mb-0 md:mr-4 ml-2 md:ml-4 inline-flex text-xs md:text-sm  items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-4 py-2 md:py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
 
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                Search
-                            </button>
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Search
+                                </button>
+                            </div>
 
                         </div>
                 </form>
+                <div class="flex justify-end">
+                    <button type="button" data-modal-toggle="transactionAddModal"
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm lg:text-sm  font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold"> Add User</span>
+                    </button>
+                </div>
 
-                <button type="button" data-modal-toggle="transactionAddModal"
-                    class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="font-semibold"> Add User</span>
-                </button>
 
             </div>
         </div>
@@ -101,7 +105,7 @@
         {{-- Table  Start --}}
         @if ($totalAmount)
             <div class="py-2">
-                <h2 class="text-3xl pb-2 text-lime-600 ">Total Amount : {{ $totalAmount }}</h2>
+                <h2 class="text-xl md:text-3xl pb-2 text-lime-600 ">Total Amount : {{ $totalAmount }}</h2>
             </div>
         @endif
 

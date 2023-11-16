@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-4 pt-6 h-screen">
-        <div class="w-full mb-1 flex gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
             {{--    Total Employee  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4  items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
 
-                        <svg height="48px" width="48px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="w-10 h-10 md:w-12 md:h-12" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
                             <path style="fill:#DC85A6;"
                                 d="M256,0c-57.989,0-105.165,47.178-105.165,105.165c0,57.989,47.176,105.165,105.165,105.165  s105.165-47.176,105.165-105.165C361.165,47.178,313.989,0,256,0z" />
@@ -22,20 +22,21 @@
                                 d="M256,0v210.331c57.989,0,105.165-47.176,105.165-105.165C361.165,47.178,313.989,0,256,0z" />
                         </svg>
                     </div>
-                    <h2 class="text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total Employee</h2>
-                    <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
-                        <h2 class=" text-2xl font-bold text-white dark:text-white">{{ $totalEmployees }}</h2>
+                    <h2 class="text-l md:text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total Employee</h2>
+                    <div class="w-8 h-8 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
+                        <h2 class=" text-xl md:2xl font-bold text-white dark:text-white">{{ $totalEmployees }}</h2>
                     </div>
                 </div>
             </div>
             {{--    Total Employee  --}}
             {{--    Total Expense  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
-                        <svg height="48px" width="48px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" xml:space="preserve">
                             <path style="fill:#00D2FF;"
                                 d="M432.274,135.587L256,282.483L90.528,123.63c-39.615,41.234-64.045,97.154-64.045,158.852  C26.483,409.241,129.241,512,256,512s229.517-102.759,229.517-229.517C485.517,226.584,465.489,175.394,432.274,135.587z" />
                             <path style="fill:#9BE6D2;"
@@ -48,11 +49,12 @@
                                 d="M156.452,75.713c-24.787,11.972-47.119,28.228-65.976,47.866l16.051,15.41  C119.356,115.032,136.318,93.635,156.452,75.713z" />
                         </svg>
                     </div>
-                    <h2 class="text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total Expenses In</h2>
-                    <h2 class="text-xl text-sky-700 font-semibold dark:text-white">{{ now()->format('M Y') }}</h2>
+                    <h2 class="text-l md:text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total Expenses In</h2>
+                    <h2 class="text-l md:text-xl mt-3 font-semibold text-sky-700 dark:text-white">{{ now()->format('M Y') }}
+                    </h2>
 
                     <div class="py-1 px-3 bg-sky-500 mt-3 rounded-md">
-                        <h2 class="text-2xl font-bold  text-white dark:text-white">
+                        <h2 class="text-xl md:2xl font-bold  text-white dark:text-white">
                             @if ($totalAmountCurrentMonth)
                                 {{ $totalAmountCurrentMonth }}
                             @else
@@ -65,11 +67,11 @@
             {{--    Total Expense  --}}
 
 
-            {{--    Total Expense  --}}
+            {{--    Total Attendance  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-6">
-                    <svg width="48px" height="48px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                    <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M241.371429 548.571429a358.4 285.257143 90 1 0 570.514285 0 358.4 285.257143 90 1 0-570.514285 0Z"
@@ -93,32 +95,27 @@
                             d="M387.657143 943.542857h-14.628572c-14.628571-7.314286-14.628571-21.942857-7.314285-36.571428l80.457143-146.285715 43.885714-204.8c0-14.628571 14.628571-21.942857 29.257143-21.942857s21.942857 14.628571 21.942857 29.257143l-43.885714 219.428571-87.771429 153.6s-14.628571 7.314286-21.942857 7.314286z"
                             fill="#D72822" />
                     </svg>
-                    <h2 class="text-xl font-semibold text-sky-700 dark:text-white mt-3">Total Present Today</h2>
+                    <h2 class="text-l md:text-xl font-semibold text-sky-700 dark:text-white mt-3">Total Present Today</h2>
                     <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
-                        <h2 class="text-2xl font-bold  text-white dark:text-white">
+                        <h2 class="text-xl md:text-2xl font-bold  text-white dark:text-white">
                             {{ $attendanceCount }}
                         </h2>
                     </div>
 
 
 
-                    {{--   <h2 class="text-2xl font-semibold text-sky-700 dark:text-white mt-3 ">Total Late Today</h2>
-                    <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
-                        <h2 class="text-2xl font-bold  text-white dark:text-white">
-                            {{ $lateAttendanceCount }}
-                        </h2>
-                    </div> --}}
+
 
                 </div>
             </div>
             {{--    Total Expense  --}}
             {{--    Total User  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
 
-                        <svg width="48px" height="48px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                        <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 1024 1024" class="icon" version="1.1"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M691.573 338.89c-1.282 109.275-89.055 197.047-198.33 198.331-109.292 1.282-197.065-90.984-198.325-198.331-0.809-68.918-107.758-68.998-106.948 0 1.968 167.591 137.681 303.31 305.272 305.278C660.85 646.136 796.587 503.52 798.521 338.89c0.811-68.998-106.136-68.918-106.948 0z"
@@ -131,9 +128,9 @@
                                 fill="#E5594F" />
                         </svg>
                     </div>
-                    <h2 class="text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total User</h2>
+                    <h2 class="text-l md:xl mt-3 font-semibold text-sky-700 dark:text-white">Total User</h2>
                     <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
-                        <h2 class=" text-2xl font-bold text-white dark:text-white">{{ $userCount }}</h2>
+                        <h2 class=" text-xl md:2xl font-bold text-white dark:text-white">{{ $userCount }}</h2>
                     </div>
                 </div>
             </div>

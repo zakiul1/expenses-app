@@ -65,5 +65,27 @@ themeToggleBtn.addEventListener('click', function () {
 });
 
 
+
+const toggleSidebarMobile = document.getElementById('toggleSidebarMobile');
+const sideBar = document.getElementById('sidebar');
+const toggleSidebarMobileClose = document.getElementById('toggleSidebarMobileClose');
+const toggleSidebarMobileHamburger = document.getElementById('toggleSidebarMobileHamburger');
+let isSidebarVisible = false;
+
+toggleSidebarMobile.addEventListener('click', () => {
+    if (isSidebarVisible) {
+        sideBar.classList.add('hidden');
+        toggleSidebarMobileHamburger.classList.remove('hidden');
+        toggleSidebarMobileClose.classList.add('hidden');
+    } else {
+        sideBar.classList.remove('hidden');
+        toggleSidebarMobileClose.classList.remove('hidden');
+        toggleSidebarMobileHamburger.classList.add('hidden');
+    }
+    isSidebarVisible = !isSidebarVisible;
+});
+
+
+
 http: Alpine.start();
 

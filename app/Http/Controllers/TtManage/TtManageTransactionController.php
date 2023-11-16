@@ -12,14 +12,7 @@ class TtManageTransactionController extends Controller
 {
 
 
-    /*    public function passData($id)
-       {
-           $invoiceDetails = Invoice::findOrFail($id);
-           $transactions = Transaction::where('invoice_id', $id)->get();
-           $payValueToFactory = $transactions->where('type_of_transaction', 2)->sum('value');
 
-           return $payValueToFactory;
-       } */
 
     public function getInvoiceDetails($id)
     {

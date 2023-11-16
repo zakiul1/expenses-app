@@ -6,6 +6,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Employee\DepartmentController;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Expenses\ExpenseCategory;
 use App\Http\Controllers\Expenses\ExpensesTransaction;
@@ -142,6 +143,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/company/delete/{id}', [CompanyController::class, 'destroy']);
     });
     /* TT Manage Route */
+
+    Route::get('/generate-pdf', function () {
+        $pdf = \PDF::loadView('pdf.document');
+        return $pdf->download('document.pdf');
+    });
+
 });
 
 
