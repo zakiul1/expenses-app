@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/details/update/{id}', [EmployeeController::class, 'showEmployeeUpdateForm']);
         Route::post('/details/delete/{id}', [EmployeeController::class, 'deleteEmploy']);
         Route::get('/download/documents/{id}', [EmployeeController::class, 'downloadDocuments'])->name('employee.download.documents');
+        Route::get('/download/infodetails/{id}', [EmployeeController::class, 'downloadInfoDetails'])->name('employee.download.allInfo');
         //attendance Route
         Route::get('/attendance/entry', [AttendanceController::class, 'index'])->name('employee.attendance');
         Route::get('/attendance/update/{id}', [AttendanceController::class, 'previewUpdateData']);
@@ -145,7 +146,7 @@ Route::middleware(['auth'])->group(function () {
     /* TT Manage Route */
 
     Route::get('/generate-pdf', function () {
-        $pdf = \PDF::loadView('pdf.document');
+        $pdf = \PDF::loadView('pdf.createEmployeeDetails');
         return $pdf->download('document.pdf');
     });
 

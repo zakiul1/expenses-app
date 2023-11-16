@@ -119,6 +119,10 @@
                                             class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                             Documents
                                         </th>
+                                        <th scope="col"
+                                            class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                            Download All Info
+                                        </th>
 
                                         <th scope="col"
                                             class="p-4   text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
@@ -133,9 +137,12 @@
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <td class="flex items-center p-4 mr-12 space-x-2 whitespace-nowrap">
-                                            <img class="w-10 h-10 rounded-full"
+                                            @if ($employee->image_path)
+                                                <img class="w-10 h-10 rounded-full"
                                                 src="{{ asset('employee/images') . '/' . $employee->image_path }}"
-                                                alt="Neil Sims avatar">
+                                                alt="employee profile">
+                                            @endif
+                                            
                                             <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                                 <div class="text-base font-semibold text-gray-900 dark:text-white">
                                                     {{ $employee->first_name . ' ' . $employee->last_name }}
@@ -197,6 +204,29 @@
                                                     </a>
                                                 @endif
                                             </td>
+                                            <td
+                                                class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+
+                                                
+                                                    <a
+                                                        href="{{ route('employee.download.allInfo', ['id' => $employee->id]) }}">
+
+                                                        <button type="button"
+                                                            class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Details 
+
+                                                            <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                                                fill="currentColor" viewBox="0 0 24 24"
+                                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                <path clip-rule="evenodd" fill-rule="evenodd"
+                                                                    d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                                                </path>
+                                                            </svg>
+                                                            <span class="sr-only">Download</span>
+                                                        </button>
+                                                    </a>
+                                               
+                                            </td>
+
                                         @endif
 
                                         @if (auth()->user()->role->name === 'admin')

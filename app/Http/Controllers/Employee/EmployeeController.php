@@ -8,6 +8,8 @@ use App\Models\Employee;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class EmployeeController extends Controller
 {
@@ -323,6 +325,20 @@ class EmployeeController extends Controller
         // Return the zip file for download
         return response()->download($zipFilePath)->deleteFileAfterSend(true);
 
+    }
+
+
+    public function downloadInfoDetails($id)
+    {
+        $data = Employee::findOrFail($id);
+    
+        $pdf = Pdf::loadView('pdf.createEmployeeDetails', ['data' => $data]);
+        $pdf->setPaper('A4', 'portrait');
+    
+        $filename = 'document.pdf';
+    
+      return  $pdf->download($filename);
+      //return back()->withInput();
     }
 
 }
