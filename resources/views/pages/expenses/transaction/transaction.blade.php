@@ -41,7 +41,7 @@
                     </ol>
                 </nav>
                 {{-- uPPER Table --}}
-                <form class="pb-6 border-b border-solid border-gray-300" action="{{ route('expenses.transaction') }}"
+                <form class="pb-2 border-b border-solid border-gray-300" action="{{ route('expenses.transaction') }}"
                     method="GET">
                     <div class="items-center justify-between lg:flex">
                         <div class="mb-4 lg:mb-0">
@@ -53,19 +53,19 @@
                             <div date-rangepicker="" class="flex items-center space-x-2 md:space-x-4">
                                 <div class="relative">
                                     <input name="fromDate" type="date"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm  rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xs  rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
                                         placeholder="From">
                                 </div>
                                 <div class="relative">
                                     <input name="toDate" type="date"
-                                        class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
+                                        class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-xs  rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
                                         placeholder="To">
                                 </div>
                             </div>
                             {{-- Submit Button --}}
                             <div class="">
                                 <button type="submit"
-                                    class="  sm:mb-0 md:mr-4 ml-2 md:ml-4 inline-flex text-xs md:text-sm  items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-4 py-2 md:py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                    class="  sm:mb-0 md:mr-4 ml-2 md:ml-4 inline-flex text-xs   items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-4 py-2 md:py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
 
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">

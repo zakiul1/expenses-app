@@ -10,18 +10,14 @@ class AdminController extends Controller
 {
     public function index()
     {
-
         $users = User::latest()->paginate(6);
-
-
-        // return view('pages.expenses.department.department', ['users' => $users]);
         return view('user.user', ['users' => $users]);
     }
+
     public function getIndividualData($id)
     {
 
         $indUser = User::findOrFail($id);
-        // dd($indUser);
         return response()->json($indUser);
     }
     public function store(Request $request)
@@ -57,20 +53,10 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        //dd($id);
-        // Validate the form data
-        /*   $request->validate([
-            'name' => 'required|string|max:155',
-            'email' => 'required|string|email|max:155|unique:users',
-            'password' => 'required|string|min:8',
-            'role_id' => 'required|integer',
-            'user_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        ]);
- */
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:155',
-            /*  'password' => 'string|min:8', */
             'role_id' => 'required|integer',
             'user_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
 
@@ -134,6 +120,6 @@ class AdminController extends Controller
         // Delete the user
         $user->delete();
 
-        return response()->json(['message' => 'User and associated image deleted successfully'], 200);
+        return response()->json(['message' => 'User and associated image deleted successfully'], 201);
     }
 }

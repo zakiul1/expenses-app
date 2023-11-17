@@ -149,11 +149,11 @@
                                                 {{ $invoice->invoice_value }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $invoice->company->name }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $invoice->buyer->name }}
                                             </td>
                                             <td
@@ -172,10 +172,23 @@
                                                 class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $invoice->factory_value }}
                                             </td>
+                                            @php
+                                                $sumOfTypeTwoTransactions = $invoice
+                                                    ->transactions()
+                                                    ->where('type_of_transaction', 2)
+                                                    ->sum('value');
+
+                                            @endphp
                                             <td
                                                 class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{--  {{ $invoice->factory_value }} --}}<span
-                                                    class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">Runing</span>
+                                                @if ($sumOfTypeTwoTransactions >= $invoice->factory_value)
+                                                    <span
+                                                        class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">Completed</span>
+                                                @elseif ($sumOfTypeTwoTransactions <= $invoice->factory_value)
+                                                    <span
+                                                        class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">Runing</span>
+                                                @endif
+
                                             </td>
 
                                             <td class="p-4 text-right space-x-2 whitespace-nowrap">

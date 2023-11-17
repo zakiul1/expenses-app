@@ -52,12 +52,12 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class="text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">Attendance View</h1>
+                    <h1 class="text-xl font-semibold text-gray-600 md:text-2xl dark:text-white">Attendance View</h1>
 
 
                     <button type="button" data-modal-target="attendance-entry-modal"
                         data-modal-toggle="attendance-entry-modal" data-modal-toggle="category-create-modal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-smfont-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -120,12 +120,12 @@
                                 @foreach ($attendance as $item)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <td
-                                            class="p-4 text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $item->employee->first_name . ' ' . $item->employee->last_name }}
 
                                         </td>
                                         <td
-                                            class="p-4 text-center text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                            class="p-4 text-center text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             @php
                                                 $checkInDateTime = \Carbon\Carbon::parse($item->check_in);
                                                 $expectedStartTime = \Carbon\Carbon::parse('09:00')->setDate($checkInDateTime->year, $checkInDateTime->month, $checkInDateTime->day);
@@ -144,7 +144,7 @@
 
 
                                         <td
-                                            class="p-4 text-center  text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                            class="p-4 text-center  text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $checkInDateTime->format('F d, Y h:i A') }}
 
                                         </td>
@@ -154,7 +154,7 @@
                                             {{ $item->user->name }}
                                         </td>
                                         <td
-                                            class="p-4 text-center text-base font-medium text-gray-900 {{ $item->comment ? 'min-w-[300px] ' : '' }} whitespace-normal dark:text-white">
+                                            class="p-4 text-center text-base font-medium text-gray-900 {{ $item->comment ? 'min-w-[300px] ' : '' }} whitespace-nowrap dark:text-white">
                                             <span>{{ $item->comment }}</span>
                                         </td>
 

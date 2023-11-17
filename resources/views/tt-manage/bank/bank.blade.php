@@ -52,11 +52,11 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">Bank List</h1>
+                    <h1 class="text-xl md:text-2xl font-semibold text-gray-600 dark:text-white">Bank List</h1>
 
 
                     <button type="button" data-modal-target="add-bank-modal" data-modal-toggle="add-bank-modal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -471,55 +471,48 @@
         const createBankForm = document.getElementById('createBankForm');
         const addBankModal = document.getElementById('add-bank-modal');
 
-        createBankForm.addEventListener('submit', function(e) {
+        createBankForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(createBankForm);
-            // Send data using Axios
-            Notiflix.Loading.dots();
-            axios.post('/tt-manage/bank/store', formData)
-                .then(function(response) {
-                    if (response.status === 201) {
-                        Notiflix.Loading.remove();
-
-                        addBankModal.classList.add('hidden')
-                        createBankForm.reset();
-
-                        /*   Notiflix.Notify.success(response.data.message, {
-                              timeout: 30000,
-                          }, ); */
-                        window.location.reload();
-                        //window.location.assign("/tt-manage/banks");
-                    }
-                })
-                .catch(function(error) {
-                    Notiflix.Loading.remove();
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`create_bank_${field}_error`);
-                            console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
-                    console.log(error)
+            try {
+                const formData = new FormData(createBankForm);
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+
+                const response = await axios.post('/tt-manage/bank/store', formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    addBankModal.classList.add('hidden');
+                    createBankForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`create_bank_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+                console.log(error);
+            }
         });
+
 
 
         //Edit Bank Get Data
@@ -531,130 +524,131 @@
         const updateBankEmail = document.getElementById('update-bank-email');
         const updateBankAccountNumber = document.getElementById('update-bank-account-number');
         const updateBankModal = document.getElementById('update-bank-modal');
-        const updateBankForm = document.getElementById('updateBankForm');
-        const submitUpdateBank = document.getElementById('submitUpdateBank');
-        const updateBank = (id) => {
 
-            axios.get(`/tt-manage/bank/${id}`)
-                .then(function(response) {
-                    if (response.data) {
-                        updateBankName.value = response.data.name
-                        updateBankType.value = response.data.bank_type
-                        updateBankAddress.value = response.data.address
-                        updateBankSwiftCode.value = response.data.swift_code
-                        updateBankPhoneNumber.value = response.data.phone_no
-                        updateBankEmail.value = response.data.email
-                        updateBankAccountNumber.value = response.data.account_no
-                        submitUpdateBank.setAttribute('data-id', response.data.id);
 
-                        //set Id Value Func
-                        const bank_type = response.data
-                            .bank_type;
-                        for (let i = 0; i < updateUserRole.options.length; i++) {
-                            if (updateBankType.options[i].value === bank_type.toString()) {
-                                updateBankType.options[i].selected = true;
-                                break; // Exit the loop once a match is found
-                            }
+        const updateBank = async (id) => {
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
+                });
+                const response = await axios.get(`/tt-manage/bank/${id}`);
+                if (response.data) {
+                    Notiflix.Loading.remove();
+                    const {
+                        name,
+                        bank_type,
+                        address,
+                        swift_code,
+                        phone_no,
+                        email,
+                        account_no
+                    } = response.data;
+
+                    updateBankName.value = name;
+                    // updateBankType.value = bank_type;
+                    updateBankAddress.value = address;
+                    updateBankSwiftCode.value = swift_code;
+                    updateBankPhoneNumber.value = phone_no;
+                    updateBankEmail.value = email;
+                    updateBankAccountNumber.value = account_no;
+                    submitUpdateBank.setAttribute('data-id', response.data.id);
+
+                    // Set Id Value Func
+                    for (let i = 0; i < updateBankType.options.length; i++) {
+                        if (updateBankType.options[i].value === bank_type.toString()) {
+                            updateBankType.options[i].selected = true;
+                            break;
                         }
-                        //set Id Value Func
-                        updateBankModal.classList.add('hidden')
-                        updateBankForm.reset();
                     }
 
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        }
+
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                console.log(error);
+            }
+        };
+
 
         /* Update Bank */
 
-        updateBankForm.addEventListener('submit', (event) => {
+        const updateBankForm = document.getElementById('updateBankForm');
+        const submitUpdateBank = document.getElementById('submitUpdateBank');
+
+        updateBankForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const formData = new FormData(updateBankForm);
-            let id = submitUpdateBank.getAttribute('data-id');
-            // console.log(formData);
-            axios.post(`/tt-manage/bank/update/${id}`, formData)
-
-                .then(function(response) {
-                    // console.log(formData)
-                    if (response.status === 200) {
-                        updateBankForm.reset();
-                        // window.location.assign("/user/list");
-                        window.location.reload();
-                    }
-                })
-                .catch(function(error) {
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`update_bank_${field}_error`);
-                            //console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+                const formData = new FormData(updateBankForm);
+                const id = submitUpdateBank.getAttribute('data-id');
+
+
+                const response = await axios.post(`/tt-manage/bank/update/${id}`, formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    updateBankForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`update_bank_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+            }
         });
+
         /* Update Bank */
 
 
 
         //Delete  data Bank
         const deleteBankFunc = (id) => {
-
-
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Department Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
                 function okCb() {
                     axios.post(`/tt-manage/bank/delete/${id}`)
                         .then(response => {
-                            // Handle success
                             if (response.status === 201) {
-
-
                                 window.location.reload();
                             }
-                            //console.log(response.data);
-                            // You can update your page or UI as needed
                         })
                         .catch(error => {
-                            // Handle error
                             console.error(error);
                         });
                 },
-                function cancelCb() {
-
-                }, {
+                function cancelCb() {}, {
                     width: '320px',
                     borderRadius: '8px',
                     messageColor: '#1e1e1e',
                     titleColor: '#DA1010',
                     okButtonColor: '#f8f8f8',
                     okButtonBackground: '#DA1010',
-                },
+                }
             );
+        };
 
-
-        }
         /* delete Bank */
     </script>
 @endsection

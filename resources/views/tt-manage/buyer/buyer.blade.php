@@ -52,11 +52,11 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">Buyer List</h1>
+                    <h1 class="text-xl md:text-2xl font-semibold text-gray-600 dark:text-white">Buyer List</h1>
 
 
                     <button type="button" data-modal-target="addBuyerModal" data-modal-toggle="addBuyerModal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center text-xs md:text-sm px-3 py-2 font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -464,58 +464,51 @@
     <script>
         //store buyer
         const createBuyerForm = document.getElementById('createBuyerForm');
-        //console.log(createBuyerForm);
         const addBuyerModal = document.getElementById('addBuyerModal');
 
-        createBuyerForm.addEventListener('submit', function(e) {
+        createBuyerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const formData = new FormData(createBuyerForm);
-            // Send data using Axios
-            Notiflix.Loading.dots();
-            axios.post('/tt-manage/buyer/store', formData)
-                .then(function(response) {
-                    if (response.status === 201) {
-                        Notiflix.Loading.remove();
 
-                        addBuyerModal.classList.add('hidden')
-                        createBuyerForm.reset();
-
-                        /*   Notiflix.Notify.success(response.data.message, {
-                              timeout: 30000,
-                          }, ); */
-                        window.location.reload();
-                        //window.location.assign("/tt-manage/banks");
-                    }
-                })
-                .catch(function(error) {
-                    Notiflix.Loading.remove();
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`create_buyer_${field}_error`);
-                            console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
-                    console.log(error)
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+
+                const response = await axios.post('/tt-manage/buyer/store', formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    addBuyerModal.classList.add('hidden');
+                    createBuyerForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`create_buyer_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+                console.log(error);
+            }
         });
+
 
 
         //Edit Bank Get Data
@@ -530,118 +523,116 @@
         const updateBuyerModal = document.getElementById('updateBuyerModal');
         const updateBuyerForm = document.getElementById('updateBuyerForm');
         const submitUpdateBuyer = document.getElementById('submitUpdateBuyer');
-        const updateBuyer = (id) => {
 
-            axios.get(`/tt-manage/buyer/${id}`)
-                .then(function(response) {
-                    if (response.data) {
-                        updateBuyerName.value = response.data.name
-                        updateBuyerAddress.value = response.data.address
-                        updateBuyreCountryName.value = response.data.country
-                        updateBuyerEmail.value = response.data.email
-                        updateBuyerPhone.value = response.data.phone_number
-                        updateBuyerCompany.value = response.data.company_name
-                        updateBuyerAddInfo.value = response.data.additional_info
-                        submitUpdateBuyer.setAttribute('data-id', response.data.id);
-
-
-
-                    }
-
-                })
-                .catch(function(error) {
-                    console.log(error);
+        const updateBuyer = async (id) => {
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
-        }
+                const response = await axios.get(`/tt-manage/buyer/${id}`);
+                if (response.data) {
+                    Notiflix.Loading.remove();
+                    const {
+                        name,
+                        address,
+                        country,
+                        email,
+                        phone_number,
+                        company_name,
+                        additional_info
+                    } = response.data;
 
-        /* Update Bank */
+                    updateBuyerName.value = name;
+                    updateBuyerAddress.value = address;
+                    updateBuyreCountryName.value = country;
+                    updateBuyerEmail.value = email;
+                    updateBuyerPhone.value = phone_number;
+                    updateBuyerCompany.value = company_name;
+                    updateBuyerAddInfo.value = additional_info;
+                    submitUpdateBuyer.setAttribute('data-id', response.data.id);
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                console.log(error);
+            }
+        };
 
-        updateBuyerForm.addEventListener('submit', (event) => {
+
+        /* Update Buyer */
+
+        updateBuyerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const formData = new FormData(updateBuyerForm);
-            let id = submitUpdateBuyer.getAttribute('data-id');
-            axios.post(`/tt-manage/buyer/update/${id}`, formData)
+            const id = submitUpdateBuyer.getAttribute('data-id');
 
-                .then(function(response) {
-                    // console.log(formData)
-                    if (response.status === 201) {
-                        updateBuyerForm.reset();
-                        updateBuyerModal.classList.add('hidden')
-                        // updateBuyerForm.reset();
-                        window.location.reload();
-                    }
-                })
-                .catch(function(error) {
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`update_buyer_${field}_error`);
-                            //console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+                const response = await axios.post(`/tt-manage/buyer/update/${id}`, formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    updateBuyerForm.reset();
+                    updateBuyerModal.classList.add('hidden');
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`update_buyer_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+            }
         });
+
         // Update Buyer
 
 
 
-        //Delete  data Bank
+        //Delete  data Buyer
         const deleteBuyerFunc = (id) => {
-
-
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Department Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
-                function okCb() {
-                    axios.post(`/tt-manage/buyer/delete/${id}`)
-                        .then(response => {
-                            // Handle success
+                async function okCb() {
+                        try {
+                            const response = await axios.post(`/tt-manage/buyer/delete/${id}`);
                             if (response.status === 201) {
-
-
                                 window.location.reload();
                             }
-                            //console.log(response.data);
-                            // You can update your page or UI as needed
-                        })
-                        .catch(error => {
-                            // Handle error
+                        } catch (error) {
                             console.error(error);
-                        });
-                },
-                function cancelCb() {
-
-                }, {
-                    width: '320px',
-                    borderRadius: '8px',
-                    messageColor: '#1e1e1e',
-                    titleColor: '#DA1010',
-                    okButtonColor: '#f8f8f8',
-                    okButtonBackground: '#DA1010',
-                },
+                        }
+                    },
+                    function cancelCb() {}, {
+                        width: '320px',
+                        borderRadius: '8px',
+                        messageColor: '#1e1e1e',
+                        titleColor: '#DA1010',
+                        okButtonColor: '#f8f8f8',
+                        okButtonBackground: '#DA1010',
+                    }
             );
+        };
 
-
-        }
-        /* delete Bank */
+        /* delete Buyer */
     </script>
 @endsection

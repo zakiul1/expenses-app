@@ -210,7 +210,7 @@
                                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
                                             <td
-                                                class="p-2 text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $detail->description }}
                                             </td>
                                             <td
@@ -263,7 +263,7 @@
                                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
 
                                             <td
-                                                class="p-2 text-base font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <a
                                                     href="{{ url('expenses/transaction/details/images/download/' . $detail->id) }}">
                                                     <button type="button"

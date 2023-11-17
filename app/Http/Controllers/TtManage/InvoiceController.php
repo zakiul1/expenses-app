@@ -15,22 +15,32 @@ class InvoiceController extends Controller
 
     public function index()
     {
+        $invoices = Invoice::with('transactions')
+            ->orderBy("created_at", "desc")
+            ->paginate(6);
 
-        $invoices = Invoice::orderBy("created_at", "desc")->paginate(6);
+
+        // dd($invoices);
+        $allTnx = Invoice::with('transactions')->get();
+
+
+
+
+
         $banks = Bank::all();
         $factories = Factory::all();
         $buyers = Buyer::all();
         $companies = Company::all();
-        /*     $data = new TtManageTransactionController();
-            $data->passData(1);
 
-           // dd($data->passData(1)); */
+
+        // dd($data->passData(1)); 
         return view("tt-manage.invoice.invoice", [
             "invoices" => $invoices,
             "banks" => $banks,
             "factories" => $factories,
             "buyers" => $buyers,
             "companies" => $companies,
+            "allTnx" => $allTnx,
         ]);
     }
 

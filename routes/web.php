@@ -116,6 +116,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/invoice/transaction/store', [TtManageTransactionController::class, 'store']);
         Route::get('/invoice/transaction/{id}', [TtManageTransactionController::class, 'getTransactionData']);
         Route::post('/invoice/transaction/delete/{id}', [TtManageTransactionController::class, 'destroy']);
+        Route::get('/invoice/transaction/pdf/{id}', [TtManageTransactionController::class, 'downloadPdfTnx'])->name('tnx.download');
 
         // route bank
         Route::get('/banks', [BankController::class, 'index'])->name('banks.list');

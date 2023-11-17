@@ -77,7 +77,7 @@ class BankController extends Controller
         $bank->update($validatedData);
 
         // Optionally, you can return a response or redirect to a specific page
-        return response()->json(['message' => 'Bank details updated successfully'], 200);
+        return response()->json(['message' => 'Bank details updated successfully'], 201);
     }
 
 

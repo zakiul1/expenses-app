@@ -55,7 +55,7 @@
                     <h1 class="text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">Users List</h1>
 
                     <button data-modal-target="user-create-modal" data-modal-toggle="user-create-modal"
-                        class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
+                        class="bg-blue-700 hover:bg-blue-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
                         Add
                     </button>
 
@@ -476,182 +476,177 @@
 
 
         /* Create User */
-        addUserForm.addEventListener('submit', (event) => {
+        //const addUserForm = document.getElementById('addUserForm');
+
+        addUserForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const formData = new FormData(addUserForm);
-            // console.log(formData);
-            axios.post('/user/store', formData)
 
-                .then(function(response) {
-                    // console.log(formData)
-                    if (response.status === 201) {
-                        addUserForm.reset();
-                        window.location.assign("/user/list");
-                    }
-                })
-                .catch(function(error) {
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`user_${field}_error`);
-                            //console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
 
-        })
+                const response = await axios.post('/user/store', formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    addUserForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`user_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+            }
+        });
+
         /* Create User */
 
         /* showPrevData */
 
-        const showPrevData = (id) => {
+        const showPrevData = async (id) => {
             const updateUserName = document.getElementById('updateUserName');
             const updateUserEmail = document.getElementById('updateUserEmail');
-            const updateUserPassword = document.getElementById('updateUserPassword');
             const updateUserRole = document.getElementById('updateUserRole');
+            const userProfileUpdatePreview = document.getElementById('userProfileUpdatePreview');
+            const updateUserProfilesvg = document.getElementById('updateUserProfilesvg');
 
-
-            axios.get(`/user/individual/${id}`)
-                .then(function(response) {
-                    if (response.data) {
-                        if (response.data.user_profile_image) {
-                            const assetUrl = userProfileUpdatePreview.getAttribute('data-asset-url');
-                            /*    console.log(response.data.user_profile_image);
-                               console.log(assetUrl); */
-                            userProfileUpdatePreview.classList.remove('hidden')
-                            updateUserProfilesvg.classList.add('hidden')
-                            userProfileUpdatePreview.src = assetUrl + response.data.user_profile_image
-                        }
-                        updateUserName.value = response.data.name
-                        updateUserEmail.value = response.data.email
-                        userUpdateSubmit.setAttribute('data-id', response.data.id);
-
-                        // updateUserPassword.value = response.data.password
-
-
-                        const role_id = response.data.role_id; // Assuming you have the role_id from the response
-                        // Loop through the options and set the selected attribute for the matching value
-                        for (let i = 0; i < updateUserRole.options.length; i++) {
-                            if (updateUserRole.options[i].value === role_id.toString()) {
-                                updateUserRole.options[i].selected = true;
-                                break; // Exit the loop once a match is found
-                            }
-                        }
-
-
-                    }
-                    //console.log(response.data);
-                })
-                .catch(function(error) {
-                    console.log(error);
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
-        }
+
+                const response = await axios.get(`/user/individual/${id}`);
+
+                if (response.data) {
+                    Notiflix.Loading.remove();
+                    const {
+                        user_profile_image,
+                        name,
+                        email,
+                        id: userId,
+                        role_id
+                    } = response.data;
+
+                    if (user_profile_image) {
+                        const assetUrl = userProfileUpdatePreview.getAttribute('data-asset-url');
+                        userProfileUpdatePreview.classList.remove('hidden');
+                        updateUserProfilesvg.classList.add('hidden');
+                        userProfileUpdatePreview.src = assetUrl + user_profile_image;
+                    }
+
+                    updateUserName.value = name;
+                    updateUserEmail.value = email;
+                    userUpdateSubmit.setAttribute('data-id', userId);
+
+                    for (let i = 0; i < updateUserRole.options.length; i++) {
+                        if (updateUserRole.options[i].value === role_id.toString()) {
+                            updateUserRole.options[i].selected = true;
+                            break;
+                        }
+                    }
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                console.error(error);
+            }
+        };
+
         /* showPrevData */
 
         /* Update Data */
         const updateUserForm = document.getElementById('updateUserForm');
-        updateUserForm.addEventListener('submit', (event) => {
+
+        updateUserForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const formData = new FormData(updateUserForm);
-            let id = userUpdateSubmit.getAttribute('data-id');
-            console.log(formData);
-            axios.post(`/user/update/${id}`, formData)
+            const id = userUpdateSubmit.getAttribute('data-id');
 
-                .then(function(response) {
-                    // console.log(formData)
-                    if (response.status === 201) {
-                        addUserForm.reset();
-                        window.location.assign("/user/list");
-                    }
-                })
-                .catch(function(error) {
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`user_update_${field}_error`);
-                            //console.log("hi");
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+
+                const response = await axios.post(`/user/update/${id}`, formData);
+
+                if (response.status === 201) {
+                    addUserForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`user_update_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+            }
         });
+
 
         /* Update Data */
 
 
         /* delete User */
-        //Delete  data Department
         const deleteUserFunc = (id) => {
-
-
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'User Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
                 function okCb() {
                     axios.post(`/user/delete/${id}`)
                         .then(response => {
-                            // Handle success
                             if (response.status === 201) {
-
-
-                                window.location.assign("/user/list");
+                                window.location.reload();
                             }
-                            //console.log(response.data);
-                            // You can update your page or UI as needed
                         })
-                        .catch(error => {
-                            // Handle error
-                            console.error(error);
-                        });
+                        .catch(error => console.error(error));
                 },
-                function cancelCb() {
-
-                }, {
+                null, {
                     width: '320px',
                     borderRadius: '8px',
                     messageColor: '#1e1e1e',
                     titleColor: '#DA1010',
                     okButtonColor: '#f8f8f8',
                     okButtonBackground: '#DA1010',
-                },
+                }
             );
-
-
         }
+
         /* delete User */
     </script>
 @endsection

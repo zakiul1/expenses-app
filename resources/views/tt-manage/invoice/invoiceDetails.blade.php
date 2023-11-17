@@ -52,12 +52,12 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">Transaction List</h1>
+                    <h1 class="text-xl md:text-2xl font-semibold text-gray-600 dark:text-white">Transaction List</h1>
 
 
                     <button type="button" data-modal-target="createTransactionModal"
                         data-modal-toggle="createTransactionModal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -72,14 +72,14 @@
         </div>
 
         {{-- Header  Start --}}
-        <div class="flex gap-3">
+        <div class=" grid grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-5 gap-4">
             {{--    Total Invoice Value  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
-                    <h2 class="text-l font-semibold text-sky-700 dark:text-white">Total Invoice Value</h2>
+                    <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Invoice Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-xl font-bold text-white dark:text-white">{{ $totalInvoiceValue }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $totalInvoiceValue }}</h2>
                     </div>
                 </div>
             </div>
@@ -87,11 +87,11 @@
 
             {{--    Total Factory Value  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
-                    <h2 class="text-l font-semibold text-sky-700 dark:text-white">Total Factory Value</h2>
+                    <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Factory Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-xl font-bold text-white dark:text-white">{{ $totalFactoryValue }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $totalFactoryValue }}</h2>
                     </div>
                 </div>
             </div>
@@ -99,11 +99,11 @@
 
             {{--    Total Receive From Buyer  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
-                    <h2 class="text-l font-semibold text-sky-700 dark:text-white">Total Receive From Buyer</h2>
+                    <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Receive From Buyer</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-xl font-bold text-white dark:text-white">{{ $receiveValueFromBuyer }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $receiveValueFromBuyer }}</h2>
                     </div>
                 </div>
             </div>
@@ -111,11 +111,11 @@
 
             {{--    Total Pay TO Factory  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
-                    <h2 class="text-l font-semibold text-sky-700 dark:text-white">Total Pay To Factory</h2>
+                    <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Pay To Factory</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-xl font-bold text-white dark:text-white">{{ $payValueToFactory }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $payValueToFactory }}</h2>
                     </div>
                 </div>
 
@@ -125,11 +125,11 @@
 
             {{--    Current Balance  --}}
             <div
-                class="mb-4 w-3/12 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
-                    <h2 class="text-l font-semibold text-sky-700 dark:text-white">Total Current Balance</h2>
+                    <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Current Balance</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-xl font-bold text-white dark:text-white">{{ $currentTotalBalance }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $currentTotalBalance }}</h2>
                     </div>
                 </div>
             </div>
@@ -144,7 +144,23 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         {{-- tabs --}}
-                        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                        <div
+                            class="mb-4 border-b flex flex-row-reverse justify-between border-gray-200 dark:border-gray-700">
+                            <a href="{{ route('tnx.download', ['id' => $totalInvoiceId]) }} " target="_blank">
+                                <button type="button"
+                                    class="p-4 flex text-blue-600 items-center rounded hover:bg-gray-100">Transaction
+
+                                    <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
+                                        fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                        aria-hidden="true">
+                                        <path clip-rule="evenodd" fill-rule="evenodd"
+                                            d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z">
+                                        </path>
+                                    </svg>
+                                    <span class="sr-only">Download</span>
+                                </button>
+
+                            </a>
                             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
                                 data-tabs-toggle="#transactionTab" role="tablist">
                                 <li class="me-2" role="presentation">
@@ -155,8 +171,9 @@
                                 <li class="me-2" role="presentation">
                                     <button
                                         class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                                        id="dashboard-tab" data-tabs-target="#payToFactoryTab" type="button" role="tab"
-                                        aria-controls="dashboard" aria-selected="false">Pay Factory</button>
+                                        id="dashboard-tab" data-tabs-target="#payToFactoryTab" type="button"
+                                        role="tab" aria-controls="dashboard" aria-selected="false">Pay
+                                        Factory</button>
                                 </li>
 
                             </ul>

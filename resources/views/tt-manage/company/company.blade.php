@@ -52,11 +52,11 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">Company List</h1>
+                    <h1 class="text-xl md:text-2xl font-semibold text-gray-600 dark:text-white">Company List</h1>
 
 
                     <button type="button" data-modal-target="addCompanyModal" data-modal-toggle="addCompanyModal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -127,7 +127,7 @@
                                                 {{ $company->name }}
                                             </td>
                                             <td
-                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-normal dark:text-white">
+                                                class="p-4 text-base text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $company->email }}
                                             </td>
                                             <td
@@ -357,53 +357,51 @@
     <script>
         //store Company
         const createCompanyForm = document.getElementById('createCompanyForm');
-        //console.log(createCompanyForm);
         const addCompanyModal = document.getElementById('addCompanyModal');
 
-        createCompanyForm.addEventListener('submit', function(e) {
+        createCompanyForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const formData = new FormData(createCompanyForm);
-            // Send data using Axios
-            Notiflix.Loading.dots();
-            axios.post('/tt-manage/company/store', formData)
-                .then(function(response) {
-                    if (response.status === 201) {
-                        Notiflix.Loading.remove();
-                        addCompanyModal.classList.add('hidden')
-                        createCompanyForm.reset();
-                        window.location.reload();
 
-                    }
-                })
-                .catch(function(error) {
-                    Notiflix.Loading.remove();
-                    if (error.response && error.response.status === 422) {
-                        let allError = error.response.data.errors
-                        // console.log(allError);
-                        for (const field in allError) {
-                            const errorDiv = document.getElementById(`create_Company_${field}_error`);
-
-                            if (errorDiv) {
-                                // Clear any previous error message
-                                errorDiv.innerHTML = '';
-                                // Set the error message(s)
-                                allError[field].forEach(errorMessage => {
-                                    const p = document.createElement('p');
-                                    p.innerText = errorMessage;
-                                    errorDiv.appendChild(p);
-                                });
-                            }
-                        }
-
-
-                    } else {
-
-                        console.error('An error occurred:', error);
-                    }
-                    console.log(error)
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
+
+                const response = await axios.post('/tt-manage/company/store', formData);
+
+                if (response.status === 201) {
+                    Notiflix.Loading.remove();
+                    addCompanyModal.classList.add('hidden');
+                    createCompanyForm.reset();
+                    window.location.reload();
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+
+                if (error.response && error.response.status === 422) {
+                    const allError = error.response.data.errors;
+
+                    for (const field in allError) {
+                        const errorDiv = document.getElementById(`create_Company_${field}_error`);
+
+                        if (errorDiv) {
+                            errorDiv.innerHTML = '';
+                            allError[field].forEach(errorMessage => {
+                                const p = document.createElement('p');
+                                p.innerText = errorMessage;
+                                errorDiv.appendChild(p);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('An error occurred:', error);
+                }
+                console.log(error);
+            }
         });
+
 
 
         //Edit Bank Get Data
@@ -414,28 +412,35 @@
         const updateCompanyModal = document.getElementById('updateCompanyModal');
         const updateCompanyForm = document.getElementById('updateCompanyForm');
         const submitUpdateCompany = document.getElementById('submitUpdateCompany');
-        // console.log(submitUpdateCompany);
-        const updateCompany = (id) => {
 
-            axios.get(`/tt-manage/company/${id}`)
-                .then(function(response) {
-                    if (response.data) {
-                        updateCompanyName.value = response.data.name
-                        updateCompanyEmail.value = response.data.email
-                        updateCompanyPhone.value = response.data.phone_number
-
-                        submitUpdateCompany.setAttribute('data-id', response.data.id);
-
-
-
-
-                    }
-
-                })
-                .catch(function(error) {
-                    console.log(error);
+        const updateCompany = async (id) => {
+            try {
+                Notiflix.Loading.dots({
+                    svgColor: "#fff"
                 });
-        }
+
+                const response = await axios.get(`/tt-manage/company/${id}`);
+
+                if (response.data) {
+                    Notiflix.Loading.remove();
+                    const {
+                        name,
+                        email,
+                        phone_number
+                    } = response.data;
+
+                    updateCompanyName.value = name;
+                    updateCompanyEmail.value = email;
+                    updateCompanyPhone.value = phone_number;
+
+                    submitUpdateCompany.setAttribute('data-id', response.data.id);
+                }
+            } catch (error) {
+                Notiflix.Loading.remove();
+                console.log(error);
+            }
+        };
+
 
         /* Update Bank */
 
@@ -444,10 +449,13 @@
 
             const formData = new FormData(updateCompanyForm);
             let id = submitUpdateCompany.getAttribute('data-id');
-            console.log(id);
+            Notiflix.Loading.dots({
+                svgColor: "#fff"
+            });
             axios.post(`/tt-manage/company/update/${id}`, formData)
 
                 .then(function(response) {
+                    Notiflix.Loading.remove();
                     // console.log(formData)
                     if (response.status === 201) {
                         updateCompanyForm.reset();
@@ -457,6 +465,7 @@
                     }
                 })
                 .catch(function(error) {
+                    Notiflix.Loading.remove();
                     if (error.response && error.response.status === 422) {
                         let allError = error.response.data.errors
                         // console.log(allError);
@@ -488,42 +497,32 @@
 
         //Delete  data Bank
         const deleteCompanyFunc = (id) => {
-
-
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Department Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
-                function okCb() {
-                    axios.post(`/tt-manage/company/delete/${id}`)
-                        .then(response => {
-                            // Handle success
+                async function okCb() {
+                        try {
+                            const response = await axios.post(`/tt-manage/company/delete/${id}`);
                             if (response.status === 201) {
                                 window.location.reload();
                             }
-                            //console.log(response.data);
-                            // You can update your page or UI as needed
-                        })
-                        .catch(error => {
-                            // Handle error
+                        } catch (error) {
                             console.error(error);
-                        });
-                },
-                function cancelCb() {
-
-                }, {
-                    width: '320px',
-                    borderRadius: '8px',
-                    messageColor: '#1e1e1e',
-                    titleColor: '#DA1010',
-                    okButtonColor: '#f8f8f8',
-                    okButtonBackground: '#DA1010',
-                },
+                        }
+                    },
+                    function cancelCb() {}, {
+                        width: '320px',
+                        borderRadius: '8px',
+                        messageColor: '#1e1e1e',
+                        titleColor: '#DA1010',
+                        okButtonColor: '#f8f8f8',
+                        okButtonBackground: '#DA1010',
+                    }
             );
+        };
 
-
-        }
         /* delete Bank */
     </script>
 @endsection

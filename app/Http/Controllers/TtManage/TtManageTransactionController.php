@@ -7,6 +7,7 @@ use App\Models\Bank;
 use App\Models\Invoice;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TtManageTransactionController extends Controller
 {
@@ -112,6 +113,43 @@ class TtManageTransactionController extends Controller
         $data = Transaction::findOrFail($id);
         $data->delete();
         return response()->json(['message' => 'Transaction Deleted SuccessFully'], 201);
+    }
+
+    public function downloadPdfTnx($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $allTnx = Transaction::where('invoice_id', $id)->get();
+        $receiveFromBuyer = $allTnx->where('type_of_transaction', 1);
+        $payToFactory = $allTnx->where('type_of_transaction', 2);
+        $totalReceiveFromBuyerValue = $allTnx->where('type_of_transaction', 1)->sum('value');
+        $totalpayToFactoryValue = $allTnx->where('type_of_transaction', 2)->sum('value');
+        //dd($payToFactory);
+
+        $pdf = Pdf::loadView('pdf.createTTorderPdf', [
+            'invoice' => $invoice,
+            'allTnx' => $allTnx,
+            'receiveFromBuyer' => $receiveFromBuyer,
+            'payToFactory' => $payToFactory,
+            'totalReceiveFromBuyerValue' => $totalReceiveFromBuyerValue,
+            'totalpayToFactoryValue' => $totalpayToFactoryValue,
+        ]);
+
+        /* return view('pdf.createTTorderPdf', [
+            'invoice' => $invoice,
+            'allTnx' => $allTnx,
+            'receiveFromBuyer' => $receiveFromBuyer,
+            'payToFactory' => $payToFactory,
+            'totalReceiveFromBuyerValue' => $totalReceiveFromBuyerValue,
+            'totalpayToFactoryValue' => $totalpayToFactoryValue,
+        ]); */
+
+        $pdf->setPaper('A4', 'portrait');
+
+        $filename = 'document.pdf';
+
+        return $pdf->download($filename);
+
+
     }
 
 }
