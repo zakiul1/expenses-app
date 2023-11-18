@@ -52,12 +52,12 @@
                 </nav>
 
                 <div class="flex justify-between pb-4  border-b border-gray-300">
-                    <h1 class=" text-2xl font-semibold text-gray-600 dark:text-white">TT
+                    <h1 class="text-xl md:text-2xl font-semibold text-gray-600 dark:text-white">TT
                         Orders List</h1>
 
 
                     <button type="button" data-modal-target="addInvoiceModal" data-modal-toggle="addInvoiceModal"
-                        class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -82,7 +82,7 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead class="bg-gray-100 dark:bg-gray-700">
+                            <thead class="bg-sky-100 dark:bg-gray-700">
                                 <tr>
 
                                     <th scope="col"
@@ -134,11 +134,11 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @if ($invoices)
                                     @foreach ($invoices as $invoice)
-                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                             <td
                                                 class="p-4 text-base  font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -194,7 +194,7 @@
                                             <td class="p-4 text-right space-x-2 whitespace-nowrap">
                                                 <a href="{{ route('invoice.details', ['id' => $invoice->id]) }}">
                                                     <button
-                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
 
                                                         <svg class="mr-2" width="16px" height="16px"
                                                             viewBox="0 0 512 512" version="1.1"
@@ -223,7 +223,7 @@
                                                     <button onclick="updateInvoice({{ $invoice->id }})"
                                                         data-modal-target="updateInvoiceModal"
                                                         data-modal-toggle="updateInvoiceModal" type="button"
-                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path
@@ -285,14 +285,14 @@
             id="addInvoiceModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
-                        <h3 class="text-xl font-semibold dark:text-white">
+                        <h3 class="text-l md:text-xl text-gray-600 font-semibold dark:text-white">
                             Add New TT Order
                         </h3>
                         <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-xs md:text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
                             data-modal-toggle="addInvoiceModal">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -312,7 +312,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT Order
                                         Number</label>
                                     <input type="text" name="invoice_no" id="createInvoiceNumber"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="create_invoice_no_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -323,7 +323,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT
                                         Value</label>
                                     <input type="number" name="invoice_value" id="createInvoiceValue"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_invoice_value_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -335,7 +335,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Company</label>
                                     <select id="createInvoiceCompany" name="company_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Company</option>
                                         @foreach ($companies as $company)
                                             <option value="{{ $company->id }}"> {{ $company->name }} </option>
@@ -354,7 +354,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Buyer</label>
                                     <select id="createInvoiceBuyerId" name="buyer_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Buyer</option>
                                         @foreach ($buyers as $buyer)
                                             <option value="{{ $buyer->id }}"> {{ $buyer->name }} </option>
@@ -373,7 +373,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Factory</label>
                                     <select id="createInvoiceFactoryId" name="factory_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Factory</option>
                                         @foreach ($factories as $factory)
                                             <option value="{{ $factory->id }}"> {{ $factory->name }} </option>
@@ -390,7 +390,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Factory
                                         Value</label>
                                     <input type="number" name="factory_value" id="createInvoiceFactoryValue"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_factory_value_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -402,7 +402,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Bank</label>
                                     <select id="createInvoiceBankId" name="bank_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Bank</option>
                                         @foreach ($banks as $bank)
                                             <option value="{{ $bank->id }}"> {{ $bank->name }} </option>
@@ -423,7 +423,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitCreateInvoice"
-                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Add TT Order</button>
                     </div>
                     </form>
@@ -439,7 +439,7 @@
             id="updateInvoiceModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -466,7 +466,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT Order
                                         Number</label>
                                     <input type="text" name="invoice_no" id="updateInvoiceNumber"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="update_invoice_no_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -477,7 +477,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT
                                         Value</label>
                                     <input type="number" name="invoice_value" id="updateInvoiceValue"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_invoice_value_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -489,7 +489,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Company</label>
                                     <select id="updateInvoiceCompany" name="company_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Company</option>
                                         @foreach ($companies as $company)
                                             <option value="{{ $company->id }}"> {{ $company->name }} </option>
@@ -508,7 +508,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Buyer</label>
                                     <select id="updateInvoiceBuyerId" name="buyer_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Buyer</option>
                                         @foreach ($buyers as $buyer)
                                             <option value="{{ $buyer->id }}"> {{ $buyer->name }} </option>
@@ -527,7 +527,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Factory</label>
                                     <select id="updateInvoiceFactoryId" name="factory_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Factory</option>
                                         @foreach ($factories as $factory)
                                             <option value="{{ $factory->id }}"> {{ $factory->name }} </option>
@@ -544,7 +544,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Factory
                                         Value</label>
                                     <input type="number" name="factory_value" id="updateInvoiceFactoryValue"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_invoice_factory_value_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -556,7 +556,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chose a
                                         Bank</label>
                                     <select id="updateInvoiceBankId" name="bank_id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Select Bank</option>
                                         @foreach ($banks as $bank)
                                             <option value="{{ $bank->id }}"> {{ $bank->name }} </option>
@@ -577,7 +577,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitUpdateInvoice"
-                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Update TT Order</button>
                     </div>
                     </form>

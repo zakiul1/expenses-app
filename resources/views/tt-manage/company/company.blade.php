@@ -56,7 +56,7 @@
 
 
                     <button type="button" data-modal-target="addCompanyModal" data-modal-toggle="addCompanyModal"
-                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -81,7 +81,7 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead class="bg-gray-100 dark:bg-gray-700">
+                            <thead class="bg-sky-100 dark:bg-gray-700">
                                 <tr>
 
                                     <th scope="col"
@@ -112,11 +112,11 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @if ($companies)
                                     @foreach ($companies as $company)
-                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                             <td
                                                 class="p-4 text-base  font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -140,7 +140,7 @@
                                                     <button onclick="updateCompany({{ $company->id }})"
                                                         data-modal-target="updateCompanyModal"
                                                         data-modal-toggle="updateCompanyModal" type="button"
-                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path
@@ -200,7 +200,7 @@
             id="addCompanyModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-md px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -227,7 +227,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
                                         Name</label>
                                     <input type="text" name="name" id="createCompanyName"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="create_Company_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -238,7 +238,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Email</label>
                                     <input type="email" name="email" id="createCompanyEmail"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_Company_email_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -249,7 +249,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Phone Number</label>
                                     <input type="text" name="phone_number" id="createCompanyPhoneNumber"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_Company_phone_number_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -262,7 +262,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitCreateCompany"
-                            class="text-white w-full bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white w-full bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Add Company</button>
                     </div>
                     </form>
@@ -278,7 +278,7 @@
             id="updateCompanyModal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-md px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -305,7 +305,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
                                         Name</label>
                                     <input type="text" name="name" id="updateCompanyName"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="update_Company_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -316,7 +316,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Email</label>
                                     <input type="email" name="email" id="updateCompanyEmail"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_Company_email_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -327,7 +327,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company
                                         Number</label>
                                     <input type="text" name="phone_number" id="updateCompanyPhone"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_Company_phone_number_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -341,7 +341,7 @@
                     <div
                         class=" items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitUpdateCompany"
-                            class="text-white w-full bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white w-full bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Update Company</button>
                     </div>
                     </form>

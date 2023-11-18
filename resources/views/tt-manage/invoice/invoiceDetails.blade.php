@@ -57,7 +57,7 @@
 
                     <button type="button" data-modal-target="createTransactionModal"
                         data-modal-toggle="createTransactionModal"
-                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -75,7 +75,7 @@
         <div class=" grid grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-5 gap-4">
             {{--    Total Invoice Value  --}}
             <div
-                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-sky-50 border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Invoice Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
@@ -87,7 +87,7 @@
 
             {{--    Total Factory Value  --}}
             <div
-                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-sky-50 border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Factory Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
@@ -99,7 +99,7 @@
 
             {{--    Total Receive From Buyer  --}}
             <div
-                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-sky-50 border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Receive From Buyer</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
@@ -111,7 +111,7 @@
 
             {{--    Total Pay TO Factory  --}}
             <div
-                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-sky-50 border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Pay To Factory</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
@@ -125,7 +125,7 @@
 
             {{--    Current Balance  --}}
             <div
-                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 md:col-span-2 lg:col-span-1 items-center  justify-between  bg-sky-50 border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Current Balance</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
@@ -148,7 +148,7 @@
                             class="mb-4 border-b flex flex-row-reverse justify-between border-gray-200 dark:border-gray-700">
                             <a href="{{ route('tnx.download', ['id' => $totalInvoiceId]) }} " target="_blank">
                                 <button type="button"
-                                    class="p-4 flex text-blue-600 items-center rounded hover:bg-gray-100">Transaction
+                                    class="p-4 flex text-sky-600 items-center rounded hover:bg-sky-100">Transaction
 
                                     <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
                                         fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -180,11 +180,11 @@
                         </div>
                         {{-- tabs header --}}
                         <div id="transactionTab">
-                            <div class="hidden  rounded-lg bg-gray-50 dark:bg-gray-800" id="receiveFromBuyerTab"
+                            <div class="hidden  rounded-lg bg-sky-50 dark:bg-gray-800" id="receiveFromBuyerTab"
                                 role="tabpanel" aria-labelledby="receiveFromBuyerTab-tab">
                                 {{-- receiveFromBuyerTab content Start --}}
                                 <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                                    <thead class="bg-gray-100 dark:bg-gray-700">
+                                    <thead class="bg-sky-100 dark:bg-gray-700">
                                         <tr>
 
                                             <th scope="col"
@@ -221,11 +221,11 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                    <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         @if ($transactions)
                                             @foreach ($transactions as $transaction)
                                                 @if ($transaction->type_of_transaction === 1)
-                                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                    <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                                         <td
                                                             class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -254,7 +254,7 @@
                                                                     data-modal-target="updateTransactionModal"
                                                                     data-modal-toggle="updateTransactionModal"
                                                                     type="button" data-id="{{ $transaction->id }}"
-                                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                                     <svg class="w-4 h-4 mr-2" fill="currentColor"
                                                                         viewBox="0 0 20 20"
                                                                         xmlns="http://www.w3.org/2000/svg">
@@ -302,11 +302,11 @@
                                 {{-- /pagination --}}
                                 {{-- receiveFromBuyerTab content End --}}
                             </div>
-                            <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="payToFactoryTab"
+                            <div class="hidden rounded-lg bg-sky-50 dark:bg-gray-800" id="payToFactoryTab"
                                 role="tabpanel" aria-labelledby="dashboard-tab">
                                 {{-- payToFactoryTab content Start --}}
                                 <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                                    <thead class="bg-gray-100 dark:bg-gray-700">
+                                    <thead class="bg-sky-100 dark:bg-gray-700">
                                         <tr>
 
                                             <th scope="col"
@@ -343,11 +343,11 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                    <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         @if ($transactions)
                                             @foreach ($transactions as $transaction)
                                                 @if ($transaction->type_of_transaction === 2)
-                                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                    <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                                         <td
                                                             class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -375,7 +375,7 @@
                                                                     data-modal-target="updateTransactionModal"
                                                                     data-modal-toggle="updateTransactionModal"
                                                                     type="button" data-id="{{ $transaction->id }}"
-                                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                                     <svg class="w-4 h-4 mr-2" fill="currentColor"
                                                                         viewBox="0 0 20 20"
                                                                         xmlns="http://www.w3.org/2000/svg">
@@ -454,7 +454,7 @@
             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-700">
                     <button type="button"
                         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="createTransactionModal">
@@ -473,7 +473,7 @@
                                 <label for="createTransactionValue"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
                                 <input type="number" name="value" id="createTransactionValue"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     required>
                                 <p id="create_transaction_value_error_"
                                     class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
@@ -485,7 +485,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Transaction
                                     Type</label>
                                 <select id="createTransactionType" name="type_of_transaction"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                     <option selected>Choose Type</option>
                                     <option value="1">Receive</option>
                                     <option value="2">Pay</option>
@@ -502,7 +502,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Bank
                                 </label>
                                 <select id="createTransactionBank" name="bank_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                     <option selected>Choose Bank</option>
                                     @foreach ($banks as $bank)
                                         <option value="{{ $bank->id }}">{{ $bank->name }}</option>
@@ -520,7 +520,7 @@
                                 <label for="createTransactionDate"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
                                 <input type="date" name="transaction_date" id="createTransactionDate"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     required>
                                 <p id="create_transaction_date_error_"
                                     class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
@@ -530,7 +530,7 @@
                             <input type="hidden" value="{{ $companyId }}" name="company_id">
 
                             <button type="submit"
-                                class="w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                class="w-full text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Add
                                 Transaction</button>
 
                         </form>
@@ -548,7 +548,7 @@
             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-700">
                     <button type="button"
                         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="updateTransactionModal">
@@ -567,7 +567,7 @@
                                 <label for="updateTransactionValue"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
                                 <input type="number" name="value" id="updateTransactionValue"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     required>
                                 <p id="update_transaction_value_error_"
                                     class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
@@ -579,7 +579,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Transaction
                                     Type</label>
                                 <select id="updateTransactionType" name="type_of_transaction"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                     <option selected>Choose Type</option>
                                     <option value="1">Receive</option>
                                     <option value="2">Pay</option>
@@ -596,7 +596,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Bank
                                 </label>
                                 <select id="updateTransactionBank" name="bank_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                     <option selected>Choose Bank</option>
                                     @foreach ($banks as $bank)
                                         <option value="{{ $bank->id }}">{{ $bank->name }}</option>
@@ -612,7 +612,7 @@
                                 <label for="updateTransactionDate"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
                                 <input type="date" name="transaction_date" id="updateTransactionDate"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     required>
                                 <p id="update_transaction_date_error_"
                                     class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
@@ -621,7 +621,7 @@
                             <input type="hidden" value="{{ auth()->id() }}" name="user_id">
 
                             <button type="submit" id="submitUpdateTransaction"
-                                class="w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
+                                class="w-full text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Update
                                 Transaction</button>
 
                         </form>

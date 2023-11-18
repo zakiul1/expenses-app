@@ -28,7 +28,7 @@
         <div class=" w-full  overflow-x-hidden overflow-y-auto md:inset-0max-h-full">
             <div class="relative w-full h-full   md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -170,21 +170,25 @@
                                                 accept="image/*" type="file">
 
                                         </label>
+                                         @php
+                                                $img=json_decode($employee->image_path);
+                                            @endphp
+                                            @if ( $img)
                                         <div
                                             class="p-2 mt-3 flex {{ $employee->image_path ? 'justify-start items-start' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
-                                            @if ($employee->image_path)
+                                           
                                                 <div class="flex justify-center items-center overflow-hidden">
                                                     <img src="{{ asset('employee/images/' . $employee->image_path) }}"
-                                                        class="h-20 w-20 p-1 object-cover bg-white rounded-full"
+                                                        class="h-20 w-20 p-1 object-cover bg-sky-50 rounded-full"
                                                         id="imagePreview" alt="">
                                                     <span
                                                         class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $employee->image_path }}</span>
                                                 </div>
-                                            @else
-                                                <h2>Image Not Found</h2>
-                                            @endif
+                                         
+                                              
+                                            
 
-                                        </div>
+                                        </div>@endif
                                     </div>
 
                                     @error('image')
@@ -207,14 +211,15 @@
                                                 id="" accept=".pdf, .xls, .xlsx, .doc, .docx, .txt"
                                                 type="file" multiple>
                                         </label>
+                                      
+                                      
                                         <div
                                             class="p-2  min-h-[95px] mt-3 flex flex-col {{ $doc ? 'justify-center items-center' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
 
 
-                                            @if ($doc)
                                                 @foreach ($doc as $item)
                                                     <div class=" flex   w-full justify-start items-center min-h-20">
-                                                        <svg class="h-10 w-10 p-1 bg-white rounded-full text-lime-600 dark:text-white"
+                                                        <svg class="h-10 w-10 p-1 bg-sky-50 rounded-full text-sky-600 dark:text-white"
                                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                             fill="none" viewBox="0 0 16 20">
                                                             <path stroke="currentColor" stroke-linecap="round"
@@ -225,12 +230,13 @@
                                                             class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $item }}</span>
                                                     </div>
                                                 @endforeach
-                                            @else
-                                                <h2>File Not Found</h2>
-                                            @endif
+                                       
+                                              
+                                           
 
 
                                         </div>
+                                 
                                     </div>
                                     @error('document')
                                         <p id="employee_document_error" class="mt-2 text-xs text-red-600 dark:text-red-400">

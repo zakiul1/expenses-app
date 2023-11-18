@@ -10,6 +10,6 @@
         <h1 class="text-[28px] pt-3">Admin Pannel</h1>
     </div>
 </div> --}}
-<div class="flex justify-center text-center w-[100px] p-3">
-    <img src="{{ asset('assets/logo.png') }}" alt="">
+<div class="flex justify-center text-center bg-white rounded-full p-3">
+    <img class="w-10 h-10  md:w-14 md:h-14" src="{{ asset('assets/logo.png') }}" alt="">
 </div>

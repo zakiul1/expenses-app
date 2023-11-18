@@ -56,13 +56,13 @@
                     <h1 class="text-xl font-semibold text-gray-500 md:text-2xl dark:text-white">Employee List</h1>
 
                     {{--   <button data-modal-target="employee-create-modal" data-modal-toggle="employee-create-modal"
-                        class="bg-lime-700 hover:bg-lime-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
+                        class="bg-sky-700 hover:bg-sky-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
                         Add
                     </button> --}}
                     <button type="button" data-modal-target="employee-create-modal"
                         data-modal-toggle="employee-create-modal" data-modal-toggle="attendance-entry-modal"
                         data-modal-toggle="category-create-modal"
-                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -85,7 +85,7 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead class="bg-gray-100 dark:bg-gray-700">
+                            <thead class="bg-sky-100 dark:bg-gray-700">
                                 <tr>
 
 
@@ -132,12 +132,15 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @foreach ($employees as $employee)
-                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
                                         <td class="flex items-center  p-4 mr-12 space-x-2 whitespace-nowrap">
-                                            @if ($employee->image_path)
+                                            @php
+                                                $img=json_decode($employee->image_path);
+                                            @endphp
+                                            @if ($img)
                                                 <div class="w-8 h-8 rounded-full">
                                                     <img class="w-8 h-8 rounded-full  object-cover"
                                                         src="{{ asset('employee/images') . '/' . $employee->image_path }}"
@@ -174,14 +177,15 @@
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 @php
                                                     $json = json_decode($employee->document_path);
+
                                                 @endphp
-                                                @if (empty($json))
+                                                @if (!empty($json))
                                                 @else
                                                     <a
                                                         href="{{ route('employee.download.documents', ['id' => $employee->id]) }}">
 
                                                         <button type="button"
-                                                            class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Download
+                                                            class="p-2 flex text-sky-600 items-center rounded hover:bg-sky-100">Download
 
                                                             <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
                                                                 fill="currentColor" viewBox="0 0 24 24"
@@ -203,7 +207,7 @@
                                                     href="{{ route('employee.download.allInfo', ['id' => $employee->id]) }}">
 
                                                     <button type="button"
-                                                        class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">Details
+                                                        class="p-2 flex text-sky-600 items-center rounded hover:bg-sky-100">Details
 
                                                         <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
                                                             fill="currentColor" viewBox="0 0 24 24"
@@ -226,7 +230,7 @@
                                                 <a href="{{ url('employee/details/update') . '/' . $employee->id }}">
                                                     <button type="button" data-id="{{ $employee->id }}"
                                                         id="updateButton" {{--  data-modal-toggle="transactionEditModal" --}}
-                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path
@@ -282,7 +286,7 @@
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+            <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                     <h3 class="text-xl font-semibold dark:text-white">
@@ -305,10 +309,10 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="text" name="first_name" id="first_name"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " required />
                                     <label for="first_name"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                                         name</label>
                                     <p id="employee_first_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -317,10 +321,10 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="text" name="last_name" id="last_name"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " required />
                                     <label for="last_name"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
                                         name</label>
                                     <p id="employee_last_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -329,20 +333,20 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="email" name="email" id="email"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " required />
                                     <label for="email"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                                     <p id="employee_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                                 </div>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="text" name="phone" id="phone"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " required />
                                     <label for="phone"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
                                         Number</label>
                                     <p id="employee_phone_error" class="mt-2 text-xs text-red-600 dark:text-red-400"></p>
                                 </div>
@@ -350,10 +354,10 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="date" name="join_date" id="join_date"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " />
                                     <label for="join_date"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                         Join Date</label>
                                     <p id="employee_join_date_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -379,10 +383,10 @@
                             <div class="col-span-6 ">
                                 <div class="relative z-0 w-full mb-1 group">
                                     <input type="text" name="address" id="address"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                         placeholder=" " />
                                     <label for="address"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
                                     <p id="employee_address_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
@@ -424,7 +428,7 @@
 
                                         <div class="flex justify-center items-center w-full">
 
-                                            <svg class="h-20 w-20 p-1  text-lime-600 dark:text-white" aria-hidden="true"
+                                            <svg class="h-20 w-20 p-1  text-sky-600 dark:text-white" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 16 20">
                                                 <path
@@ -449,7 +453,7 @@
                         <div class="border-t-2 border-solid mt-6 border-gray-200">
                             <div class="flex justify-end items-end p-4">
                                 <button type="submit"
-                                    class="text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800  rounded-lg text-sm px-7 py-2.5 text-center mr-2 mb-2">Submit</button>
+                                    class="text-white font-semibold bg-gradient-to-r from-cyan-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800  rounded-lg text-sm px-7 py-2.5 text-center mr-2 mb-2">Submit</button>
                             </div>
                         </div>
                     </form>

@@ -56,7 +56,7 @@
 
 
                     <button type="button" data-modal-target="add-bank-modal" data-modal-toggle="add-bank-modal"
-                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center  px-3 py-2 text-xs md:text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -81,7 +81,7 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead class="bg-gray-100 dark:bg-gray-700">
+                            <thead class="bg-sky-100 dark:bg-gray-700">
                                 <tr>
 
                                     <th scope="col"
@@ -122,11 +122,11 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @if ($banks)
                                     @foreach ($banks as $bank)
-                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                             <td
                                                 class="p-4 text-base  font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -162,7 +162,7 @@
                                                         data-modal-target="update-bank-modal"
                                                         data-modal-toggle="update-bank-modal" type="button"
                                                         data-id="{{-- {{ $category->id }} --}}"
-                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path
@@ -221,7 +221,7 @@
             id="add-bank-modal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -248,7 +248,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank
                                         Name</label>
                                     <input type="text" name="name" id="create-bank-name"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="create_bank_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -260,7 +260,7 @@
                                         Bank Account No
                                     </label>
                                     <input type="text" name="account_no" id="create-bank-account-number"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="create_bank_account_no_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -271,7 +271,7 @@
                                     <label for="create-bank-email"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <input type="email" name="email" id="create-bank-email"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_bank_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
@@ -281,7 +281,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                         Number</label>
                                     <input type="text" name="phone_no" id="create-bank-phone-number"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_bank_phone_no_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -292,7 +292,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Swift Code</label>
                                     <input type="text" name="swift_code" id="create-bank-swift-code"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_bank_swift_code_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -304,7 +304,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank
                                         Type</label>
                                     <select id="create-bank-type" name="bank_type"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Choose a Type</option>
                                         <option value="1">Buyer</option>
                                         <option value="2">Factory</option>
@@ -320,7 +320,7 @@
                                     <label for="create-bank-address"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                                     <textarea id="create-bank-address" rows="2" name="address"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-sky-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
                                     <p id="create_bank_address_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
@@ -330,7 +330,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitCreatebank"
-                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Add Bank</button>
                     </div>
                     </form>
@@ -345,7 +345,7 @@
             id="update-bank-modal" aria-modal="true" role="dialog">
             <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="relative bg-sky-50 rounded-lg shadow dark:bg-gray-800">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                         <h3 class="text-xl font-semibold dark:text-white">
@@ -372,7 +372,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank
                                         Name</label>
                                     <input type="text" name="name" id="update-bank-name"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="update_bank_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -384,7 +384,7 @@
                                         Bank Account No
                                     </label>
                                     <input type="text" name="account_no" id="update-bank-account-number"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
                                     <p id="update_bank_account_no_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -395,7 +395,7 @@
                                     <label for="update-bank-email"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <input type="email" name="email" id="update-bank-email"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_bank_email_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
@@ -405,7 +405,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                         Number</label>
                                     <input type="text" name="phone_no" id="update-bank-phone-number"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_bank_phone_no_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -416,7 +416,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Swift Code</label>
                                     <input type="text" name="swift_code" id="update-bank-swift-code"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_bank_swift_code_error"
                                         class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
@@ -428,7 +428,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank
                                         Type</label>
                                     <select id="update-bank-type" name="bank_type"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-sky-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500">
                                         <option selected>Choose a Type</option>
                                         <option value="1">Buyer</option>
                                         <option value="2">Factory</option>
@@ -444,7 +444,7 @@
                                     <label for="update-bank-address"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                                     <textarea id="update-bank-address" rows="2" name="address"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-sky-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
                                     <p id="update_bank_address_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                     </p>
                                 </div>
@@ -454,7 +454,7 @@
                     <!-- Modal footer -->
                     <div class="items-center flex justify-end p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                         <button id="submitUpdateBank"
-                            class="text-white bg-blue-700 font-semibold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            class="text-white bg-sky-700 font-semibold hover:bg-sky-800 focus:ring-4 focus:ring-sky-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             type="submit">Update Bank</button>
                     </div>
                     </form>

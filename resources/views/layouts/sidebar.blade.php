@@ -2,11 +2,11 @@
     class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width"
     aria-label="Sidebar">
     <div
-        class="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        class="relative flex flex-col flex-1 min-h-0 pt-0 bg-sky-50 border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
-            <div class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+            <div class="flex-1 px-3 space-y-1 bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                 <ul class="pb-2 space-y-2">
-                    <li>
+                   {{--  <li>
                         <form action="#" method="GET" class="lg:hidden">
                             <label for="mobile-search" class="sr-only">Search</label>
                             <div class="relative">
@@ -23,11 +23,11 @@
                                     placeholder="Search">
                             </div>
                         </form>
-                    </li>
+                    </li> --}}
                     {{-- Dashboard --}}
                     <li>
                         <a href="{{ route('home') }}"
-                            class="{{ request()->routeIs('home') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base  rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                            class="{{ request()->routeIs('home') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base  rounded-lg hover:bg-sky-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <svg width="24px" height="24px" viewBox="0 0 24 24"
                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                 xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -81,7 +81,7 @@
                     {{-- Expenses Start --}}
                     <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-expenses" data-collapse-toggle="dropdown-expenses">
 
                             <svg height="24px" width="24px" version="1.1" id="Layer_1"
@@ -113,14 +113,14 @@
                             <li class="">
 
                                 <a href="{{ route('expenses.transaction') }}"
-                                    class="{{ request()->routeIs('expenses.transaction') || request()->routeIs('tnxDetails') ? 'text-green-500' : 'text-gray-900' }}
-                                    flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                                    class="{{ request()->routeIs('expenses.transaction') || request()->routeIs('tnxDetails') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }}
+                                    flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">
 
                                     Transaction</a>
                             </li>
                             <li>
                                 <a href="{{ route('expenses.category') }}"
-                                    class="{{ request()->routeIs('expenses.category') ? 'text-green-500' : 'text-gray-900' }}  flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
+                                    class="{{ request()->routeIs('expenses.category') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }}  flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
                             </li>
                         </ul>
                     </li>
@@ -129,7 +129,7 @@
                     {{-- Income Start --}}
                     {{--  <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-income">
 
                             <svg height="24px" width="24px" version="1.1" id="Layer_1"
@@ -160,11 +160,11 @@
                         <ul id="dropdown-income" class="hidden py-2 space-y-2">
                             <li>
                                 <a href="#"
-                                    class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
+                                    class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
                             </li>
                             <li>
                                 <a href=""
-                                    class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Exemple</a>
+                                    class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Exemple</a>
                             </li>
                         </ul>
                     </li> --}}
@@ -172,7 +172,7 @@
                     {{-- Employee Start --}}
                     <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-employee">
 
                             <svg height="24px" width="24px" version="1.1" id="Layer_1"
@@ -203,16 +203,16 @@
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('employee.attendance') }}"
-                                    class="{{ request()->routeIs('employee.attendance') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Attendance</a>
+                                    class="{{ request()->routeIs('employee.attendance') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Attendance</a>
                             </li>
                             <li>
                                 <a href="{{ route('employee.list') }}"
-                                    class="{{ request()->routeIs('employee.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Employee
+                                    class="{{ request()->routeIs('employee.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Employee
                                     List</a>
                             </li>
                             <li>
                                 <a href="{{ route('employee.department') }}"
-                                    class="{{ request()->routeIs('employee.department') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Department</a>
+                                    class="{{ request()->routeIs('employee.department') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Department</a>
                             </li>
                         </ul>
                     </li>
@@ -222,7 +222,7 @@
                     {{-- TT Manage Start --}}
                     <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-income" data-collapse-toggle="dropdown-tt-manae">
 
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -286,25 +286,25 @@
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('invoices.list') }}"
-                                    class="{{ request()->routeIs(['invoices.list', 'invoice.details']) ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
+                                    class="{{ request()->routeIs(['invoices.list', 'invoice.details']) ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
                                     Order</a>
                             </li>
                             <li>
                                 <a href="{{ route('factories.list') }}"
-                                    class="{{ request()->routeIs('factories.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Factory</a>
+                                    class="{{ request()->routeIs('factories.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Factory</a>
                             </li>
                             <li>
                                 <a href="{{ route('banks.list') }}"
-                                    class="{{ request()->routeIs('banks.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Bank</a>
+                                    class="{{ request()->routeIs('banks.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bank</a>
                             </li>
 
                             <li>
                                 <a href="{{ route('buyers.list') }}"
-                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
+                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
                             </li>
                             <li>
                                 <a href="{{ route('companies.list') }}"
-                                    class="{{ request()->routeIs('companies.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
+                                    class="{{ request()->routeIs('companies.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
                             </li>
                         </ul>
                     </li>
@@ -315,7 +315,7 @@
                         @if (auth()->user()->role->name === 'admin')
                             <li>
                                 <button type="button"
-                                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700"
                                     aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
 
                                     {{--  --}}
@@ -351,7 +351,7 @@
                          py-2 space-y-2">
                                     <li>
                                         <a href="{{ route('user.list') }}"
-                                            class="{{ request()->routeIs('user.list') ? 'text-green-500' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Users
+                                            class="{{ request()->routeIs('user.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Users
                                             List</a>
                                     </li>
 
@@ -366,10 +366,10 @@
 
             </div>
         </div>
-        {{-- <div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-white lg:flex dark:bg-gray-800"
+        {{-- <div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-sky-50 lg:flex dark:bg-gray-800"
             sidebar-bottom-menu>
             <a href="#"
-                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-sky-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
@@ -377,7 +377,7 @@
                 </svg>
             </a>
             <a href="#" data-tooltip-target="tooltip-settings"
-                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-sky-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
@@ -390,7 +390,7 @@
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
             <button type="button" data-dropdown-toggle="language-dropdown"
-                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-sky-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 <svg class="h-5 w-5 rounded-full mt-0.5" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900">
                     <path fill="#b22234" d="M0 0h7410v3900H0z" />
@@ -421,12 +421,12 @@
                 </svg>
             </button>
 
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700"
+            <div class="z-50 hidden my-4 text-base list-none bg-sky-50 divide-y divide-gray-100 rounded shadow dark:bg-gray-700"
                 id="language-dropdown">
                 <ul class="py-1" role="none">
                     <li>
                         <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                             role="menuitem">
                             <div class="inline-flex items-center">
                                 <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -452,7 +452,7 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                             role="menuitem">
                             <div class="inline-flex items-center">
                                 <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -467,7 +467,7 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                             role="menuitem">
                             <div class="inline-flex items-center">
                                 <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -484,7 +484,7 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                             role="menuitem">
                             <div class="inline-flex items-center">
                                 <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"

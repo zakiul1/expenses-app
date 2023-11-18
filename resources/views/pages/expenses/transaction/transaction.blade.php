@@ -9,7 +9,7 @@
                     <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
                         <li class="inline-flex items-center">
                             <a href="{{ route('home') }}"
-                                class="inline-flex items-center text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
+                                class="inline-flex items-center text-gray-700 hover:text-sky-600 dark:text-gray-300 dark:hover:text-white">
                                 <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -32,7 +32,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                                 <a href="{{ route('expenses.transaction') }}"
-                                    class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">transactions</a>
+                                    class="ml-1 text-gray-700 hover:text-sky-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">transactions</a>
                             </div>
                         </li>
 
@@ -51,44 +51,32 @@
                         <div class="items-center mb-2 md:mb-0 flex sm:flex">
 
                             <div class="flex items-center space-x-2 md:space-x-4">
-                                {{--    <div class="relative">
-
-                                    <input name="fromDate" type="date" 
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xs  rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
-                                        placeholder="From">
-                                </div>
-                                <div class="relative">
-                                    <input name="toDate" type="date"
-                                        class="flex items-center justify-center bg-gray-50 border border-gray-300 text-gray-900 text-xs  rounded-lg focus:ring-primary-500 focus:border-primary-500  w-full md:p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
-                                        placeholder="To">
-                                </div> --}}
-
-                                {{-- start --}}
+                    
 
                                 <div date-rangepicker class="flex items-center">
                                     <div class="relative">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                            <svg class="w-4 h-4 text-sky-400 dark:text-gray-400" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path
                                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
                                         <input name="fromDate" datepicker type="text"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-sky-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
                                             placeholder="Select date start">
                                     </div>
                                     <span class="mx-4 text-gray-500">to</span>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                            <svg class="w-4 h-4 text-sky-400 dark:text-gray-400" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path
                                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
                                         <input name="toDate" type="text" datepicker
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-sky-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
                                             placeholder="Select date end">
                                     </div>
                                 </div>
@@ -99,9 +87,9 @@
                             {{-- Submit Button --}}
                             <div class="">
                                 <button type="submit"
-                                    class="  sm:mb-0 md:mr-4 ml-2 md:ml-4 inline-flex text-xs   items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-4 py-2 md:py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                    class="  sm:mb-0 md:mr-4 ml-2 md:ml-4 inline-flex text-xs   items-center text-gray-900 bg-sky-50 border border-gray-300 focus:outline-none hover:bg-sky-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-4 py-2 md:py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
 
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                    <svg class="w-4 h-4 mr-2 text-sky-400" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -115,7 +103,7 @@
                 </form>
                 <div class="flex justify-end">
                     <button type="button" data-modal-toggle="transactionAddModal"
-                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm lg:text-sm  font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="inline-flex items-center justify-center px-3 py-2 text-xs md:text-sm lg:text-sm  font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:ring-sky-300 sm:w-auto dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -139,7 +127,7 @@
         {{-- Table  Start --}}
         @if ($totalAmount)
             <div class="py-2">
-                <h2 class="text-xl md:text-3xl pb-2 text-lime-600 ">Total Amount : {{ $totalAmount }}</h2>
+                <h2 class="text-xl md:text-3xl pb-2 text-sky-600 ">Total Amount : {{ $totalAmount }}</h2>
             </div>
         @endif
 
@@ -149,7 +137,7 @@
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead class="bg-gray-100  dark:bg-gray-700">
+                            <thead class="bg-sky-100  dark:bg-gray-700">
                                 <tr>
 
                                     <th scope="col"
@@ -194,11 +182,11 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
                                 @if ($message)
                                     @foreach ($transactions as $transaction)
-                                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
 
                                             <td
                                                 class="p-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -237,7 +225,7 @@
                                                             <a
                                                                 href="{{ route('transaction.images.download', ['id' => $transaction->id]) }}">
                                                                 <button type="button"
-                                                                    class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">
+                                                                    class="p-2 flex text-sky-600 items-center rounded hover:bg-sky-100">
                                                                     Images
                                                                     <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
                                                                         fill="currentColor" viewBox="0 0 24 24"
@@ -260,7 +248,7 @@
                                                             <a
                                                                 href="{{ route('transaction.document.download', ['id' => $transaction->id]) }}">
                                                                 <button type="button"
-                                                                    class="p-2 flex text-blue-600 items-center rounded hover:bg-gray-100">
+                                                                    class="p-2 flex text-sky-600 items-center rounded hover:bg-sky-100">
                                                                     Documents
                                                                     <svg class="ml-2 w-5 h-5 fill-red-500 text-gray-500 dark:text-gray-400"
                                                                         fill="currentColor" viewBox="0 0 24 24"
@@ -284,7 +272,7 @@
                                                         <button {{-- onclick="updateBank({{ $transaction->id }})" --}} {{--   data-modal-target="update-bank-modal"
                                                     data-modal-toggle="update-bank-modal" --}} type="button"
                                                             data-id="{{-- {{ $category->id }} --}}"
-                                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                             <svg class="w-4 h-4 mr-2" fill="currentColor"
                                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                                 <path
@@ -354,7 +342,7 @@
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!-- Modal content -->
-                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                <div class="relative p-4 bg-sky-50 rounded-lg shadow dark:bg-gray-800 sm:p-5">
                     <!-- Modal header -->
                     <div
                         class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
@@ -378,10 +366,10 @@
                         <div class="grid gap-4 mb-4 sm:grid-cols-2">
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="name"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                     placeholder=" " required />
                                 <label for="name"
-                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
                                 <p id="transaction_name_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
@@ -402,10 +390,10 @@
                         <div class="grid gap-4 mb-4 sm:grid-cols-3">
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="number" name="amount" id="amount"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                     placeholder="" required />
                                 <label for="amount"
-                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
                                 <p id="transaction_amount_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
@@ -426,10 +414,10 @@
 
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="date" name="expense_date" id="expense_date"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                     placeholder=" " required />
                                 <label for="expense_date"
-                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expenses
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expenses
                                     Date</label>
                                 <p id="transaction_expense_date_error"
                                     class="mt-2 text-xs text-red-600 dark:text-red-400">
@@ -443,7 +431,7 @@
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="multiple_files">Upload Image </label>
                                 <input id="images_path"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-sky-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     name="images_path[]" type="file" multiple accept="image/*">
                                 <p id="transaction_images_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
@@ -453,7 +441,7 @@
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="document_path">Upload Document</label>
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-sky-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     name="documents_path[]" id="documents_path" type="file" multiple
                                     accept=".pdf, .xls, .xlsx, .doc, .docx, .txt">
                                 <p id="transaction_documents_path_error"
@@ -469,13 +457,13 @@
                                 <label for="description"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                                 <textarea id="description" rows="3" name="description"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-sky-50 rounded-lg border border-gray-300 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
                                     placeholder="Write Expenses description here"></textarea>
                             </div>
                         </div>
                         <div class="flex justify-end">
                             <button type="submit"
-                                class="text-white inline-flex items-center bg-lime-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                class="text-white inline-flex items-center bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
                                 <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -577,6 +565,7 @@
                     titleColor: '#DA1010',
                     okButtonColor: '#f8f8f8',
                     okButtonBackground: '#DA1010',
+                    backgroundColor:'#e0f4ff'
                 },
             );
 

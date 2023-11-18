@@ -11,7 +11,7 @@ class AttendanceController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        $attendance = Attendance::latest()->get();
+        $attendance = Attendance::latest()->paginate(6);
         // dd($employee);
 
         return view('attendance.entry', ['employees' => $employees, 'attendance' => $attendance]);

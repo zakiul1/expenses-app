@@ -1,28 +1,14 @@
-<nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav class="fixed z-30 w-full bg-sky-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
-            <div class="flex items-center justify-start">
-                <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar"
-                    class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                    <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <svg id="toggleSidebarMobileClose" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <a href="{{ route('home') }}" class="flex ml-2 md:mr-24">
-                    <div class="w-10 h-10 bg-gray-200 rounded-full  dark:bg-gray-500 dark:rounded-full mr-2">
-                        <img src="{{ asset('assets/logo.png') }}" class="w-10  p-1 object-cover" alt="App Logo">
+            <div class="flex   items-center justify-start">
+               
+                <a href="{{ route('home') }}" class="flex items-center md:mr-24">
+                    <div class=" bg-white rounded-full p-1  dark:bg-gray-500 dark:rounded-full mr-2">
+                        <img src="{{ asset('assets/logo.png') }}" class="w-7 h-7  object-cover" alt="App Logo">
                     </div>
                     <span
-                        class="self-center text-sky-700 text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">App
+                        class="self-center  text-sky-700 text-l font-semibold sm:text-xl whitespace-nowrap dark:text-white">App
                         Store</span>
                 </a>
 
@@ -35,7 +21,7 @@
 
 
 
-                <div class=" z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
+                <div class=" z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-sky-50 divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
                     id="notification-dropdown"
                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1138px, 677px);"
                     data-popper-placement="bottom">
@@ -219,7 +205,7 @@
                     </svg>
                 </button>
 
-                <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+                <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-sky-50 divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
                     id="apps-dropdown"
                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1178px, 677px);"
                     data-popper-placement="bottom">
@@ -326,38 +312,7 @@
                 </div>
                 <button id="theme-toggle" type="button"
                     class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    {{--    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg> --}}
-                    {{--  <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
-                        viewBox="-22.5 0 301 301" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
-                        <defs>
-                            <linearGradient x1="2.17771739%" y1="34.7938955%" x2="92.7221942%" y2="91.3419405%"
-                                id="linearGradient-1">
-                                <stop stop-color="#41A7EF" offset="0%">
-
-                                </stop>
-                                <stop stop-color="#813DDE" offset="54.2186236%">
-
-                                </stop>
-                                <stop stop-color="#8F2EE2" offset="74.4988788%">
-
-                                </stop>
-                                <stop stop-color="#A11CE6" offset="100%">
-
-                                </stop>
-                            </linearGradient>
-                        </defs>
-                        <g>
-                            <path
-                                d="M124.183681,101.699 C124.183681,66.515 136.256681,34.152 156.486681,8.525 C159.197681,5.092 156.787681,0.069 152.412681,0.012 C151.775681,0.004 151.136681,0 150.497681,0 C67.6206813,0 0.390681343,66.99 0.00168134279,149.775 C-0.386318657,232.369 66.4286813,300.195 149.019681,300.988 C189.884681,301.381 227.036681,285.484 254.376681,259.395 C257.519681,256.396 255.841681,251.082 251.548681,250.42 C179.413681,239.291 124.183681,176.949 124.183681,101.699"
-                                fill="url(#linearGradient-1)">
-
-                            </path>
-                        </g>
-                    </svg> --}}
+                  
                     <svg id="theme-toggle-dark-icon" class="hidden" width="20px" height="20px"
                         viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
@@ -419,7 +374,7 @@
                         </button>
                     </div>
 
-                    <div class="z-50 min-w-[200px] hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                    <div class="z-50 min-w-[200px] hidden my-4 text-base list-none bg-sky-50 divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                         id="dropdown-2"
                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1266px, 673px);"
                         data-popper-placement="bottom">
@@ -462,6 +417,25 @@
                         </ul>
                     </div>
                 </div>
+               {{--  Menu --}}
+                <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar"
+                class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+               {{--  <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg> --}}
+                <svg id="toggleSidebarMobileHamburger" width="24px" height="24px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>70 Basic icons by Xicons.co</title><path d="M41,14H7a2,2,0,0,1,0-4H41A2,2,0,0,1,41,14Z" fill="#a4c6ec"></path><path d="M41,26H7a2,2,0,0,1,0-4H41A2,2,0,0,1,41,26Z" fill="#a4c6ec"></path><path d="M41,38H7a2,2,0,0,1,0-4H41A2,2,0,0,1,41,38Z" fill="#a4c6ec"></path></g></svg>
+                <svg id="toggleSidebarMobileClose" class="hidden " width="16px" height="16px" viewBox="0 0 6.3499998 6.3499998" id="svg8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs id="defs2"></defs><path d="m 0.76367336,0.52734375 a 0.26460978,0.26460978 0 0 0 -0.15625,0.45312501 L 5.369142,5.7441405 A 0.26516504,0.26516504 0 1 0 5.7441421,5.3691407 L 0.98047024,0.60742188 A 0.26460978,0.26460978 0 0 0 0.76367336,0.52734375 Z" id="path1855" style="color:#ec2328;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#ec2328;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#ec2328;solid-opacity:1;vector-effect:none;fill:#ec2328;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.52916664;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:204.09448242;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"></path><path d="M 5.5507827,0.52734375 A 0.26460978,0.26460978 0 0 0 5.369142,0.60742188 L 0.60742336,5.3691407 A 0.26460978,0.26460978 0 1 0 0.98047024,5.7441405 L 5.7441421,0.98046876 A 0.26460978,0.26460978 0 0 0 5.5507827,0.52734375 Z" id="path1857" style="color:#ec2328;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#ec2328;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#ec2328;solid-opacity:1;vector-effect:none;fill:#ec2328;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.52916664;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:204.09448242;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"></path></g></svg>
+               {{--  <svg id="toggleSidebarMobileClose" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg> --}}
+            </button>
+            {{--  Menu --}}
             </div>
         </div>
     </div>

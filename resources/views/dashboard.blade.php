@@ -4,7 +4,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
             {{--    Total Employee  --}}
             <div
-                class="mb-4  items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4  items-center  justify-between  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
 
@@ -31,7 +31,7 @@
             {{--    Total Employee  --}}
             {{--    Total Expense  --}}
             <div
-                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
                         <svg class="w-10 h-10 md:w-12 md:h-12" version="1.1" id="Layer_1"
@@ -69,7 +69,7 @@
 
             {{--    Total Attendance  --}}
             <div
-                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full flex flex-col items-center py-6">
                     <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@
             {{--    Total Expense  --}}
             {{--    Total User  --}}
             <div
-                class="mb-4 w-full items-center  justify-between  bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:bg-gray-800">
+                class="mb-4 w-full items-center  justify-between  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700  dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full flex flex-col items-center py-6">
                     <div>
 
@@ -144,7 +144,7 @@
             {{-- Diff  Block --}}
 
             <div
-                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                class="p-4  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full ">
                     <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
 
@@ -168,7 +168,7 @@
             </div>
             {{-- Diff  Block --}}
             <div
-                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                class="p-4  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full  pb-2">
                     <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
                         {{ now()->format('M Y') }}
@@ -192,7 +192,7 @@
             </div>
             {{-- Diff  Block --}}
             <div
-                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                class="p-4  bg-gradient-to-r from-[#e0f4ff] border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:from-[#1a202c] dark:to-[#2d3748]">
                 <div class="w-full ">
                     <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
                         {{ now()->format('M Y') }}

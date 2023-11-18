@@ -329,6 +329,7 @@ class ExpensesTransaction extends Controller
         //delete previous images
         //dd($imagePaths);
         if (is_array($imagePaths) && count($imagePaths) > 0 && !empty($checkImgPaths)) {
+
             $oldImages = json_decode($expense->images_path, true);
             $oldImages = explode(',', $oldImages);
 
@@ -338,15 +339,19 @@ class ExpensesTransaction extends Controller
             }
 
             $result = arraysMatch($oldImages, $checkImgPaths);
-            // dd($result);
+           
             if ($result == false) {
 
                 // Delete old images
                 foreach ($oldImages as $oldImage) {
+                   
+                   if(!empty($oldImage)){
                     $imagePath = public_path('expenses/transaction/images/' . $oldImage);
+                    // dd( $imagePath);
                     if (file_exists($imagePath)) {
                         unlink($imagePath);
                     }
+                   }
                 } # code...
             }
         }
@@ -367,10 +372,13 @@ class ExpensesTransaction extends Controller
             // Delete old documents
             if ($result == false) {
                 foreach ($oldDocuments as $oldDocument) {
-                    $documentPath = public_path('expenses/transaction/document/' . $oldDocument);
+                    if (!empty($oldImage)) {
+                        $documentPath = public_path('expenses/transaction/document/' . $oldDocument);
                     if (file_exists($documentPath)) {
                         unlink($documentPath);
+                    } 
                     }
+                   
                 }
             }
         }
