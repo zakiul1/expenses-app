@@ -4,11 +4,14 @@ import axios from "axios";
 import Alpine from "alpinejs";
 import Notiflix from 'notiflix';
 import ApexCharts from 'apexcharts'
+
+
 window.Alpine = Alpine;
 window.axios = axios;
 window.ApexCharts = ApexCharts;
 
 window.Notiflix = Notiflix;
+
 
 
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC

@@ -429,13 +429,6 @@
                         </div>
                         <div>
 
-                            {{-- <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                for="document_path">Upload Document</label> --}}
-                            {{--  <input
-                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                name="documents_path[]" id="documents_path" type="file" multiple>
-                            <p id="transaction_documents_path_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
-                            </p> --}}
                             <div class="mb-4">
                                 <label for="imageInput" class="block text-sm font-medium text-gray-700">Choose
                                     Images</label>
@@ -483,48 +476,65 @@
             imagePreview.innerHTML = '';
 
             const files = event.target.files;
+
             for (const file of files) {
                 const reader = new FileReader();
-                const imageDiv = document.createElement('div');
-                imageDiv.className = 'flex flex-wrap items-center mb-2  ';
+                const imageDiv = createImageDiv();
 
                 reader.onload = function(e) {
-                    const uperDiv = document.createElement('div');
-                    uperDiv.className = 'p-2 bg-gray-200 relative flex justify-center items-center';
-                    const image = document.createElement('img');
-                    image.src = e.target.result;
-                    image.className = 'w-12 h-12 object-cover  rounded-lg';
-                    imageDiv.appendChild(uperDiv);
-                    uperDiv.appendChild(image);
-
-                    const cancelButton = document.createElement('button');
-                    cancelButton.innerHTML =
-                        `<svg  class="w-4 h-4 fill-red-700"  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
-                    cancelButton.className = 'right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg';
+                    const image = createImageElement(e.target.result);
+                    const cancelButton = createCancelButton(imageDiv, file);
 
                     cancelButton.addEventListener('click', function() {
                         imageDiv.remove();
-
-                        // Get the current file list
-                        const currentFiles = Array.from(imageInput.files);
-
-                        // Remove the canceled file from the file list
-                        const updatedFiles = currentFiles.filter(f => f !== file);
-
-                        // Create a new FileList with the updated files
-                        const newFileList = new DataTransfer();
-                        updatedFiles.forEach(f => newFileList.items.add(f));
-
-                        // Update the file input with the new FileList
-                        imageInput.files = newFileList.files;
+                        updateFileInput(imageInput, file);
                     });
-                    uperDiv.appendChild(cancelButton);
 
+                    imageDiv.appendChild(cancelButton);
+                    imageDiv.appendChild(image);
                     imagePreview.appendChild(imageDiv);
                 };
 
                 reader.readAsDataURL(file);
             }
+        }
+
+        function createImageDiv() {
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'flex flex-wrap items-center mb-2';
+
+            const uperDiv = document.createElement('div');
+            uperDiv.className = 'p-2 bg-gray-200 relative flex justify-center items-center';
+            imageDiv.appendChild(uperDiv);
+
+            return imageDiv;
+        }
+
+        function createImageElement(src) {
+            const image = document.createElement('img');
+            image.src = src;
+            image.className = 'w-12 h-12 object-cover rounded-lg';
+            return image;
+        }
+
+        function createCancelButton(imageDiv, file) {
+            const cancelButton = document.createElement('button');
+            cancelButton.innerHTML =
+                `<svg class="w-4 h-4 fill-red-700" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd">
+            </path>
+        </svg>`;
+            cancelButton.className = 'right-[-10px] top-[-5px] px-2 py-1 absolute rounded-lg';
+            return cancelButton;
+        }
+
+        function updateFileInput(input, fileToRemove) {
+            const currentFiles = Array.from(input.files);
+            const updatedFiles = currentFiles.filter(f => f !== fileToRemove);
+            const newFileList = new DataTransfer();
+
+            updatedFiles.forEach(f => newFileList.items.add(f));
+            input.files = newFileList.files;
         }
 
 
@@ -535,7 +545,7 @@
             const tnxId = el.getAttribute('data-id')
 
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Transaction Delete  Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',

@@ -128,15 +128,16 @@
                                             class="p-4 text-center text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             @php
                                                 $checkInDateTime = \Carbon\Carbon::parse($item->check_in);
-                                                $expectedStartTime = \Carbon\Carbon::parse('09:00')->setDate($checkInDateTime->year, $checkInDateTime->month, $checkInDateTime->day);
-                                                $timeDifference = $checkInDateTime->diffInHours($expectedStartTime);
+                                                $expectedStartTime = \Carbon\Carbon::parse('09:20')->setDate($checkInDateTime->year, $checkInDateTime->month, $checkInDateTime->day);
+                                                $officeSetTime = \Carbon\Carbon::parse('09:00')->setDate($checkInDateTime->year, $checkInDateTime->month, $checkInDateTime->day);
+                                                $timeDifference = $checkInDateTime->diff($officeSetTime);
                                             @endphp
 
                                             {{-- Display the date, month, and time --}}
-                                            @if ($checkInDateTime->format('H:i') === $expectedStartTime->format('H:i'))
+                                            @if ($checkInDateTime->format('H:i') <= $expectedStartTime->format('H:i'))
                                                 Timely
                                             @else
-                                                Late by {{ $timeDifference }} hours
+                                                Late by {{ $timeDifference->h }} hours {{ $timeDifference->i }} minutes
                                             @endif
                                         </td>
 

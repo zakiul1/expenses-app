@@ -136,11 +136,13 @@
 
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <td class="flex items-center p-4 mr-12 space-x-2 whitespace-nowrap">
+                                        <td class="flex items-center  p-4 mr-12 space-x-2 whitespace-nowrap">
                                             @if ($employee->image_path)
-                                                <img class="w-10 h-10 rounded-full"
-                                                    src="{{ asset('employee/images') . '/' . $employee->image_path }}"
-                                                    alt="employee profile">
+                                                <div class="w-8 h-8 rounded-full">
+                                                    <img class="w-8 h-8 rounded-full  object-cover"
+                                                        src="{{ asset('employee/images') . '/' . $employee->image_path }}"
+                                                        alt="employee profile">
+                                                </div>
                                             @endif
 
                                             <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -170,8 +172,11 @@
                                         @if (auth()->user()->role->name === 'admin')
                                             <td
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-
-                                                @if ($employee->document_path)
+                                                @php
+                                                    $json = json_decode($employee->document_path);
+                                                @endphp
+                                                @if (empty($json))
+                                                @else
                                                     <a
                                                         href="{{ route('employee.download.documents', ['id' => $employee->id]) }}">
 
@@ -386,6 +391,8 @@
                             <div class="col-span-6 sm:col-span-3">
 
                                 <div class="flex flex-col items-start justify-start w-full">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        for="multiple_files">Upload Profile Picture </label>
                                     <input name="image_path" class="w-full" aria-describedby="image_path"
                                         id="create_image_path" accept="image/*" type="file">
                                     <div id="previewCreateImgEmployeeDiv"
@@ -406,6 +413,8 @@
                             <div class="col-span-6 sm:col-span-3">
 
                                 <div class="flex flex-col items-start justify-start w-full">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        for="multiple_files">Upload Documents </label>
                                     <input name="documents_path[]" class="w-full" aria-describedby="documents_path"
                                         id="create_documents_path"
                                         accept=".pdf, .doc, .docx, .txt, .rtf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"

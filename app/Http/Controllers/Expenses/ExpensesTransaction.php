@@ -23,13 +23,19 @@ class ExpensesTransaction extends Controller
         $query = Expenses::with('employee', 'category');
 
         if ($fromDate && $toDate) {
-            $qData = $query->whereBetween('expense_date', [$fromDate, $toDate]);
+            // Convert input dates to 'Y-m-d' format recognized by the database
+            $formattedFromDate = \Carbon\Carbon::createFromFormat('m/d/Y', $fromDate)->format('Y-m-d');
+            $formattedToDate = \Carbon\Carbon::createFromFormat('m/d/Y', $toDate)->format('Y-m-d');
+
+            // Query the database using the formatted dates
+            $qData = $query->whereBetween('expense_date', [$formattedFromDate, $formattedToDate]);
             $totalAmount = $qData->sum('amount');
             $message = ($qData->count() === 0) ? false : true;
         } else {
             $message = true;
             $totalAmount = "";
         }
+
 
         $transactions = $query->orderBy('created_at', 'desc')->paginate(6);
 

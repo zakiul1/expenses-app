@@ -323,7 +323,7 @@
             // console.log(id);
 
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Category Delete  Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',

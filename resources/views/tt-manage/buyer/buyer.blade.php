@@ -608,7 +608,7 @@
         //Delete  data Buyer
         const deleteBuyerFunc = (id) => {
             Notiflix.Confirm.show(
-                'Department Delete Confirm',
+                'Bank Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',

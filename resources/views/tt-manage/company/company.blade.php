@@ -498,7 +498,7 @@
         //Delete  data Bank
         const deleteCompanyFunc = (id) => {
             Notiflix.Confirm.show(
-                'Department Delete Confirm',
+                'Company Delete Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',

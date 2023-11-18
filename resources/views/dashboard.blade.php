@@ -139,5 +139,87 @@
 
 
         </div>
+        {{--  Graph --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {{-- Diff  Block --}}
+
+            <div
+                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                <div class="w-full ">
+                    <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
+
+                        Today Late Person</h3>
+                    @foreach ($employees as $employee)
+                        <div class="flex items-center mb-2">
+                            <div class="w-36 text-sm font-medium dark:text-white">
+                                {{ $employee->first_name . ' ' . $employee->last_name }}</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+                                    style="width: {{ $employee->averageTimelyEntry }}%">
+                                    {{-- {{ $employee->attendanceDays }} --}}</div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+                </div>
+
+
+            </div>
+            {{-- Diff  Block --}}
+            <div
+                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                <div class="w-full  pb-2">
+                    <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
+                        {{ now()->format('M Y') }}
+                        Avarage Attend</h3>
+                    @foreach ($employees as $employee)
+                        <div class="flex items-center mb-2">
+                            <div class="w-36 text-sm font-medium dark:text-white">
+                                {{ $employee->first_name . ' ' . $employee->last_name }}</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+                                    style="width: {{ $employee->averageAttendance }}%">
+                                    {{-- {{ $employee->attendanceDays }} --}}</div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+                </div>
+
+
+            </div>
+            {{-- Diff  Block --}}
+            <div
+                class="p-4  bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                <div class="w-full ">
+                    <h3 class="mb-2 border-b pb-2 text-base font-normal text-gray-500 dark:text-gray-400">
+                        {{ now()->format('M Y') }}
+                        Average Entry in Time</h3>
+                    @foreach ($employees as $employee)
+                        <div class="flex items-center mb-2">
+                            <div class="w-36 text-sm font-medium dark:text-white">
+                                {{ $employee->first_name . ' ' . $employee->last_name }}</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+                                    style="width: {{ $employee->averageTimelyEntry }}%">
+                                    {{-- {{ $employee->attendanceDays }} --}}</div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+                </div>
+
+
+            </div>
+
+
+            {{--   another --}}
+
+
+        </div>
+        {{--  Graph --}}
     </div>
 @endsection

@@ -535,7 +535,7 @@
 
 
             Notiflix.Confirm.show(
-                'Department Delete  Confirm',
+                'Factory Delete  Confirm',
                 'Do you want to Delete ?',
                 'Yes',
                 'No',
