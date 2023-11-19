@@ -6,10 +6,12 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Employee\DepartmentController;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Expenses\ExpenseCategory;
 use App\Http\Controllers\Expenses\ExpensesTransaction;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\TtManage\BankController;
 use App\Http\Controllers\TtManage\BuyerController;
 use App\Http\Controllers\TtManage\FactoryController;
@@ -51,11 +53,17 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::post('user/update/{id}', [AdminController::class, 'update']);
     Route::post('user/delete/{id}', [AdminController::class, 'delete']);
     Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
-    Route::get('/chat', [AdminController::class, 'chat']);
+   
 });
 
 Route::middleware(['auth'])->group(function () {
 
+ /* Chat Application APP Route */
+ Route::get('/cooo', [MessageController::class, 'chat']);
+ Route::get('/chat', [MessageController::class, 'index'])->name('chat');
+ Route::get('/chat/{receiver_id}', [MessageController::class, 'index'])->name('chat');
+ Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send.message');
+ /* Chat Application APP Route */
 
     Route::group(['prefix' => 'expenses'], function () {
         //category Route Start
