@@ -105,6 +105,7 @@ class EmployeeController extends Controller
     public function showEmployeeUpdateForm($id)
     {
         $employee = Employee::findOrFail($id);
+        //dd( $employee);
         $departments = Department::all();
         $department = $employee->department->id;
         $doc = json_decode($employee->document_path, true);

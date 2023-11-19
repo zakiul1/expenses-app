@@ -170,10 +170,8 @@
                                                 accept="image/*" type="file">
 
                                         </label>
-                                         @php
-                                                $img=json_decode($employee->image_path);
-                                            @endphp
-                                            @if ( $img)
+                                        
+                                            @if ($employee->image_path)
                                         <div
                                             class="p-2 mt-3 flex {{ $employee->image_path ? 'justify-start items-start' : 'justify-center items-center' }} bg-gray-200 rounded-sm">
                                            

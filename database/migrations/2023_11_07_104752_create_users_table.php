@@ -21,6 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id')->default(2); // Add this line to link to the roles table
             $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('last_activity')->nullable();
+
             // Define a foreign key constraint to link to the roles table
             $table->foreign('role_id')->references('id')->on('roles');
         });

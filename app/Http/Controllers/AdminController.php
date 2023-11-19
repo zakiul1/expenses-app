@@ -12,6 +12,8 @@ class AdminController extends Controller
     {
         $users = User::latest()->paginate(6);
         return view('user.user', ['users' => $users]);
+     /*    auth()->user()->update(['last_activity' => now()]); */
+
     }
 
     public function getIndividualData($id)
@@ -121,5 +123,10 @@ class AdminController extends Controller
         $user->delete();
 
         return response()->json(['message' => 'User and associated image deleted successfully'], 201);
+    }
+
+
+    public function chat(){
+        return view('user.chat');
     }
 }

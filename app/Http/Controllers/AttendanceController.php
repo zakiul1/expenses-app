@@ -38,10 +38,18 @@ class AttendanceController extends Controller
         // Validate the incoming request
         $request->validate($rules, $messages);
         // Check if the employee has already made an entry for the day
-        $existingEntry = Attendance::where('employee_id', $request->input('employee_id'))
-            ->whereDate('check_in', now()->toDateString()) // Filter by today's date
-            ->first();
 
+        $bangladeshTimeZone = new \DateTimeZone('Asia/Dhaka');
+$currentDateTime = new \DateTime('now', $bangladeshTimeZone);
+$formattedDate = $currentDateTime->format('Y-m-d');
+
+
+        $existingEntry = Attendance::where('employee_id', $request->input('employee_id'))
+            ->whereDate('check_in',$formattedDate) // Filter by today's date
+            ->first();
+           
+
+           // dd( $existingEntry);
         if ($existingEntry) {
             // If an entry already exists, show a message and do not create a new entry
             //return back()->with('message', 'An entry for this employee already exists for today.');

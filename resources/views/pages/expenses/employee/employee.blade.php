@@ -137,10 +137,8 @@
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
                                         <td class="flex items-center  p-4 mr-12 space-x-2 whitespace-nowrap">
-                                            @php
-                                                $img=json_decode($employee->image_path);
-                                            @endphp
-                                            @if ($img)
+                                         
+                                            @if ($employee->image_path)
                                                 <div class="w-8 h-8 rounded-full">
                                                     <img class="w-8 h-8 rounded-full  object-cover"
                                                         src="{{ asset('employee/images') . '/' . $employee->image_path }}"
@@ -177,11 +175,10 @@
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 @php
                                                     $json = json_decode($employee->document_path);
-
+                                                   
                                                 @endphp
-                                                @if (!empty($json))
-                                                @else
-                                                    <a
+                                                @if ($json)
+                                                <a
                                                         href="{{ route('employee.download.documents', ['id' => $employee->id]) }}">
 
                                                         <button type="button"
@@ -197,6 +194,8 @@
                                                             <span class="sr-only">Download</span>
                                                         </button>
                                                     </a>
+                                                @else
+                                                    
                                                 @endif
                                             </td>
                                             <td

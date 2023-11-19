@@ -51,6 +51,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::post('user/update/{id}', [AdminController::class, 'update']);
     Route::post('user/delete/{id}', [AdminController::class, 'delete']);
     Route::get('/user/individual/{id}', [AdminController::class, 'getIndividualData']);
+    Route::get('/chat', [AdminController::class, 'chat']);
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -154,9 +154,26 @@
                             <div class="w-36 text-sm font-medium dark:text-white">
                                 {{ $employee->first_name . ' ' . $employee->last_name }}</div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
-                                    style="width: {{ $employee->averageTimelyEntry }}%">
-                                    {{-- {{ $employee->attendanceDays }} --}}</div>
+                                @if ($employee->emploeeTimelyEntry)
+                                    <div class="bg-green-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
+                                    style="width: 100%">
+                                    <span class="text-[10px] font-bold  text-white">Timely</span>
+                                    </div>
+                                    @else
+                                    <div class="bg-red-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
+                                    style="width: 100%">
+                                    @php
+                                        $hours = $employee->timeDifference->h;
+                                        $minutes = $employee->timeDifference->i;
+                                        // Using sprintf
+                                        $timeString = sprintf("%02d:%02d", $hours, $minutes);
+                                        // Using Carbon format method
+                                       // $timeString = $employee->timeDifference->format('H:i');
+                                    @endphp
+                                    <span class="text-[10px] font-bold  text-white">{{ $hours.' hours '.$minutes.' '}}minutes late today</span>
+                                    </div>
+                                @endif
+                                
                             </div>
                         </div>
                     @endforeach
@@ -178,7 +195,7 @@
                             <div class="w-36 text-sm font-medium dark:text-white">
                                 {{ $employee->first_name . ' ' . $employee->last_name }}</div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+                                <div class="bg-sky-600 h-2.5 rounded-full dark:bg-sky-500"
                                     style="width: {{ $employee->averageAttendance }}%">
                                     {{-- {{ $employee->attendanceDays }} --}}</div>
                             </div>
@@ -202,7 +219,7 @@
                             <div class="w-36 text-sm font-medium dark:text-white">
                                 {{ $employee->first_name . ' ' . $employee->last_name }}</div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+                                <div class="bg-sky-600 h-2.5 rounded-full dark:bg-sky-500"
                                     style="width: {{ $employee->averageTimelyEntry }}%">
                                     {{-- {{ $employee->attendanceDays }} --}}</div>
                             </div>

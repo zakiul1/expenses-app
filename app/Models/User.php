@@ -54,4 +54,9 @@ class User extends Authenticatable
         return $this->hasMany(Attendance::class, 'user_id');
     }
 
+    public function isOnline()
+{
+    return $this->last_activity && now()->diffInMinutes($this->last_activity) < 5;
+}
+
 }

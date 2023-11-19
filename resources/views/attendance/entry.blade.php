@@ -146,7 +146,8 @@
 
                                         <td
                                             class="p-4 text-center  text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $checkInDateTime->format('F d, Y h:i A') }}
+                                            {{ $checkInDateTime->format('M d, Y h:i A') }}
+
 
                                         </td>
 
