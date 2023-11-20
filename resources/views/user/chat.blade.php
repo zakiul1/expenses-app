@@ -23,6 +23,8 @@
                             <!-- User List -->
                             <div class="flex flex-col space-y-1 mt-4 -mx-2 h-48 sm:overflow-y-auto">
                                 @foreach ($users as $user)
+                              <div class="flex items-center">
+                              
                                     <!-- User Item -->
                                     <a href="{{ route('chat', ['receiver_id' => $user->id]) }}">
                                         <button
@@ -40,10 +42,34 @@
                                             </div>
                                             <!-- User Name -->
                                             <div class="ml-2 text-sm font-semibold dark:text-white">{{ $user->name }}
+
+                                                
                                             </div>
+                                        
+                                         
                                         </button>
                                     </a>
+                                    <div>
+                                        <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal" class=" inline-flex items-center p-2 text-sm font-medium text-center text-gray-900  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
+                                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                              <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                            </svg>
+                                          </button> 
+                                            <!-- Dropdown menu -->
+                                            <div id="dropdownDotsHorizontal" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-30 dark:bg-gray-700 dark:divide-gray-600">
+                                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                  <li>
+                                                    
+                                                    <button onclick="deleteAllSmsFunc({{  auth()->id() }} )" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete All Conversation</button>
+                                                  </li>
+                                               
+                                                </ul>
+                                              
+                                            </div>
+                                      </div>
+                              </div>
                                     <!-- User Item -->
+                                  
                                 @endforeach
                             </div>
                             <!-- User List -->
@@ -94,8 +120,31 @@
                                                     </div>
                                                     <!-- Message Content -->
                                                     <div
-                                                        class="relative {{ $message->sender_id === auth()->id() ? 'mr-3' : 'ml-3' }} text-sm bg-sky-50 dark:text-white dark:bg-gray-700 py-2 px-4 shadow rounded-xl">
-                                                        <div>{{ $message->content }}</div>
+                                                        class="relative flex {{ $message->sender_id === auth()->id() ? 'mr-3' : 'ml-3' }} text-sm bg-sky-50 dark:text-white dark:bg-gray-700 py-2 px-4 shadow rounded-xl">
+                                                      {{--  Content --}}
+                                                        <div>{{ $message->content }} </div>
+                                                    {{--  Content --}}
+                                                    {{--  Icon Delete --}}
+                                                    <div class="pl-3">
+                                                        <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal" class=" inline-flex items-center p-2 text-sm font-medium text-center text-gray-900  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
+                                                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                                              <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                                            </svg>
+                                                          </button>
+                                                          
+                                                          <!-- Dropdown menu -->
+                                                          <div id="dropdownDotsHorizontal" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-30 dark:bg-gray-700 dark:divide-gray-600">
+                                                              <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                                <li>
+                                                                  
+                                                                  <button onclick="deleteSmsFunc({{ $message->id }} )" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</button>
+                                                                </li>
+                                                             
+                                                              </ul>
+                                                            
+                                                          </div>
+                                                    </div>
+                                                    {{--  Icon Delete --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,21 +239,6 @@
 
 
 
-        /*     document.addEventListener("DOMContentLoaded", function() {
-                const fileInput = document.getElementById('sendMsgInput');
-                const submitButton = document.getElementById('sendMsgBtn');
-                //console.log(submitButton);
-                fileInput.addEventListener('change', function() {
-                    console.log('HI');
-                    // Check if file input is empty
-                    if (!fileInput.value) {
-                        submitButton.disabled = true;
-                    } else {
-                        submitButton.disabled = false;
-                    }
-                });
-            }); */
-
         document.addEventListener("DOMContentLoaded", function() {
             const textInput = document.getElementById('sendMsgInput');
             const submitButton = document.getElementById('sendMsgBtn');
@@ -230,6 +264,44 @@
                 }
             });
         });
+
+
+
+        /* Delete Message Fucntion */
+        const deleteSmsFunc =($id)=>{
+
+            axios.delete(`/message/${$id}`, {
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => {
+            // Handle success, e.g., remove the deleted message from the frontend
+            console.log(response.data.message);
+           window.location.reload();
+        })
+        .catch(error => {
+            // Handle error, e.g., display an error message
+            console.error(error.response.data.error);
+        });
+        }
+        /* Delete Message Fucntion */
+
+        /* Delete All Delete */
+        const deleteAllSmsFunc=(receiverId)=>{
+
+            axios.delete(`/messages/${receiverId}`)
+            .then(response => {
+                // Handle the success response
+                console.log(response.data);
+                window.location.reload();
+            })
+            .catch(error => {
+                // Handle the error response
+                console.error(error.response.data);
+            });
+        }
+        /* Delete All Delete */
     </script>
 
 @endsection

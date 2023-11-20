@@ -63,6 +63,9 @@ Route::middleware(['auth'])->group(function () {
     /*  Route::get('/chat', [MessageController::class, 'index'])->name('chat'); */
     Route::get('/chat/{receiver_id}', [MessageController::class, 'index'])->name('chat');
     Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send.message');
+   
+    Route::delete('/message/{id}',[MessageController::class, 'delete']);
+    Route::delete('/messages/{receiverId}', [MessageController::class, 'deleteByReceiver']);
     /* Chat Application APP Route */
 
     Route::group(['prefix' => 'expenses'], function () {

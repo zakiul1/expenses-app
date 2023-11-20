@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $this->call([
+        /* $this->call([
             DepartmentSeeder::class,
             ExpensesCategorySeeder::class,
             BankSeeder::class,
             BuyerSeeder::class,
             FactoryAddSeeder::class,
 
-        ]);
+        ]); */
     }
 }
