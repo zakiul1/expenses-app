@@ -6,7 +6,7 @@
         <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
             <div class="flex-1 px-3 space-y-1 bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                 <ul class="pb-2 space-y-2">
-                   {{--  <li>
+                    {{--  <li>
                         <form action="#" method="GET" class="lg:hidden">
                             <label for="mobile-search" class="sr-only">Search</label>
                             <div class="relative">
@@ -27,7 +27,7 @@
                     {{-- Dashboard --}}
                     <li>
                         <a href="{{ route('home') }}"
-                            class="{{ request()->routeIs('home') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base  rounded-lg hover:bg-sky-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                            class="{{ request()->routeIs('home') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base  rounded-lg hover:bg-sky-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <svg width="24px" height="24px" viewBox="0 0 24 24"
                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                 xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -113,14 +113,14 @@
                             <li class="">
 
                                 <a href="{{ route('expenses.transaction') }}"
-                                    class="{{ request()->routeIs('expenses.transaction') || request()->routeIs('tnxDetails') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }}
+                                    class="{{ request()->routeIs('expenses.transaction') || request()->routeIs('tnxDetails') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }}
                                     flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">
 
                                     Transaction</a>
                             </li>
                             <li>
                                 <a href="{{ route('expenses.category') }}"
-                                    class="{{ request()->routeIs('expenses.category') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }}  flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
+                                    class="{{ request()->routeIs('expenses.category') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }}  flex items-center p-2 text-base  transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Category</a>
                             </li>
                         </ul>
                     </li>
@@ -203,16 +203,16 @@
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('employee.attendance') }}"
-                                    class="{{ request()->routeIs('employee.attendance') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Attendance</a>
+                                    class="{{ request()->routeIs('employee.attendance') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Attendance</a>
                             </li>
                             <li>
                                 <a href="{{ route('employee.list') }}"
-                                    class="{{ request()->routeIs('employee.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Employee
+                                    class="{{ request()->routeIs('employee.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Employee
                                     List</a>
                             </li>
                             <li>
                                 <a href="{{ route('employee.department') }}"
-                                    class="{{ request()->routeIs('employee.department') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Department</a>
+                                    class="{{ request()->routeIs('employee.department') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Department</a>
                             </li>
                         </ul>
                     </li>
@@ -286,25 +286,25 @@
                          py-2 space-y-2">
                             <li>
                                 <a href="{{ route('invoices.list') }}"
-                                    class="{{ request()->routeIs(['invoices.list', 'invoice.details']) ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
+                                    class="{{ request()->routeIs(['invoices.list', 'invoice.details']) ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">TT
                                     Order</a>
                             </li>
                             <li>
                                 <a href="{{ route('factories.list') }}"
-                                    class="{{ request()->routeIs('factories.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Factory</a>
+                                    class="{{ request()->routeIs('factories.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Factory</a>
                             </li>
                             <li>
                                 <a href="{{ route('banks.list') }}"
-                                    class="{{ request()->routeIs('banks.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bank</a>
+                                    class="{{ request()->routeIs('banks.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bank</a>
                             </li>
 
                             <li>
                                 <a href="{{ route('buyers.list') }}"
-                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
+                                    class="{{ request()->routeIs('buyers.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Bayer</a>
                             </li>
                             <li>
                                 <a href="{{ route('companies.list') }}"
-                                    class="{{ request()->routeIs('companies.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
+                                    class="{{ request()->routeIs('companies.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Company</a>
                             </li>
                         </ul>
                     </li>
@@ -346,13 +346,18 @@
                                     </svg>
                                 </button>
                                 <ul id="dropdown-users"
-                                    class="{{ request()->routeIs(['user.list']) ? '' : 'hidden' }}
+                                    class="{{ request()->routeIs(['user.list', 'user.chat', 'chat']) ? '' : 'hidden' }}
 
                          py-2 space-y-2">
                                     <li>
                                         <a href="{{ route('user.list') }}"
-                                            class="{{ request()->routeIs('user.list') ? 'text-green-500 bg-sky-100 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Users
+                                            class="{{ request()->routeIs('user.list') ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">Users
                                             List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('user.chat') }}"
+                                            class="{{ request()->routeIs(['user.chat', 'chat']) ? 'text-green-500 bg-sky-100 dark:text-green-500 dark:bg-gray-700' : 'text-gray-900' }} flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                                            Chat</a>
                                     </li>
 
                                 </ul>

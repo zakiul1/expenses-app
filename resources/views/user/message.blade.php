@@ -2,16 +2,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
 </head>
+
 <body>
     <div>
         <h2>Users</h2>
         <ul>
-            @foreach($users as $user)
+            @foreach ($users as $user)
                 <li>
                     <a href="{{ route('chat', ['receiver_id' => $user->id]) }}">{{ $user->name }}</a>
                 </li>
@@ -21,9 +23,9 @@
 
     <div>
         <h2>Chat</h2>
-        @if($selectedUser)
+        @if ($selectedUser)
             <h3>Chatting with {{ $selectedUser->name }}</h3>
-            @foreach($messages as $message)
+            @foreach ($messages as $message)
                 <strong>{{ $message->sender->name }}:</strong> {{ $message->content }}<br>
             @endforeach
 
@@ -36,4 +38,5 @@
         @endif
     </div>
 </body>
+
 </html>
