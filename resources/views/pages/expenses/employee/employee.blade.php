@@ -34,19 +34,6 @@
                                     employee</a>
                             </div>
                         </li>
-                        {{--     <li>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <a href="{{ route('employee.list') }}"
-                                    class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">
-                                    category</a>
-                            </div>
-                        </li> --}}
 
                         {{--  Bradcums --}}
                     </ol>
@@ -55,10 +42,7 @@
                 <div class="flex justify-between pb-4  border-b border-gray-300">
                     <h1 class="text-xl font-semibold text-gray-500 md:text-2xl dark:text-white">Employee List</h1>
 
-                    {{--   <button data-modal-target="employee-create-modal" data-modal-toggle="employee-create-modal"
-                        class="bg-sky-700 hover:bg-sky-800 text-white font-semibold hover:text-white py-1 px-8 border border-gray-500 hover:border-transparent rounded">
-                        Add
-                    </button> --}}
+
                     <button type="button" data-modal-target="employee-create-modal"
                         data-modal-toggle="employee-create-modal" data-modal-toggle="attendance-entry-modal"
                         data-modal-toggle="category-create-modal"
@@ -137,12 +121,12 @@
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-sky-100 dark:hover:bg-gray-700">
                                         <td class="flex items-center  p-4 mr-12 space-x-2 whitespace-nowrap">
-                                         
+
                                             @if ($employee->image_path)
                                                 <div class="w-8 h-8 rounded-full">
                                                     <img class="w-8 h-8 rounded-full  object-cover"
                                                         src="{{ asset('employee/images') . '/' . $employee->image_path }}"
-                                                        alt="employee profile">
+                                                        alt="">
                                                 </div>
                                             @endif
 
@@ -175,10 +159,10 @@
                                                 class="p-2 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                                 @php
                                                     $json = json_decode($employee->document_path);
-                                                   
+
                                                 @endphp
                                                 @if ($json)
-                                                <a
+                                                    <a
                                                         href="{{ route('employee.download.documents', ['id' => $employee->id]) }}">
 
                                                         <button type="button"
@@ -195,7 +179,6 @@
                                                         </button>
                                                     </a>
                                                 @else
-                                                    
                                                 @endif
                                             </td>
                                             <td

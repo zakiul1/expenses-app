@@ -153,28 +153,33 @@
                         <div class="flex items-center mb-2">
                             <div class="w-36 text-sm font-medium dark:text-white">
                                 {{ $employee->first_name . ' ' . $employee->last_name }}</div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                @if ($employee->emploeeTimelyEntry)
-                                    <div class="bg-green-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
-                                    style="width: 100%">
-                                    <span class="text-[10px] font-bold  text-white">Timely</span>
-                                    </div>
+
+                            @if ($employee->checkIndate === true)
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                    @if ($employee->emploeeTimelyEntry)
+                                        <div class="bg-green-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
+                                            style="width: 100%">
+                                            <span class="text-[10px] font-bold  text-white">Timely</span>
+                                        </div>
                                     @else
-                                    <div class="bg-red-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
-                                    style="width: 100%">
-                                    @php
-                                        $hours = $employee->timeDifference->h;
-                                        $minutes = $employee->timeDifference->i;
-                                        // Using sprintf
-                                        $timeString = sprintf("%02d:%02d", $hours, $minutes);
-                                        // Using Carbon format method
-                                       // $timeString = $employee->timeDifference->format('H:i');
-                                    @endphp
-                                    <span class="text-[10px] font-bold  text-white">{{ $hours.' hours '.$minutes.' '}}minutes late today</span>
-                                    </div>
-                                @endif
-                                
-                            </div>
+                                        <div class="bg-red-600 h-3 py-1 flex items-center justify-center rounded-full dark:bg-sky-500"
+                                            style="width: 100%">
+                                            @php
+                                                $hours = $employee->timeDifference->h;
+                                                $minutes = $employee->timeDifference->i;
+
+                                                $timeString = sprintf('%02d:%02d', $hours, $minutes);
+
+                                            @endphp
+                                            <span
+                                                class="text-[10px] font-bold  text-white">{{ $hours . ' hours ' . $minutes . ' ' }}minutes
+                                                late today</span>
+                                        </div>
+                                    @endif
+
+                                </div>
+                            @endif
+
                         </div>
                     @endforeach
 
