@@ -23,7 +23,7 @@
                         </svg>
                     </div>
                     <h2 class="text-l md:text-xl mt-3 font-semibold text-sky-700 dark:text-white">Total Employee</h2>
-                    <div class="w-8 h-8 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
+                    <div class="w-8 h-8 md:w-10 md:h-10  mt-3 bg-sky-500 rounded-full flex items-center justify-center">
                         <h2 class=" text-xl md:2xl font-bold text-white dark:text-white">{{ $totalEmployees }}</h2>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                             fill="#D72822" />
                     </svg>
                     <h2 class="text-l md:text-xl font-semibold text-sky-700 dark:text-white mt-3">Total Present Today</h2>
-                    <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
+                    <div class="w-8 h-8 md:w-10 md:h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
                         <h2 class="text-xl md:text-2xl font-bold  text-white dark:text-white">
                             {{ $attendanceCount }}
                         </h2>
@@ -129,7 +129,7 @@
                         </svg>
                     </div>
                     <h2 class="text-l md:xl mt-3 font-semibold text-sky-700 dark:text-white">Total User</h2>
-                    <div class="w-10 h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
+                    <div class="w-8 h-8 md:w-10 md:h-10 mt-3 bg-sky-500 rounded-full flex items-center justify-center">
                         <h2 class=" text-xl md:2xl font-bold text-white dark:text-white">{{ $userCount }}</h2>
                     </div>
                 </div>

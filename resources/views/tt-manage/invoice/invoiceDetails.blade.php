@@ -79,7 +79,7 @@
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Invoice Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $totalInvoiceValue }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">${{ $totalInvoiceValue }}</h2>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Factory Value</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $totalFactoryValue }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">${{ $totalFactoryValue }}</h2>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,8 @@
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Receive From Buyer</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $receiveValueFromBuyer }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">${{ $receiveValueFromBuyer }}
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -115,7 +116,7 @@
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Pay To Factory</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $payValueToFactory }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">${{ $payValueToFactory }}</h2>
                     </div>
                 </div>
 
@@ -129,7 +130,7 @@
                 <div class="w-full flex flex-col items-center py-3">
                     <h2 class="text-base md:text-l font-semibold text-sky-700 dark:text-white">Total Current Balance</h2>
                     <div class="px-3 py-1 mt-3 bg-gray-700 rounded-md flex items-center justify-center">
-                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">{{ $currentTotalBalance }}</h2>
+                        <h2 class="text-l md:text-xl font-bold text-white dark:text-white">${{ $currentTotalBalance }}</h2>
                     </div>
                 </div>
             </div>
@@ -193,7 +194,7 @@
                                             </th>
                                             <th scope="col"
                                                 class="p-4 w-2/12 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
-                                                Amount
+                                                Amount ($)
                                             </th>
 
                                             <th scope="col"
@@ -221,7 +222,8 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                    <tbody
+                                        class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         @if ($transactions)
                                             @foreach ($transactions as $transaction)
                                                 @if ($transaction->type_of_transaction === 1)
@@ -343,7 +345,8 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                    <tbody
+                                        class="bg-sky-50 divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         @if ($transactions)
                                             @foreach ($transactions as $transaction)
                                                 @if ($transaction->type_of_transaction === 2)

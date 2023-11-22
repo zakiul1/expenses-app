@@ -51,7 +51,7 @@
                         <div class="items-center mb-2 md:mb-0 flex sm:flex">
 
                             <div class="flex items-center space-x-2 md:space-x-4">
-                    
+
 
                                 <div date-rangepicker class="flex items-center">
                                     <div class="relative">
@@ -150,7 +150,7 @@
                                     </th>
                                     <th scope="col"
                                         class="p-4 w-3/12 text-sm font-bold text-center text-gray-500 uppercase dark:text-gray-400">
-                                        Amount
+                                        Amount (BTD)
                                     </th>
 
                                     <th scope="col"
@@ -393,7 +393,8 @@
                                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-sky-600 peer"
                                     placeholder="" required />
                                 <label for="amount"
-                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-sky-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount
+                                    (BTD)</label>
                                 <p id="transaction_amount_id_error" class="mt-2 text-xs text-red-600 dark:text-red-400">
                                 </p>
                             </div>
@@ -565,7 +566,7 @@
                     titleColor: '#DA1010',
                     okButtonColor: '#f8f8f8',
                     okButtonBackground: '#DA1010',
-                    backgroundColor:'#e0f4ff'
+                    backgroundColor: '#e0f4ff'
                 },
             );
 

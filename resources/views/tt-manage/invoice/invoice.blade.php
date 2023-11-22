@@ -91,7 +91,7 @@
                                     </th>
                                     <th scope="col"
                                         class="p-4  text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Invoice Value
+                                        Invoice Value ($)
                                     </th>
 
                                     <th scope="col"
@@ -117,7 +117,7 @@
 
                                     <th scope="col"
                                         class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
-                                        Factory Value
+                                        Factory Value ($)
                                     </th>
                                     <th scope="col"
                                         class="p-4  text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
@@ -321,7 +321,7 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="createInvoiceValue"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT
-                                        Value</label>
+                                        Value ($)</label>
                                     <input type="number" name="invoice_value" id="createInvoiceValue"
                                         class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_invoice_value_error"
@@ -388,7 +388,7 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="createInvoiceFactoryValue"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Factory
-                                        Value</label>
+                                        Value ($)</label>
                                     <input type="number" name="factory_value" id="createInvoiceFactoryValue"
                                         class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="create_factory_value_error"
@@ -475,7 +475,7 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="updateInvoiceValue"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TT
-                                        Value</label>
+                                        Value ($)</label>
                                     <input type="number" name="invoice_value" id="updateInvoiceValue"
                                         class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_invoice_value_error"
@@ -542,7 +542,7 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="updateInvoiceFactoryValue"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Factory
-                                        Value</label>
+                                        Value ($)</label>
                                     <input type="number" name="factory_value" id="updateInvoiceFactoryValue"
                                         class="shadow-sm bg-sky-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <p id="update_invoice_factory_value_error"
